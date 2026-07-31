@@ -1,0 +1,172 @@
+import type { RawFoodEntry } from '../types/expert';
+
+export const bodybuildingFoods: RawFoodEntry[] = [
+  // PROTEIN
+  { id: 'chicken_breast', name: 'Chicken Breast (Raw)', category: 'protein', nutritionPer100g: { calories: 120, protein: 23, carbs: 0, fat: 1.9, fiber: 0, sodium: 45, potassium: 256, calcium: 5, magnesium: 29, iron: 0.9, zinc: 1.0, vitaminA: 16, vitaminB6: 0.5, vitaminB12: 0.3 }, cookedConversionFactor: 0.75, servingUnit: 'g', defaultServing: 100 },
+  { id: 'chicken_thigh', name: 'Chicken Thigh (Raw)', category: 'protein', nutritionPer100g: { calories: 177, protein: 22, carbs: 0, fat: 9, fiber: 0, cholesterol: 90, sodium: 70, potassium: 204, calcium: 9, magnesium: 20, iron: 1.1, zinc: 2.0, vitaminA: 30, vitaminB6: 0.5, vitaminB12: 0.5 }, cookedConversionFactor: 0.78, servingUnit: 'g', defaultServing: 100 },
+  { id: 'turkey', name: 'Turkey (Raw)', category: 'protein', nutritionPer100g: { calories: 135, protein: 24, carbs: 0, fat: 3.5, fiber: 0, sodium: 54, potassium: 239, calcium: 7, magnesium: 24, iron: 1.1, zinc: 1.3, vitaminA: 12, vitaminB6: 0.6, vitaminB12: 0.4 }, cookedConversionFactor: 0.75, servingUnit: 'g', defaultServing: 100 },
+  { id: 'lean_beef', name: 'Lean Beef (Raw)', category: 'protein', nutritionPer100g: { calories: 175, protein: 22, carbs: 0, fat: 9, fiber: 0, sodium: 55, potassium: 318, calcium: 8, magnesium: 21, iron: 2.6, zinc: 5.1, vitaminB6: 0.4, vitaminB12: 2.2 }, cookedConversionFactor: 0.70, servingUnit: 'g', defaultServing: 100 },
+  { id: 'fish', name: 'Fish (Raw)', category: 'protein', nutritionPer100g: { calories: 96, protein: 20, carbs: 0, fat: 1.5, fiber: 0, sodium: 54, potassium: 413, calcium: 16, magnesium: 32, iron: 0.4, zinc: 0.4, vitaminA: 12, vitaminB6: 0.2, vitaminB12: 0.9, vitaminD: 0.9 }, cookedConversionFactor: 0.85, servingUnit: 'g', defaultServing: 100 },
+  { id: 'egg_whites', name: 'Egg Whites', category: 'protein', nutritionPer100g: { calories: 52, protein: 11, carbs: 0.7, fat: 0.2, fiber: 0, sodium: 166, potassium: 163, calcium: 7, magnesium: 11, iron: 0.1, zinc: 0.1, vitaminB12: 0.1 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'whole_eggs', name: 'Whole Eggs', category: 'protein', nutritionPer100g: { calories: 155, protein: 13, carbs: 1.1, fat: 11, fiber: 0, cholesterol: 373, sodium: 142, potassium: 138, calcium: 56, magnesium: 12, iron: 1.8, zinc: 1.3, vitaminA: 160, vitaminB6: 0.1, vitaminB12: 1.1, vitaminD: 2.0, vitaminE: 1.0, vitaminK: 0.3 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  // CARBS
+  { id: 'raw_rice', name: 'Raw Rice', category: 'carbs', nutritionPer100g: { calories: 365, protein: 7.1, carbs: 80, fat: 0.7, fiber: 1.4, sodium: 5, potassium: 115, calcium: 28, magnesium: 25, iron: 0.8, zinc: 1.1, vitaminB6: 0.2, vitaminE: 0.1 }, cookedConversionFactor: 3.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'raw_oats', name: 'Raw Oats', category: 'carbs', nutritionPer100g: { calories: 389, protein: 17, carbs: 66, fat: 6.9, fiber: 10.6, sodium: 2, potassium: 429, calcium: 54, magnesium: 177, iron: 4.7, zinc: 4.0, vitaminB6: 0.1, vitaminE: 0.4, vitaminK: 2.0 }, cookedConversionFactor: 1.5, servingUnit: 'g', defaultServing: 100 },
+  { id: 'sweet_potato', name: 'Sweet Potato (Raw)', category: 'carbs', nutritionPer100g: { calories: 86, protein: 1.6, carbs: 20, fat: 0.1, fiber: 3, sodium: 55, potassium: 337, calcium: 30, magnesium: 25, iron: 0.6, zinc: 0.3, vitaminA: 709, vitaminC: 2.4, vitaminB6: 0.2, vitaminE: 0.3 }, cookedConversionFactor: 0.85, servingUnit: 'g', defaultServing: 150 },
+  { id: 'potato', name: 'Potato (Raw)', category: 'carbs', nutritionPer100g: { calories: 77, protein: 2, carbs: 17, fat: 0.1, fiber: 2.2, sodium: 6, potassium: 421, calcium: 12, magnesium: 23, iron: 0.8, zinc: 0.3, vitaminC: 19.7, vitaminB6: 0.3, vitaminK: 2.0 }, cookedConversionFactor: 0.85, servingUnit: 'g', defaultServing: 150 },
+  { id: 'pasta_dry', name: 'Pasta (Dry)', category: 'carbs', nutritionPer100g: { calories: 371, protein: 13, carbs: 75, fat: 1.5, fiber: 3.2, sodium: 6, potassium: 223, calcium: 21, magnesium: 53, iron: 3.3, zinc: 1.4, vitaminB6: 0.2, vitaminE: 0.1 }, cookedConversionFactor: 2.5, servingUnit: 'g', defaultServing: 100 },
+  { id: 'quinoa', name: 'Quinoa (Dry)', category: 'carbs', nutritionPer100g: { calories: 368, protein: 14, carbs: 64, fat: 6.1, fiber: 7, sodium: 5, potassium: 563, calcium: 47, magnesium: 197, iron: 4.6, zinc: 3.1, vitaminB6: 0.2, vitaminE: 2.4 }, cookedConversionFactor: 3.0, servingUnit: 'g', defaultServing: 100 },
+  // FATS
+  { id: 'peanut_butter', name: 'Peanut Butter', category: 'fats', nutritionPer100g: { calories: 588, protein: 25, carbs: 20, fat: 50, fiber: 6, sugar: 9, sodium: 459, potassium: 558, calcium: 49, magnesium: 168, iron: 1.7, zinc: 2.5, vitaminB6: 0.4, vitaminE: 9.1, vitaminK: 0.6 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 32 },
+  { id: 'almonds', name: 'Almonds', category: 'fats', nutritionPer100g: { calories: 579, protein: 21, carbs: 22, fat: 50, fiber: 12.5, sugar: 4.4, sodium: 1, potassium: 733, calcium: 269, magnesium: 270, iron: 3.7, zinc: 3.1, vitaminB6: 0.1, vitaminE: 25.6 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 28 },
+  { id: 'cashews', name: 'Cashews', category: 'fats', nutritionPer100g: { calories: 553, protein: 18, carbs: 30, fat: 44, fiber: 3.3, sugar: 5.9, sodium: 12, potassium: 660, calcium: 37, magnesium: 292, iron: 6.7, zinc: 5.8, vitaminB6: 0.4, vitaminE: 0.9, vitaminK: 34 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 28 },
+  { id: 'walnuts', name: 'Walnuts', category: 'fats', nutritionPer100g: { calories: 654, protein: 15, carbs: 14, fat: 65, fiber: 6.7, sugar: 2.6, sodium: 2, potassium: 441, calcium: 98, magnesium: 158, iron: 2.9, zinc: 3.1, vitaminB6: 0.5, vitaminE: 0.7, vitaminK: 2.7 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 28 },
+  { id: 'olive_oil', name: 'Olive Oil', category: 'fats', nutritionPer100g: { calories: 884, protein: 0, carbs: 0, fat: 100, fiber: 0, vitaminE: 14, vitaminK: 60 }, cookedConversionFactor: 1.0, servingUnit: 'ml', defaultServing: 15 },
+  { id: 'avocado', name: 'Avocado', category: 'fats', nutritionPer100g: { calories: 160, protein: 2, carbs: 9, fat: 15, fiber: 6.7, sugar: 0.7, sodium: 7, potassium: 485, calcium: 12, magnesium: 29, iron: 0.6, zinc: 0.6, vitaminA: 7, vitaminC: 10, vitaminB6: 0.3, vitaminE: 2.1, vitaminK: 21 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  // VEGETABLES
+  { id: 'broccoli', name: 'Broccoli', category: 'vegetables', nutritionPer100g: { calories: 34, protein: 2.8, carbs: 7, fat: 0.4, fiber: 2.6, sugar: 1.7, sodium: 33, potassium: 316, calcium: 47, magnesium: 21, iron: 0.7, zinc: 0.4, vitaminA: 31, vitaminC: 89.2, vitaminB6: 0.2, vitaminE: 0.8, vitaminK: 101.6 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'spinach', name: 'Spinach', category: 'vegetables', nutritionPer100g: { calories: 23, protein: 2.9, carbs: 3.6, fat: 0.4, fiber: 2.2, sugar: 0.4, sodium: 79, potassium: 558, calcium: 99, magnesium: 79, iron: 2.7, zinc: 0.5, vitaminA: 469, vitaminC: 28.1, vitaminB6: 0.2, vitaminE: 2.0, vitaminK: 482.9 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'beans', name: 'Green Beans', category: 'vegetables', nutritionPer100g: { calories: 31, protein: 1.8, carbs: 7, fat: 0.2, fiber: 2.7, sugar: 1.4, sodium: 6, potassium: 211, calcium: 37, magnesium: 25, iron: 1.0, zinc: 0.2, vitaminA: 35, vitaminC: 12.2, vitaminB6: 0.1, vitaminK: 43 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'bell_peppers', name: 'Bell Peppers', category: 'vegetables', nutritionPer100g: { calories: 31, protein: 1, carbs: 6, fat: 0.3, fiber: 2.1, sugar: 3.2, sodium: 2, potassium: 175, calcium: 10, magnesium: 10, iron: 0.3, zinc: 0.2, vitaminA: 93, vitaminC: 80.4, vitaminB6: 0.2, vitaminE: 1.6, vitaminK: 7.4 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'cucumber', name: 'Cucumber', category: 'vegetables', nutritionPer100g: { calories: 15, protein: 0.7, carbs: 3.6, fat: 0.1, fiber: 0.5, sugar: 1.7, sodium: 2, potassium: 147, calcium: 16, magnesium: 13, iron: 0.3, zinc: 0.2, vitaminA: 5, vitaminC: 2.8, vitaminK: 16.4 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'lettuce', name: 'Lettuce', category: 'vegetables', nutritionPer100g: { calories: 15, protein: 1.4, carbs: 2.9, fat: 0.2, fiber: 1.3, sugar: 0.8, sodium: 28, potassium: 194, calcium: 36, magnesium: 13, iron: 0.9, zinc: 0.2, vitaminA: 370, vitaminC: 9.2, vitaminB6: 0.1, vitaminK: 126.3 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  // FRUIT
+  { id: 'banana', name: 'Banana', category: 'fruit', nutritionPer100g: { calories: 89, protein: 1.1, carbs: 23, fat: 0.3, fiber: 2.6, sugar: 12, sodium: 1, potassium: 358, calcium: 5, magnesium: 27, iron: 0.3, zinc: 0.2, vitaminA: 3, vitaminC: 8.7, vitaminB6: 0.4, vitaminE: 0.1 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 120 },
+  { id: 'apple', name: 'Apple', category: 'fruit', nutritionPer100g: { calories: 52, protein: 0.3, carbs: 14, fat: 0.2, fiber: 2.4, sugar: 10, sodium: 1, potassium: 107, calcium: 6, magnesium: 5, iron: 0.1, zinc: 0.04, vitaminA: 3, vitaminC: 4.6, vitaminE: 0.2, vitaminK: 2.2 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 180 },
+  { id: 'orange', name: 'Orange', category: 'fruit', nutritionPer100g: { calories: 47, protein: 0.9, carbs: 12, fat: 0.1, fiber: 2.4, sugar: 9.4, sodium: 0, potassium: 181, calcium: 40, magnesium: 10, iron: 0.1, zinc: 0.1, vitaminA: 11, vitaminC: 53.2, vitaminB6: 0.06 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 150 },
+  { id: 'blueberries', name: 'Blueberries', category: 'fruit', nutritionPer100g: { calories: 57, protein: 0.7, carbs: 14, fat: 0.3, fiber: 2.4, sugar: 9.7, sodium: 1, potassium: 77, calcium: 6, magnesium: 6, iron: 0.3, zinc: 0.2, vitaminA: 3, vitaminC: 9.7, vitaminE: 0.6, vitaminK: 19.3 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  // FAST FOOD / STREET FOOD
+  { id: 'momo_steamed', name: 'Steamed Momo (Chicken)', category: 'protein', nutritionPer100g: { calories: 180, protein: 12, carbs: 20, fat: 5, fiber: 1.2, sugar: 1.5, sodium: 380, potassium: 200, calcium: 40, magnesium: 20, iron: 1.5, zinc: 1.2, vitaminA: 30, vitaminB6: 0.2, vitaminB12: 0.3, vitaminC: 2 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'momo_fried', name: 'Fried Momo (Chicken)', category: 'protein', nutritionPer100g: { calories: 280, protein: 11, carbs: 24, fat: 14, fiber: 1.2, sugar: 2, sodium: 420, potassium: 180, calcium: 35, magnesium: 18, iron: 1.8, zinc: 1.3, vitaminA: 25, vitaminB6: 0.2, vitaminB12: 0.3 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'pizza', name: 'Pizza (Cheese, regular slice)', category: 'carbs', nutritionPer100g: { calories: 266, protein: 11, carbs: 33, fat: 10, fiber: 2.5, sugar: 3.8, sodium: 640, potassium: 180, calcium: 220, magnesium: 20, iron: 1.8, zinc: 1.1, vitaminA: 45, vitaminB6: 0.1, vitaminB12: 0.4, vitaminC: 2 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'burger', name: 'Burger (Beef, regular)', category: 'protein', nutritionPer100g: { calories: 295, protein: 17, carbs: 24, fat: 14, fiber: 1.5, sugar: 4, sodium: 520, potassium: 250, calcium: 90, magnesium: 22, iron: 2.4, zinc: 3.0, vitaminA: 30, vitaminB6: 0.2, vitaminB12: 0.9 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'fries', name: 'French Fries (medium)', category: 'carbs', nutritionPer100g: { calories: 312, protein: 3.4, carbs: 41, fat: 15, fiber: 3.8, sugar: 0.3, sodium: 210, potassium: 380, calcium: 15, magnesium: 30, iron: 0.8, zinc: 0.4, vitaminC: 5, vitaminB6: 0.2, vitaminK: 3 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'shawarma', name: 'Shawarma (Chicken)', category: 'protein', nutritionPer100g: { calories: 275, protein: 16, carbs: 22, fat: 13, fiber: 1.8, sugar: 3, sodium: 580, potassium: 250, calcium: 60, magnesium: 25, iron: 1.8, zinc: 2.2, vitaminA: 20, vitaminB6: 0.3, vitaminB12: 0.5 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'tacos', name: 'Tacos (Beef, regular)', category: 'protein', nutritionPer100g: { calories: 226, protein: 10, carbs: 20, fat: 12, fiber: 2.5, sugar: 2, sodium: 490, potassium: 200, calcium: 120, magnesium: 20, iron: 1.5, zinc: 2.0, vitaminA: 25, vitaminB6: 0.2, vitaminB12: 0.6 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'fried_chicken', name: 'Fried Chicken (1 piece)', category: 'protein', nutritionPer100g: { calories: 250, protein: 18, carbs: 9, fat: 14, fiber: 0.5, sugar: 0.5, sodium: 550, potassium: 230, calcium: 30, magnesium: 20, iron: 1.2, zinc: 1.5, vitaminB6: 0.3, vitaminB12: 0.4 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'hot_dog', name: 'Hot Dog (regular)', category: 'protein', nutritionPer100g: { calories: 290, protein: 10, carbs: 24, fat: 17, fiber: 0.8, sugar: 4, sodium: 890, potassium: 150, calcium: 60, magnesium: 15, iron: 1.3, zinc: 1.4, vitaminB12: 0.5 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'sandwich', name: 'Sandwich (Chicken)', category: 'protein', nutritionPer100g: { calories: 250, protein: 15, carbs: 25, fat: 9, fiber: 2, sugar: 3, sodium: 480, potassium: 220, calcium: 90, magnesium: 25, iron: 2.0, zinc: 1.8, vitaminA: 30, vitaminB6: 0.2, vitaminB12: 0.5 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'noodles', name: 'Noodles (Chow mein)', category: 'carbs', nutritionPer100g: { calories: 240, protein: 8, carbs: 30, fat: 9, fiber: 2, sugar: 3, sodium: 620, potassium: 150, calcium: 20, magnesium: 20, iron: 1.8, zinc: 0.8, vitaminB6: 0.1, vitaminB12: 0.1 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'spring_roll', name: 'Spring Roll (vegetable)', category: 'vegetables', nutritionPer100g: { calories: 180, protein: 4, carbs: 18, fat: 10, fiber: 1.5, sugar: 2, sodium: 320, potassium: 150, calcium: 30, magnesium: 15, iron: 1.0, zinc: 0.5, vitaminA: 40, vitaminC: 3 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'samosas', name: 'Samosas (2 pieces)', category: 'carbs', nutritionPer100g: { calories: 308, protein: 6, carbs: 32, fat: 17, fiber: 2.5, sugar: 2, sodium: 450, potassium: 180, calcium: 25, magnesium: 20, iron: 1.5, zinc: 0.8, vitaminA: 30 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'chaat', name: 'Chaat (regular serving)', category: 'carbs', nutritionPer100g: { calories: 220, protein: 5, carbs: 28, fat: 10, fiber: 2, sugar: 8, sodium: 580, potassium: 200, calcium: 40, magnesium: 25, iron: 1.2, zinc: 0.9, vitaminA: 50, vitaminC: 5 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'pav_bhaji', name: 'Pav Bhaji', category: 'carbs', nutritionPer100g: { calories: 260, protein: 7, carbs: 35, fat: 10, fiber: 3, sugar: 5, sodium: 620, potassium: 300, calcium: 60, magnesium: 35, iron: 2.0, zinc: 1.0, vitaminA: 100, vitaminC: 10 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'vada_pav', name: 'Vada Pav', category: 'carbs', nutritionPer100g: { calories: 290, protein: 7, carbs: 38, fat: 12, fiber: 2.5, sugar: 4, sodium: 580, potassium: 200, calcium: 30, magnesium: 25, iron: 1.6, zinc: 0.9, vitaminA: 30 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'dosa', name: 'Dosa (plain)', category: 'carbs', nutritionPer100g: { calories: 180, protein: 5, carbs: 30, fat: 4, fiber: 1.5, sugar: 2, sodium: 280, potassium: 150, calcium: 20, magnesium: 25, iron: 1.2, zinc: 0.7, vitaminB6: 0.1 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'idli', name: 'Idli (2 pieces)', category: 'carbs', nutritionPer100g: { calories: 120, protein: 4, carbs: 22, fat: 1.5, fiber: 1.2, sugar: 1, sodium: 180, potassium: 120, calcium: 15, magnesium: 20, iron: 1.0, zinc: 0.6, vitaminB6: 0.1 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'puri', name: 'Puri (2 pieces)', category: 'carbs', nutritionPer100g: { calories: 320, protein: 7, carbs: 42, fat: 13, fiber: 2, sugar: 2, sodium: 420, potassium: 120, calcium: 15, magnesium: 15, iron: 1.4, zinc: 0.7 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'biryani', name: 'Biryani (Chicken)', category: 'carbs', nutritionPer100g: { calories: 220, protein: 10, carbs: 25, fat: 8, fiber: 1.5, sugar: 2, sodium: 480, potassium: 200, calcium: 30, magnesium: 25, iron: 1.5, zinc: 1.2, vitaminA: 20, vitaminB6: 0.2, vitaminB12: 0.3 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'butter_chicken', name: 'Butter Chicken', category: 'protein', nutritionPer100g: { calories: 240, protein: 14, carbs: 8, fat: 16, fiber: 0.5, sugar: 5, sodium: 520, potassium: 250, calcium: 60, magnesium: 20, iron: 1.0, zinc: 1.1, vitaminA: 80, vitaminB6: 0.2, vitaminB12: 0.4 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'palak_paneer', name: 'Palak Paneer', category: 'protein', nutritionPer100g: { calories: 180, protein: 9, carbs: 8, fat: 12, fiber: 2.5, sugar: 3, sodium: 380, potassium: 300, calcium: 180, magnesium: 40, iron: 1.8, zinc: 1.0, vitaminA: 200, vitaminC: 5, vitaminK: 100 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'dal_makhani', name: 'Dal Makhani', category: 'protein', nutritionPer100g: { calories: 160, protein: 8, carbs: 18, fat: 6, fiber: 3.5, sugar: 3, sodium: 420, potassium: 250, calcium: 40, magnesium: 30, iron: 2.5, zinc: 1.5, vitaminA: 20, vitaminB6: 0.2 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'chole_bhature', name: 'Chole Bhature', category: 'carbs', nutritionPer100g: { calories: 280, protein: 8, carbs: 35, fat: 12, fiber: 2.5, sugar: 4, sodium: 520, potassium: 250, calcium: 40, magnesium: 35, iron: 2.2, zinc: 1.4, vitaminA: 30, vitaminB6: 0.2 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'paneer_tikka', name: 'Paneer Tikka', category: 'protein', nutritionPer100g: { calories: 220, protein: 12, carbs: 6, fat: 16, fiber: 1, sugar: 2, sodium: 380, potassium: 150, calcium: 200, magnesium: 20, iron: 1.0, zinc: 1.2, vitaminA: 60, vitaminB6: 0.1, vitaminB12: 0.5 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'tandoori_chicken', name: 'Tandoori Chicken', category: 'protein', nutritionPer100g: { calories: 190, protein: 20, carbs: 3, fat: 10, fiber: 0.5, sugar: 1, sodium: 420, potassium: 250, calcium: 20, magnesium: 25, iron: 1.8, zinc: 2.0, vitaminB6: 0.4, vitaminB12: 0.5 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'fish_curry', name: 'Fish Curry', category: 'protein', nutritionPer100g: { calories: 160, protein: 14, carbs: 6, fat: 9, fiber: 1, sugar: 2, sodium: 380, potassium: 300, calcium: 50, magnesium: 30, iron: 1.0, zinc: 0.8, vitaminA: 40, vitaminB6: 0.2, vitaminB12: 1.0, vitaminD: 0.5 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'mutton_curry', name: 'Mutton Curry', category: 'protein', nutritionPer100g: { calories: 250, protein: 16, carbs: 5, fat: 18, fiber: 0.5, sugar: 2, sodium: 450, potassium: 250, calcium: 20, magnesium: 20, iron: 2.8, zinc: 4.0, vitaminB6: 0.3, vitaminB12: 2.0 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'egg_curry', name: 'Egg Curry', category: 'protein', nutritionPer100g: { calories: 170, protein: 10, carbs: 6, fat: 11, fiber: 0.8, sugar: 2, sodium: 380, potassium: 150, calcium: 50, magnesium: 15, iron: 1.5, zinc: 1.1, vitaminA: 120, vitaminB12: 0.8, vitaminD: 1.5 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'rajma_chawal', name: 'Rajma Chawal', category: 'carbs', nutritionPer100g: { calories: 200, protein: 7, carbs: 28, fat: 6, fiber: 3.5, sugar: 3, sodium: 420, potassium: 350, calcium: 50, magnesium: 45, iron: 2.5, zinc: 1.2, vitaminA: 20, vitaminB6: 0.2 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'kadhi_chawal', name: 'Kadhi Chawal', category: 'carbs', nutritionPer100g: { calories: 190, protein: 5, carbs: 26, fat: 7, fiber: 2, sugar: 3, sodium: 450, potassium: 200, calcium: 80, magnesium: 25, iron: 1.8, zinc: 0.9, vitaminA: 30, vitaminB6: 0.1 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'pulao', name: 'Vegetable Pulao', category: 'carbs', nutritionPer100g: { calories: 170, protein: 4, carbs: 28, fat: 4, fiber: 1.5, sugar: 2, sodium: 380, potassium: 200, calcium: 25, magnesium: 25, iron: 1.0, zinc: 0.7, vitaminA: 50, vitaminC: 3 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'fried_rice', name: 'Fried Rice (Vegetable)', category: 'carbs', nutritionPer100g: { calories: 200, protein: 5, carbs: 30, fat: 6, fiber: 1.2, sugar: 2, sodium: 520, potassium: 150, calcium: 20, magnesium: 20, iron: 1.2, zinc: 0.8, vitaminA: 30, vitaminC: 2 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'hakka_noodles', name: 'Hakka Noodles', category: 'carbs', nutritionPer100g: { calories: 220, protein: 6, carbs: 32, fat: 7, fiber: 1.5, sugar: 3, sodium: 580, potassium: 150, calcium: 20, magnesium: 20, iron: 1.5, zinc: 0.8, vitaminA: 20 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'schezwan_rice', name: 'Schezwan Rice', category: 'carbs', nutritionPer100g: { calories: 230, protein: 5, carbs: 34, fat: 7, fiber: 1.2, sugar: 3, sodium: 620, potassium: 150, calcium: 20, magnesium: 20, iron: 1.4, zinc: 0.8, vitaminA: 20 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'manchurian', name: 'Manchurian (Cauliflower)', category: 'vegetables', nutritionPer100g: { calories: 190, protein: 4, carbs: 16, fat: 11, fiber: 1.5, sugar: 4, sodium: 520, potassium: 200, calcium: 40, magnesium: 20, iron: 1.0, zinc: 0.5, vitaminA: 30, vitaminC: 15, vitaminK: 20 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'chilli_potato', name: 'Chilli Potato', category: 'vegetables', nutritionPer100g: { calories: 210, protein: 3, carbs: 24, fat: 12, fiber: 1.8, sugar: 4, sodium: 480, potassium: 250, calcium: 20, magnesium: 25, iron: 1.2, zinc: 0.5, vitaminC: 15, vitaminB6: 0.2 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'gobi_manchurian', name: 'Gobi Manchurian', category: 'vegetables', nutritionPer100g: { calories: 185, protein: 4, carbs: 15, fat: 11, fiber: 1.5, sugar: 4, sodium: 500, potassium: 200, calcium: 40, magnesium: 20, iron: 1.0, zinc: 0.5, vitaminA: 30, vitaminC: 20, vitaminK: 15 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'pasta_alfredo', name: 'Pasta Alfredo', category: 'carbs', nutritionPer100g: { calories: 280, protein: 9, carbs: 32, fat: 12, fiber: 1.5, sugar: 3, sodium: 420, potassium: 150, calcium: 120, magnesium: 20, iron: 1.5, zinc: 1.0, vitaminA: 50, vitaminB12: 0.3 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'pasta_arrabiata', name: 'Pasta Arrabiata', category: 'carbs', nutritionPer100g: { calories: 220, protein: 7, carbs: 34, fat: 6, fiber: 2.5, sugar: 4, sodium: 380, potassium: 250, calcium: 40, magnesium: 25, iron: 1.5, zinc: 0.9, vitaminA: 60, vitaminC: 8 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'mac_cheese', name: 'Mac and Cheese', category: 'carbs', nutritionPer100g: { calories: 310, protein: 11, carbs: 32, fat: 14, fiber: 1.5, sugar: 4, sodium: 580, potassium: 150, calcium: 180, magnesium: 20, iron: 1.2, zinc: 1.1, vitaminA: 80, vitaminB12: 0.4 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'grilled_cheese', name: 'Grilled Cheese Sandwich', category: 'carbs', nutritionPer100g: { calories: 320, protein: 12, carbs: 28, fat: 18, fiber: 1.5, sugar: 3, sodium: 620, potassium: 120, calcium: 250, magnesium: 20, iron: 1.5, zinc: 1.2, vitaminA: 100, vitaminB12: 0.5 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'club_sandwich', name: 'Club Sandwich', category: 'protein', nutritionPer100g: { calories: 260, protein: 14, carbs: 24, fat: 11, fiber: 2, sugar: 3, sodium: 520, potassium: 200, calcium: 90, magnesium: 25, iron: 2.0, zinc: 1.5, vitaminA: 40, vitaminB6: 0.2, vitaminB12: 0.5 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'wrap', name: 'Chicken Wrap', category: 'protein', nutritionPer100g: { calories: 240, protein: 14, carbs: 24, fat: 10, fiber: 1.8, sugar: 3, sodium: 480, potassium: 220, calcium: 80, magnesium: 25, iron: 1.8, zinc: 1.5, vitaminA: 50, vitaminB6: 0.2, vitaminB12: 0.4 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'quesadilla', name: 'Quesadilla (Cheese)', category: 'carbs', nutritionPer100g: { calories: 290, protein: 11, carbs: 26, fat: 15, fiber: 1.5, sugar: 2, sodium: 580, potassium: 150, calcium: 200, magnesium: 20, iron: 1.5, zinc: 1.2, vitaminA: 90, vitaminB12: 0.5 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'nachos', name: 'Nachos with Cheese', category: 'carbs', nutritionPer100g: { calories: 320, protein: 9, carbs: 30, fat: 18, fiber: 2.5, sugar: 2, sodium: 620, potassium: 180, calcium: 150, magnesium: 25, iron: 1.5, zinc: 1.0, vitaminA: 70, vitaminC: 2 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'onion_rings', name: 'Onion Rings', category: 'carbs', nutritionPer100g: { calories: 340, protein: 4, carbs: 38, fat: 18, fiber: 2, sugar: 3, sodium: 480, potassium: 150, calcium: 40, magnesium: 20, iron: 1.2, zinc: 0.7, vitaminB6: 0.1 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'chicken_wings', name: 'Chicken Wings (Buffalo)', category: 'protein', nutritionPer100g: { calories: 290, protein: 19, carbs: 2, fat: 20, fiber: 0, sugar: 0, sodium: 680, potassium: 200, calcium: 30, magnesium: 20, iron: 1.3, zinc: 1.8, vitaminB6: 0.3, vitaminB12: 0.4 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'popcorn_butter', name: 'Popcorn (Buttered, air-popped)', category: 'carbs', nutritionPer100g: { calories: 387, protein: 3, carbs: 78, fat: 5, fiber: 14.5, sugar: 0.2, sodium: 3, potassium: 230, calcium: 10, magnesium: 30, iron: 1.0, zinc: 0.9, vitaminB6: 0.1 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'popcorn', name: 'Popcorn (Air-popped)', category: 'carbs', nutritionPer100g: { calories: 387, protein: 3, carbs: 78, fat: 5, fiber: 14.5, sugar: 0.2, sodium: 3, potassium: 230, calcium: 10, magnesium: 30, iron: 1.0, zinc: 0.9, vitaminB6: 0.1 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'ice_cream', name: 'Ice Cream (Vanilla)', category: 'carbs', nutritionPer100g: { calories: 207, protein: 3.5, carbs: 24, fat: 11, fiber: 0.7, sugar: 21, sodium: 80, potassium: 180, calcium: 130, magnesium: 15, iron: 0.1, zinc: 0.6, vitaminA: 110, vitaminB12: 0.4 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'cake', name: 'Cake (Chocolate, 1 slice)', category: 'carbs', nutritionPer100g: { calories: 320, protein: 4, carbs: 45, fat: 14, fiber: 1.5, sugar: 28, sodium: 280, potassium: 150, calcium: 60, magnesium: 20, iron: 1.5, zinc: 0.6, vitaminA: 50, vitaminB12: 0.2 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'donut', name: 'Donut (Glazed)', category: 'carbs', nutritionPer100g: { calories: 380, protein: 4, carbs: 45, fat: 20, fiber: 1.2, sugar: 18, sodium: 380, potassium: 90, calcium: 40, magnesium: 15, iron: 1.5, zinc: 0.5, vitaminA: 20, vitaminB12: 0.1 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'muffin', name: 'Muffin (Blueberry)', category: 'carbs', nutritionPer100g: { calories: 290, protein: 4, carbs: 38, fat: 11, fiber: 1.5, sugar: 22, sodium: 320, potassium: 100, calcium: 60, magnesium: 15, iron: 1.2, zinc: 0.6, vitaminA: 50, vitaminB12: 0.2 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'cookie', name: 'Cookie (Chocolate Chip)', category: 'carbs', nutritionPer100g: { calories: 380, protein: 4, carbs: 45, fat: 18, fiber: 1.5, sugar: 28, sodium: 280, potassium: 100, calcium: 30, magnesium: 20, iron: 1.3, zinc: 0.5, vitaminA: 20 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'brownie', name: 'Brownie (Chocolate)', category: 'carbs', nutritionPer100g: { calories: 360, protein: 5, carbs: 42, fat: 18, fiber: 1.8, sugar: 30, sodium: 250, potassium: 150, calcium: 40, magnesium: 30, iron: 1.8, zinc: 0.7, vitaminA: 30 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'pancakes', name: 'Pancakes (2 medium)', category: 'carbs', nutritionPer100g: { calories: 250, protein: 7, carbs: 32, fat: 8, fiber: 1.2, sugar: 6, sodium: 380, potassium: 120, calcium: 90, magnesium: 15, iron: 1.5, zinc: 0.7, vitaminA: 60, vitaminB12: 0.3 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'waffles', name: 'Waffles (1 medium)', category: 'carbs', nutritionPer100g: { calories: 280, protein: 6, carbs: 34, fat: 12, fiber: 1.2, sugar: 8, sodium: 420, potassium: 110, calcium: 100, magnesium: 15, iron: 1.5, zinc: 0.7, vitaminA: 70, vitaminB12: 0.3 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'croissant', name: 'Croissant (Butter)', category: 'carbs', nutritionPer100g: { calories: 406, protein: 8, carbs: 45, fat: 21, fiber: 1.5, sugar: 8, sodium: 420, potassium: 120, calcium: 30, magnesium: 15, iron: 1.4, zinc: 0.6, vitaminA: 90, vitaminB12: 0.2 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'bagel', name: 'Bagel (Plain, medium)', category: 'carbs', nutritionPer100g: { calories: 250, protein: 9, carbs: 50, fat: 1.5, fiber: 2.5, sugar: 3, sodium: 450, potassium: 100, calcium: 50, magnesium: 20, iron: 2.5, zinc: 0.8, vitaminB6: 0.1 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+  { id: 'momos', name: 'Momo (Steamed)', category: 'protein', nutritionPer100g: { calories: 180, protein: 12, carbs: 20, fat: 5, fiber: 1.2, sugar: 1.5, sodium: 380, potassium: 200, calcium: 40, magnesium: 20, iron: 1.5, zinc: 1.2, vitaminA: 30, vitaminB6: 0.2, vitaminB12: 0.3, vitaminC: 2 }, cookedConversionFactor: 1.0, servingUnit: 'g', defaultServing: 100 },
+];
+
+export function getFoodById(id: string): RawFoodEntry | undefined {
+  return bodybuildingFoods.find(f => f.id === id);
+}
+
+export function getFoodsByCategory(category: string): RawFoodEntry[] {
+  return bodybuildingFoods.filter(f => f.category === category);
+}
+
+export function searchFoods(query: string): RawFoodEntry[] {
+  const q = query.toLowerCase();
+  return bodybuildingFoods.filter(f => f.name.toLowerCase().includes(q));
+}
+
+export interface CalculatedNutrition {
+  calories: number;
+  protein: number;
+  carbs: number;
+  fat: number;
+  fiber: number;
+  sugar: number;
+  sodium: number;
+  cholesterol: number;
+  potassium: number;
+  calcium: number;
+  magnesium: number;
+  iron: number;
+  zinc: number;
+  vitaminA: number;
+  vitaminB6: number;
+  vitaminB12: number;
+  vitaminC: number;
+  vitaminD: number;
+  vitaminE: number;
+  vitaminK: number;
+}
+
+export function calculateNutrition(food: RawFoodEntry, weightGrams: number): CalculatedNutrition {
+  const factor = weightGrams / 100;
+  const n = food.nutritionPer100g;
+  const scale = (v?: number) => Math.round((v ?? 0) * factor * 10) / 10;
+  return {
+    calories: Math.round(n.calories * factor),
+    protein: Math.round(n.protein * factor * 10) / 10,
+    carbs: Math.round(n.carbs * factor * 10) / 10,
+    fat: Math.round(n.fat * factor * 10) / 10,
+    fiber: Math.round(n.fiber * factor * 10) / 10,
+    sugar: scale(n.sugar),
+    sodium: scale(n.sodium),
+    cholesterol: scale(n.cholesterol),
+    potassium: scale(n.potassium),
+    calcium: scale(n.calcium),
+    magnesium: scale(n.magnesium),
+    iron: scale(n.iron),
+    zinc: scale(n.zinc),
+    vitaminA: scale(n.vitaminA),
+    vitaminB6: scale(n.vitaminB6),
+    vitaminB12: scale(n.vitaminB12),
+    vitaminC: scale(n.vitaminC),
+    vitaminD: scale(n.vitaminD),
+    vitaminE: scale(n.vitaminE),
+    vitaminK: scale(n.vitaminK),
+  };
+}
+
+export function convertRawToCooked(rawWeight: number, factor: number): number {
+  return Math.round(rawWeight * factor * 10) / 10;
+}
+
+export function convertCookedToRaw(cookedWeight: number, factor: number): number {
+  return Math.round((cookedWeight / factor) * 10) / 10;
+}
