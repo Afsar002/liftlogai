@@ -29,4 +29,33 @@ export default defineConfig({
         ]
       }
     })
-  ]})
+  ],
+  build: {
+    // Vendor splitting: separate heavy third-party libs into their own chunks
+    // so the initial route doesn't pay the full cost up front.
+    rolldownOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes("node_modules")) {
+            if (id.includes("recharts") || id.includes("d3-") || id.includes("victory-vendor")) {
+              return "charts";
+            }
+            if (id.includes("framer-motion")) {
+              return "motion";
+            }
+            if (id.includes("react") || id.includes("scheduler")) {
+              return "react-vendor";
+            }
+            if (id.includes("dexie")) {
+              return "db";
+            }
+            if (id.includes("react-icons")) {
+              return "icons";
+            }
+            return "vendor";
+          }
+        },
+      },
+    },
+  },
+});
