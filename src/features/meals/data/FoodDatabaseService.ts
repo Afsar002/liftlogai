@@ -39,14 +39,14 @@ type LazyLoader = () => Promise<{ default: RawFoodEntry[] }>;
 // ================================================================
 
 const CATEGORY_LOADERS: Record<string, LazyLoader> = {
-  protein: () => import('./proteinFoods').then(m => ({ default: m.proteinFoods })),
+ /* protein: () => import('./proteinFoods').then(m => ({ default: m.proteinFoods })),
   carbs: () => import('./carbFoods').then(m => ({ default: m.carbFoods })),
   fruit: () => import('./fruitFoods').then(m => ({ default: m.fruitFoods })),
   vegetables: () => import('./vegetableFoods').then(m => ({ default: m.vegetableFoods })),
   fats: () => import('./fatFoods').then(m => ({ default: m.fatFoods })),
   dairy: () => import('./dairyFoods').then(m => ({ default: m.dairyFoods })),
   legumes: () => import('./legumeFoods').then(m => ({ default: m.legumeFoods })),
-  eggs: () => import('./eggFoods').then(m => ({ default: m.eggFoods })),
+  eggs: () => import('./eggFoods').then(m => ({ default: m.eggFoods })),*/
 indian: () => import('./indianFoods').then(m => {
     // indianFoods.ts exports as LocalFood[] (default), not RawFoodEntry[]
     // We convert here to maintain backward compatibility
@@ -69,8 +69,8 @@ indian: () => import('./indianFoods').then(m => {
     }));
     return { default: converted };
   }),
-  restaurant: () => import('./restaurantFoods').then(m => ({ default: m.restaurantFoods })),
-  supplements: () => import('./supplementFoods').then(m => ({ default: m.supplementFoods })),
+ /* restaurant: () => import('./restaurantFoods').then(m => ({ default: m.restaurantFoods })),
+  supplements: () => import('./supplementFoods').then(m => ({ default: m.supplementFoods })),*/
 };
 
 // ================================================================
