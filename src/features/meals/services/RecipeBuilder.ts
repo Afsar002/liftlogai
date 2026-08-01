@@ -1,6 +1,8 @@
 import type { EnhancedFood, FoodNutrition, LogMode } from '../types/nutrition';
 import { EMPTY_FOOD_NUTRITION } from '../types/nutrition';
 import { v4 as uuidv4 } from 'uuid';
+import { NutritionEngine } from './NutritionEngine';
+import type { ScaledNutrition } from './nutritionCalculator';
 
 export interface RecipeIngredient {
   id: string;
@@ -32,92 +34,118 @@ export interface Recipe {
   updatedAt: string;
 }
 
+/**
+ * Convert a ScaledNutrition (from NutritionEngine) into a FoodNutrition.
+ * Every nutrient is preserved — no nutrient is dropped.
+ */
+function scaledToFoodNutrition(s: ScaledNutrition): FoodNutrition {
+  return {
+    calories: s.calories,
+    protein: s.protein,
+    carbs: s.carbs,
+    fat: s.fat,
+    fiber: s.fiber,
+    sugar: s.sugar,
+    sodium: s.sodium,
+    cholesterol: s.cholesterol,
+    potassium: s.potassium,
+    calcium: s.calcium,
+    magnesium: s.magnesium,
+    iron: s.iron,
+    zinc: s.zinc,
+    vitaminA: s.vitaminA,
+    vitaminB6: s.vitaminB6,
+    vitaminB12: s.vitaminB12,
+    vitaminC: s.vitaminC,
+    vitaminD: s.vitaminD,
+    vitaminE: s.vitaminE,
+    vitaminK: s.vitaminK,
+  };
+}
+
+/**
+ * Adapt an EnhancedFood (recipe ingredient shape) to the shape expected by
+ * NutritionEngine.calculateFoodNutrition / calculateRecipeNutrition.
+ *
+ * EnhancedFood stores its conversion as a CookedConversion object
+ * (rawToCookedFactor), while the engine expects a flat cookedConversionFactor
+ * number. We map between the two here so the engine remains the only place
+ * that performs nutrition math.
+ */
+function toEngineFood(food: EnhancedFood): {
+  nutritionPer100g: typeof food.nutritionPer100g;
+  cookedConversionFactor: number;
+} {
+  return {
+    nutritionPer100g: food.nutritionPer100g,
+    cookedConversionFactor: food.cookedConversion?.rawToCookedFactor ?? 1.0,
+  };
+}
+
 export class RecipeBuilder {
   /**
-   * Calculate nutrition for a single ingredient at given quantity
+   * Calculate nutrition for a single ingredient at given quantity.
+   *
+   * DELEGATES to NutritionEngine — RecipeBuilder orchestrates recipes and
+   * never performs nutrition math itself. This guarantees that every
+   * nutrient (including zinc, vitaminB6, vitaminB12) is preserved.
    */
   static calculateIngredientNutrition(ingredient: RecipeIngredient): FoodNutrition {
-    const { food, quantity, servingUnit, logMode } = ingredient;
-    const actualWeight = logMode === 'cooked' && food.cookedConversion
-      ? quantity / food.cookedConversion.rawToCookedFactor
-      : quantity;
-
-    const multiplier = actualWeight / 100;
-    const base = food.nutritionPer100g;
-
-    return {
-      calories: Math.round(base.calories * multiplier),
-      protein: Math.round(base.protein * multiplier * 10) / 10,
-      carbs: Math.round(base.carbs * multiplier * 10) / 10,
-      fat: Math.round(base.fat * multiplier * 10) / 10,
-      fiber: Math.round(base.fiber * multiplier * 10) / 10,
-      sugar: Math.round((base.sugar || 0) * multiplier * 10) / 10,
-      sodium: Math.round((base.sodium || 0) * multiplier),
-      cholesterol: Math.round((base.cholesterol || 0) * multiplier),
-      potassium: Math.round((base.potassium || 0) * multiplier),
-      calcium: Math.round((base.calcium || 0) * multiplier),
-      magnesium: Math.round((base.magnesium || 0) * multiplier),
-      iron: Math.round((base.iron || 0) * multiplier),
-      vitaminA: Math.round((base.vitaminA || 0) * multiplier * 10) / 10,
-      vitaminC: Math.round((base.vitaminC || 0) * multiplier * 10) / 10,
-      vitaminD: Math.round((base.vitaminD || 0) * multiplier * 10) / 10,
-      vitaminE: Math.round((base.vitaminE || 0) * multiplier * 10) / 10,
-      vitaminK: Math.round((base.vitaminK || 0) * multiplier * 10) / 10,
-    };
+    const scaled = NutritionEngine.calculateFoodNutrition(
+      toEngineFood(ingredient.food),
+      ingredient.quantity,
+      ingredient.logMode,
+    );
+    return scaledToFoodNutrition(scaled);
   }
 
   /**
-   * Calculate total nutrition for a recipe
+   * Calculate total nutrition for a recipe.
+   *
+   * DELEGATES to NutritionEngine.calculateRecipeNutrition so that all
+   * nutrients are summed consistently by the single calculation authority.
    */
   static calculateRecipeNutrition(recipe: Recipe): FoodNutrition {
-    return recipe.ingredients.reduce((acc, ingredient) => {
-      const nutrition = this.calculateIngredientNutrition(ingredient);
-      return {
-        calories: acc.calories + nutrition.calories,
-        protein: acc.protein + nutrition.protein,
-        carbs: acc.carbs + nutrition.carbs,
-        fat: acc.fat + nutrition.fat,
-        fiber: acc.fiber + nutrition.fiber,
-        sugar: acc.sugar + nutrition.sugar,
-        sodium: acc.sodium + nutrition.sodium,
-        cholesterol: acc.cholesterol + nutrition.cholesterol,
-        potassium: acc.potassium + nutrition.potassium,
-        calcium: acc.calcium + nutrition.calcium,
-        magnesium: acc.magnesium + nutrition.magnesium,
-        iron: acc.iron + nutrition.iron,
-        vitaminA: acc.vitaminA + nutrition.vitaminA,
-        vitaminC: acc.vitaminC + nutrition.vitaminC,
-        vitaminD: acc.vitaminD + nutrition.vitaminD,
-        vitaminE: acc.vitaminE + nutrition.vitaminE,
-        vitaminK: acc.vitaminK + nutrition.vitaminK,
-      };
-    }, { ...EMPTY_FOOD_NUTRITION });
+    const scaled = NutritionEngine.calculateRecipeNutrition(
+      recipe.ingredients.map(i => ({
+        food: toEngineFood(i.food),
+        quantity: i.quantity,
+        logMode: i.logMode,
+      })),
+    );
+    return scaledToFoodNutrition(scaled);
   }
 
   /**
-   * Calculate nutrition per serving
+   * Calculate nutrition per serving.
+   * Scales the total (computed via NutritionEngine) by the serving count.
    */
   static calculatePerServing(recipe: Recipe): FoodNutrition {
     const total = this.calculateRecipeNutrition(recipe);
     const servings = Math.max(1, recipe.servings);
+    const round1 = (v: number) => Math.round(v * 10) / 10;
+    const round0 = (v: number) => Math.round(v);
     return {
-      calories: Math.round(total.calories / servings),
-      protein: Math.round((total.protein / servings) * 10) / 10,
-      carbs: Math.round((total.carbs / servings) * 10) / 10,
-      fat: Math.round((total.fat / servings) * 10) / 10,
-      fiber: Math.round((total.fiber / servings) * 10) / 10,
-      sugar: Math.round((total.sugar / servings) * 10) / 10,
-      sodium: Math.round(total.sodium / servings),
-      cholesterol: Math.round(total.cholesterol / servings),
-      potassium: Math.round(total.potassium / servings),
-      calcium: Math.round(total.calcium / servings),
-      magnesium: Math.round(total.magnesium / servings),
-      iron: Math.round(total.iron / servings),
-      vitaminA: Math.round((total.vitaminA / servings) * 10) / 10,
-      vitaminC: Math.round((total.vitaminC / servings) * 10) / 10,
-      vitaminD: Math.round((total.vitaminD / servings) * 10) / 10,
-      vitaminE: Math.round((total.vitaminE / servings) * 10) / 10,
-      vitaminK: Math.round((total.vitaminK / servings) * 10) / 10,
+      calories: round0(total.calories / servings),
+      protein: round1(total.protein / servings),
+      carbs: round1(total.carbs / servings),
+      fat: round1(total.fat / servings),
+      fiber: round1(total.fiber / servings),
+      sugar: round1(total.sugar / servings),
+      sodium: round0(total.sodium / servings),
+      cholesterol: round0(total.cholesterol / servings),
+      potassium: round0(total.potassium / servings),
+      calcium: round0(total.calcium / servings),
+      magnesium: round0(total.magnesium / servings),
+      iron: round0(total.iron / servings),
+      zinc: round1(total.zinc / servings),
+      vitaminA: round1(total.vitaminA / servings),
+      vitaminB6: round1(total.vitaminB6 / servings),
+      vitaminB12: round1(total.vitaminB12 / servings),
+      vitaminC: round1(total.vitaminC / servings),
+      vitaminD: round1(total.vitaminD / servings),
+      vitaminE: round1(total.vitaminE / servings),
+      vitaminK: round1(total.vitaminK / servings),
     };
   }
 

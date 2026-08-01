@@ -54,28 +54,62 @@ export class NutritionDayService {
   }
 
   /**
-   * Calculate daily totals from meals
+   * Calculate daily totals from meals.
+   * Sums every nutrient (including micronutrients) from each meal's items
+   * so that zinc, vitaminB6, vitaminB12 and all others are preserved end-to-end.
    */
   static calculateDailyTotals(meals: EnhancedMeal[]): FoodNutrition {
-    return meals.reduce((acc, meal) => ({
-      calories: acc.calories + meal.totalCalories,
-      protein: acc.protein + meal.totalProtein,
-      carbs: acc.carbs + meal.totalCarbs,
-      fat: acc.fat + meal.totalFat,
-      fiber: acc.fiber + meal.totalFiber,
-      sugar: acc.sugar + 0,
-      sodium: acc.sodium + 0,
-      cholesterol: acc.cholesterol + 0,
-      potassium: acc.potassium + 0,
-      calcium: acc.calcium + 0,
-      magnesium: acc.magnesium + 0,
-      iron: acc.iron + 0,
-      vitaminA: acc.vitaminA + 0,
-      vitaminC: acc.vitaminC + 0,
-      vitaminD: acc.vitaminD + 0,
-      vitaminE: acc.vitaminE + 0,
-      vitaminK: acc.vitaminK + 0,
-    }), { ...EMPTY_FOOD_NUTRITION });
+    return meals.reduce((dayAcc, meal) => {
+      // Sum all nutrients from this meal's items
+      const mealTotals = meal.items.reduce((mealAcc, item) => {
+        const n = item.nutrition;
+        return {
+          calories: mealAcc.calories + n.calories,
+          protein: mealAcc.protein + n.protein,
+          carbs: mealAcc.carbs + n.carbs,
+          fat: mealAcc.fat + n.fat,
+          fiber: mealAcc.fiber + n.fiber,
+          sugar: mealAcc.sugar + n.sugar,
+          sodium: mealAcc.sodium + n.sodium,
+          cholesterol: mealAcc.cholesterol + n.cholesterol,
+          potassium: mealAcc.potassium + n.potassium,
+          calcium: mealAcc.calcium + n.calcium,
+          magnesium: mealAcc.magnesium + n.magnesium,
+          iron: mealAcc.iron + n.iron,
+          zinc: mealAcc.zinc + n.zinc,
+          vitaminA: mealAcc.vitaminA + n.vitaminA,
+          vitaminB6: mealAcc.vitaminB6 + n.vitaminB6,
+          vitaminB12: mealAcc.vitaminB12 + n.vitaminB12,
+          vitaminC: mealAcc.vitaminC + n.vitaminC,
+          vitaminD: mealAcc.vitaminD + n.vitaminD,
+          vitaminE: mealAcc.vitaminE + n.vitaminE,
+          vitaminK: mealAcc.vitaminK + n.vitaminK,
+        };
+      }, { ...EMPTY_FOOD_NUTRITION });
+
+      return {
+        calories: dayAcc.calories + mealTotals.calories,
+        protein: dayAcc.protein + mealTotals.protein,
+        carbs: dayAcc.carbs + mealTotals.carbs,
+        fat: dayAcc.fat + mealTotals.fat,
+        fiber: dayAcc.fiber + mealTotals.fiber,
+        sugar: dayAcc.sugar + mealTotals.sugar,
+        sodium: dayAcc.sodium + mealTotals.sodium,
+        cholesterol: dayAcc.cholesterol + mealTotals.cholesterol,
+        potassium: dayAcc.potassium + mealTotals.potassium,
+        calcium: dayAcc.calcium + mealTotals.calcium,
+        magnesium: dayAcc.magnesium + mealTotals.magnesium,
+        iron: dayAcc.iron + mealTotals.iron,
+        zinc: dayAcc.zinc + mealTotals.zinc,
+        vitaminA: dayAcc.vitaminA + mealTotals.vitaminA,
+        vitaminB6: dayAcc.vitaminB6 + mealTotals.vitaminB6,
+        vitaminB12: dayAcc.vitaminB12 + mealTotals.vitaminB12,
+        vitaminC: dayAcc.vitaminC + mealTotals.vitaminC,
+        vitaminD: dayAcc.vitaminD + mealTotals.vitaminD,
+        vitaminE: dayAcc.vitaminE + mealTotals.vitaminE,
+        vitaminK: dayAcc.vitaminK + mealTotals.vitaminK,
+      };
+    }, { ...EMPTY_FOOD_NUTRITION });
   }
 
   /**
@@ -83,12 +117,14 @@ export class NutritionDayService {
    */
   static calculateMicronutrients(totals: FoodNutrition): MicronutrientStatus[] {
     const micronutrientMap: Record<string, number> = {
-      'Vitamin A': 0, 'Vitamin B6': 0, 'Vitamin B12': 0,
+      'Vitamin A': totals.vitaminA,
+      'Vitamin B6': totals.vitaminB6,
+      'Vitamin B12': totals.vitaminB12,
       'Vitamin C': totals.vitaminC, 'Vitamin D': totals.vitaminD,
       'Vitamin E': totals.vitaminE, 'Vitamin K': totals.vitaminK,
       'Calcium': totals.calcium, 'Iron': totals.iron,
       'Magnesium': totals.magnesium, 'Potassium': totals.potassium,
-      'Zinc': 0, 'Sodium_Micro': totals.sodium,
+      'Zinc': totals.zinc, 'Sodium_Micro': totals.sodium,
     };
 
     return Object.entries(DEFAULT_MICRONUTRIENT_TARGETS).map(([name, config]) => {

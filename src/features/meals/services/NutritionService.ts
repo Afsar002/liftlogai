@@ -91,29 +91,23 @@ export class NutritionService {
     };
   }
 
-static createMealItemFromSearchResult(
+  static createMealItemFromSearchResult(
     food: FoodSearchResult,
     mealId: string,
     quantity?: number
   ): MealItem {
-    const qty = quantity || food.servingSize;
-    // food.calories/protein/carbs/fat are per-100g.
-    // Scale them down to the actual serving size so that
-    // calculateItemCalories (which uses multiplier = quantity / servingSize)
-    // returns the correct per-serving nutrition.
-    const scaleToServing = food.servingSize / 100;
     return {
       id: crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`,
       mealId,
       foodId: food.id,
       name: food.name,
-      quantity: qty,
+      quantity: quantity || food.servingSize,
       servingSize: food.servingSize,
       servingUnit: food.servingUnit,
-      calories: Math.round(food.calories * scaleToServing),
-      protein: Math.round(food.protein * scaleToServing * 10) / 10,
-      carbs: Math.round(food.carbs * scaleToServing * 10) / 10,
-      fat: Math.round(food.fat * scaleToServing * 10) / 10,
+      calories: food.calories,
+      protein: food.protein,
+      carbs: food.carbs,
+      fat: food.fat,
     };
   }
 
