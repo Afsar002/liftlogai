@@ -244,26 +244,42 @@ export default function RawFoodMode({
     setIsSearchCollapsed(false);
   };
 
-  const handleLog = () => {
-    if (!effectiveFood || !weight) return;
-    const w = parseFloat(weight);
-    if (isNaN(w) || w <= 0) return;
-    // In serving mode, convert quantity to equivalent grams before logging
-    const grams = inputMode === 'serving'
+const handleLog = async () => {
+  if (!effectiveFood || !weight) return;
+
+  const w = parseFloat(weight);
+  if (isNaN(w) || w <= 0) return;
+
+  const grams =
+    inputMode === "serving"
       ? (() => {
           const serving = servings.find(s => s.id === selectedServingId);
           if (!serving) return w;
-          // For gram unit types, the weight IS the grams
-          if (serving.id === 'gram' || serving.id === 'raw_gram' || serving.id === 'cooked_gram') {
+
+          if (
+            serving.id === "gram" ||
+            serving.id === "raw_gram" ||
+            serving.id === "cooked_gram"
+          ) {
             return w;
           }
-          // For natural units (eggs, slices, cups), multiply by serving grams
+
           return serving.grams * w;
         })()
       : w;
-    onLogFood(effectiveFood, grams, logMode, mealId);
-    setWeight('1'); // Keep selection, reset quantity only
-  };
+
+  try {
+    await Promise.resolve(
+      onLogFood(effectiveFood, grams, logMode, mealId)
+    );
+
+    // Close panel and reset transient state
+    handleChangeFood();
+
+  } catch (err) {
+    console.error("Failed to log food:", err);
+  }
+ };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
@@ -311,27 +327,6 @@ export default function RawFoodMode({
         <h2 className="text-lg font-bold text-zinc-900 dark:text-white">Food Log</h2>
         <Badge variant="info" size="sm">Expert Mode</Badge>
       </div>
-
-      {/* Log Mode Toggle */}
-      <Card>
-        <div className="flex items-center gap-4">
-          <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Log Mode:</span>
-          <div className="flex rounded-lg border border-zinc-200 dark:border-zinc-700 overflow-hidden">
-            <button
-              onClick={() => onLogModeChange('raw')}
-              className={`px-4 py-2 text-sm font-medium transition-colors ${logMode === 'raw' ? 'bg-green-500 text-white' : 'bg-white dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300'}`}
-            >
-              ○ Log Raw
-            </button>
-            <button
-              onClick={() => onLogModeChange('cooked')}
-              className={`px-4 py-2 text-sm font-medium transition-colors ${logMode === 'cooked' ? 'bg-green-500 text-white' : 'bg-white dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300'}`}
-            >
-              ○ Log Cooked
-            </button>
-          </div>
-        </div>
-      </Card>
 
       {/* Search Section - Collapsible */}
       {!isSearchCollapsed && (
