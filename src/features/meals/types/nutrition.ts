@@ -23,7 +23,10 @@ export interface FoodNutrition {
   calcium: number;
   magnesium: number;
   iron: number;
+  zinc: number;
   vitaminA: number;
+  vitaminB6: number;
+  vitaminB12: number;
   vitaminC: number;
   vitaminD: number;
   vitaminE: number;
@@ -349,7 +352,10 @@ export const EMPTY_FOOD_NUTRITION: FoodNutrition = {
   calcium: 0,
   magnesium: 0,
   iron: 0,
+  zinc: 0,
   vitaminA: 0,
+  vitaminB6: 0,
+  vitaminB12: 0,
   vitaminC: 0,
   vitaminD: 0,
   vitaminE: 0,

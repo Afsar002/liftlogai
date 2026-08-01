@@ -2,10 +2,66 @@ export type FoodCategory = 'protein' | 'carbs' | 'fats' | 'vegetables' | 'fruit'
 
 export type LogMode = 'raw' | 'cooked';
 
+export interface FoodServing {
+  id: string;
+  name: string;
+  grams: number;
+  isDefault?: boolean;
+}
+
+/**
+ * A preparation method for a food (e.g. Raw, Boiled, Grilled, Fried).
+ * Each preparation has its own nutrition profile and conversion factor.
+ * This eliminates the need for duplicate food entries for each cooking method.
+ */
+export interface FoodPreparation {
+  id: string;
+  name: string;
+  /** Nutrition per 100g for this specific preparation */
+  nutritionPer100g: {
+    calories: number;
+    protein: number;
+    carbs: number;
+    fat: number;
+    fiber: number;
+    sugar?: number;
+    sodium?: number;
+    cholesterol?: number;
+    potassium?: number;
+    calcium?: number;
+    magnesium?: number;
+    iron?: number;
+    zinc?: number;
+    vitaminA?: number;
+    vitaminB6?: number;
+    vitaminB12?: number;
+    vitaminC?: number;
+    vitaminD?: number;
+    vitaminE?: number;
+    vitaminK?: number;
+  };
+  /**
+   * Conversion factor from this preparation to raw equivalent.
+   * For raw: 1.0
+   * For cooked: weight loss factor (e.g. 0.75 means 100g cooked = 75g raw equivalent)
+   * For boiled grains: expansion factor (e.g. 3.0 means 100g raw rice = 300g cooked)
+   */
+  conversionFactor: number;
+  /** Whether this is the default preparation */
+  isDefault?: boolean;
+}
+
+export const DEFAULT_PREPARATIONS: FoodPreparation[] = [
+  { id: 'raw', name: 'Raw', nutritionPer100g: { calories: 0, protein: 0, carbs: 0, fat: 0, fiber: 0 }, conversionFactor: 1.0, isDefault: true },
+  { id: 'cooked', name: 'Cooked', nutritionPer100g: { calories: 0, protein: 0, carbs: 0, fat: 0, fiber: 0 }, conversionFactor: 1.0 },
+];
+
 export interface RawFoodEntry {
   id: string;
   name: string;
   category: FoodCategory;
+  /** Optional thumbnail emoji/icon */
+  thumbnail?: string;
   /** Nutrition per 100g raw */
   nutritionPer100g: {
     calories: number;
@@ -33,6 +89,14 @@ export interface RawFoodEntry {
   cookedConversionFactor: number;
   servingUnit: string;
   defaultServing: number;
+  /** Natural serving options (eggs, slices, cups, etc.) */
+  servings?: FoodServing[];
+  /**
+   * Preparation methods for this food.
+   * If not provided, defaults to [Raw].
+   * When provided, the UI will show a preparation selector after food selection.
+   */
+  preparations?: FoodPreparation[];
 }
 
 export interface ExpertNutritionTotals {

@@ -15,7 +15,8 @@ import type {
   GoalTrackingData,
   PeakWeekDay,
 } from '../types/expert';
-import { allFoods, calculateNutrition, convertRawToCooked } from '../data/foodDatabase';
+import { allFoods } from '../data/foodDatabase';
+import { NutritionEngine } from '../services/NutritionEngine';
 import { AICoachService } from '../services/AICoachService';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -110,21 +111,24 @@ export function useExpertMode() {
     };
   }, [rawFoodLogs, goals, waterIntake]);
 
-  // Log a raw food
+// Log a raw food
   const logRawFood = useCallback(
     (food: RawFoodEntry, weightGrams: number, mode: LogMode, mealId: string) => {
-      const actualWeight = mode === 'cooked'
-        ? weightGrams / food.cookedConversionFactor
+      const nutrition = NutritionEngine.calculateNutritionPreview(food, weightGrams, mode);
+      const rawWeight = mode === 'cooked'
+        ? Math.round((weightGrams / food.cookedConversionFactor) * 10) / 10
         : weightGrams;
-      const nutrition = calculateNutrition(food, actualWeight);
+      const cookedWeight = mode === 'cooked'
+        ? weightGrams
+        : Math.round(weightGrams * food.cookedConversionFactor * 10) / 10;
       const log: RawFoodLog = {
         id: uuidv4(),
         foodId: food.id,
         foodName: food.name,
         category: food.category,
-        rawWeight: Math.round(actualWeight * 10) / 10,
+        rawWeight: rawWeight,
         logMode: mode,
-        cookedWeight: mode === 'cooked' ? weightGrams : convertRawToCooked(actualWeight, food.cookedConversionFactor),
+        cookedWeight: cookedWeight,
         ...nutrition,
         timestamp: new Date().toISOString(),
         mealId,
@@ -187,12 +191,12 @@ export function useExpertMode() {
     []
   );
 
-  // Meal Builder
+// Meal Builder
   const createMealBuilderMeal = useCallback(
     (name: string, entries: MealBuilderEntry[]): MealBuilderMeal => {
       const totals = entries.reduce(
         (acc, entry) => {
-          const nutrition = calculateNutrition(entry.food, entry.rawWeight);
+          const nutrition = NutritionEngine.calculateNutritionPreview(entry.food, entry.rawWeight, 'raw');
           return {
             calories: acc.calories + nutrition.calories,
             protein: acc.protein + nutrition.protein,
@@ -241,8 +245,8 @@ export function useExpertMode() {
     if (hasHealthyFats) score += 20;
     if (hasCarbs) score += 20;
 
-    const totalFiber = entries.reduce((sum, e) => {
-      const nutrition = calculateNutrition(e.food, e.rawWeight);
+const totalFiber = entries.reduce((sum, e) => {
+      const nutrition = NutritionEngine.calculateNutritionPreview(e.food, e.rawWeight, 'raw');
       return sum + nutrition.fiber;
     }, 0);
     if (totalFiber > 5) score += 10;
@@ -366,8 +370,13 @@ export function useExpertMode() {
   }, [expertTotals]);
 
   // AI Coach
-  const aiCoachRecommendations = useMemo(() => {
-    const totals = {
+  // Build a full FoodNutrition totals object from the expert totals plus the
+  // micronutrients summed from rawFoodLogs so that zinc, vitaminB6 and
+  // vitaminB12 (and all other micronutrients) are carried into the coach.
+  const buildCoachTotals = () => {
+    const sum = (key: keyof RawFoodLog) =>
+      rawFoodLogs.reduce((acc, log) => acc + ((log[key] as number | undefined) ?? 0), 0);
+    return {
       calories: expertTotals.calories,
       protein: expertTotals.protein,
       carbs: expertTotals.carbs,
@@ -376,35 +385,40 @@ export function useExpertMode() {
       sugar: expertTotals.sugar,
       sodium: expertTotals.sodium,
       cholesterol: expertTotals.cholesterol,
-      potassium: 0, calcium: 0, magnesium: 0, iron: 0,
-      vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminE: 0, vitaminK: 0,
+      potassium: sum('potassium'),
+      calcium: sum('calcium'),
+      magnesium: sum('magnesium'),
+      iron: sum('iron'),
+      zinc: sum('zinc'),
+      vitaminA: sum('vitaminA'),
+      vitaminB6: sum('vitaminB6'),
+      vitaminB12: sum('vitaminB12'),
+      vitaminC: sum('vitaminC'),
+      vitaminD: sum('vitaminD'),
+      vitaminE: sum('vitaminE'),
+      vitaminK: sum('vitaminK'),
     };
+  };
+
+  const aiCoachRecommendations = useMemo(() => {
+    const totals = buildCoachTotals();
     return AICoachService.generateCoaching({
       totals,
       goals: { calories: goals.calories, protein: goals.protein, carbs: goals.carbs, fat: goals.fat, fiber: goals.fiber, sugar: goals.sugar, sodium: goals.sodium, cholesterol: goals.cholesterol, water: goals.water },
       workouts: [], weightTrend: [], waterIntake, currentWeight: 70, trainingToday: false,
     });
-  }, [expertTotals, goals, waterIntake]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [expertTotals, goals, waterIntake, rawFoodLogs]);
 
   const aiCoachSummary = useMemo(() => {
-    const totals = {
-      calories: expertTotals.calories,
-      protein: expertTotals.protein,
-      carbs: expertTotals.carbs,
-      fat: expertTotals.fat,
-      fiber: expertTotals.fiber,
-      sugar: expertTotals.sugar,
-      sodium: expertTotals.sodium,
-      cholesterol: expertTotals.cholesterol,
-      potassium: 0, calcium: 0, magnesium: 0, iron: 0,
-      vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminE: 0, vitaminK: 0,
-    };
+    const totals = buildCoachTotals();
     return AICoachService.getCoachSummary({
       totals,
       goals: { calories: goals.calories, protein: goals.protein, carbs: goals.carbs, fat: goals.fat, fiber: goals.fiber, sugar: goals.sugar, sodium: goals.sodium, cholesterol: goals.cholesterol, water: goals.water },
       workouts: [], weightTrend: [], waterIntake, currentWeight: 70, trainingToday: false,
     });
-  }, [expertTotals, goals, waterIntake]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [expertTotals, goals, waterIntake, rawFoodLogs]);
 
   // Water tracking
   // Persist goals to localStorage
