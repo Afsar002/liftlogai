@@ -5,8 +5,6 @@ import { spring, press } from "../../../shared/components/motion/variants";
 import {
   FiGrid,
   FiTarget,
-  FiBarChart2,
-  FiActivity,
 } from "react-icons/fi";
 import type { ComponentType } from "react";
 
@@ -33,20 +31,6 @@ const actions: QuickAction[] = [
     href: "/records",
     color: "text-amber-700",
     gradient: "from-amber-600 to-orange-400",
-  },
-  {
-    title: "Progress",
-    icon: FiBarChart2,
-    targetId: "weekly-progress",
-    color: "text-blue-700",
-    gradient: "from-blue-600 to-cyan-400",
-  },
-  {
-    title: "Goals",
-    icon: FiActivity,
-    targetId: "goals",
-    color: "text-purple-700",
-    gradient: "from-purple-600 to-pink-400",
   },
   {
     title: "Exercises",
@@ -79,12 +63,12 @@ export default function QuickActionGrid() {
   }
 
   return (
-    <motion.div
-      initial={reduceMotion ? false : { opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ type: "spring", stiffness: 380, damping: 32, delay: 0.1 }}
-      className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5"
-    >
+      <motion.div
+        initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ type: "spring", stiffness: 380, damping: 32, delay: 0.1 }}
+        className="grid grid-cols-2 gap-3 sm:grid-cols-3"
+      >
       {actions.map((action, index) => {
         const Icon = action.icon;
 
