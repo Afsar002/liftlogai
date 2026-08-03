@@ -14,9 +14,7 @@ interface Props {
   summary: WeeklySummary;
 }
 
-export default function WeeklySummary({
-  summary,
-}: Props) {
+export default function WeeklySummary({ summary }: Props) {
   const hours = Math.floor(summary.durationMinutes / 60);
   const minutes = summary.durationMinutes % 60;
 
@@ -26,24 +24,23 @@ export default function WeeklySummary({
       : `${minutes} min`;
 
   return (
-<Card className="mb-8 border border-zinc-200 bg-white/95 backdrop-blur dark:border-zinc-800 dark:bg-zinc-900/70">
-  <div className="mb-5 flex items-center gap-2">
-  <div className="rounded-lg bg-blue-500/10 p-2">
-    <FiTrendingUp className="text-blue-400" size={20} />
-  </div>
+    <Card>
+      <div className="mb-5 flex items-center gap-3">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+          <FiTrendingUp size={20} aria-hidden="true" />
+        </div>
 
-  <div>
-    <h2 className="text-lg font-bold text-slate-950 dark:text-white">
-      Weekly Summary
-    </h2>
+        <div>
+          <h2 className="text-lg font-bold tracking-tight text-zinc-900 dark:text-white">
+            Weekly Summary
+          </h2>
+          <p className="text-sm text-zinc-500 dark:text-zinc-400">
+            Your progress for this week
+          </p>
+        </div>
+      </div>
 
-    <p className="text-sm text-zinc-500 dark:text-zinc-400">
-      Your progress for this week
-    </p>
-  </div>
-</div>
-
-<div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
         <MetricCard
           icon={<FiActivity />}
           title="Workouts"

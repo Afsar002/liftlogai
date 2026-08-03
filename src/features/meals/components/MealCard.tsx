@@ -1,10 +1,12 @@
 import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FiPlus } from 'react-icons/fi';
 import type { Meal } from '../types';
 import { NutritionService } from '../services/NutritionService';
 import MealItemRow from './MealItemRow';
 import { useMealContext } from '../context/MealContext';
 import { useSettings } from '../../settings/hooks/SettingsProvider';
+import Card from '../../../shared/components/ui/Card';
 
 interface MealCardProps {
   meal: Meal;
@@ -22,7 +24,7 @@ export default function MealCard({ meal, onDelete, onDuplicate }: MealCardProps)
     () => NutritionService.calculateTotals([meal]).calories,
     [meal.items]
   );
-  
+
   // Force re-render when meal.items changes
   const itemCount = meal.items.length;
 
@@ -47,13 +49,13 @@ export default function MealCard({ meal, onDelete, onDuplicate }: MealCardProps)
   };
 
   return (
-    <div className="rounded-xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+    <Card padding="none" className="overflow-hidden">
       {/* Header */}
-      <div className="flex items-center justify-between px-4 py-3 border-b border-zinc-100 dark:border-zinc-800">
-        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+      <div className="flex items-center justify-between border-b border-zinc-100 px-5 py-4 dark:border-white/6">
+        <h3 className="text-base font-bold tracking-tight text-zinc-900 dark:text-white">
           {meal.mealType}
         </h3>
-        <span className="text-sm font-medium text-zinc-600 dark:text-zinc-400">
+        <span className="text-sm font-semibold tabular-nums text-zinc-600 dark:text-zinc-300">
           {totalCalories} kcal
         </span>
       </div>
@@ -61,7 +63,7 @@ export default function MealCard({ meal, onDelete, onDuplicate }: MealCardProps)
       {/* Items */}
       <div className="py-1">
         {meal.items.length === 0 ? (
-          <p className="text-xs text-zinc-400 dark:text-zinc-500 text-center py-4">
+          <p className="py-4 text-center text-xs text-zinc-400 dark:text-zinc-500">
             No food logged yet
           </p>
         ) : (
@@ -80,13 +82,11 @@ export default function MealCard({ meal, onDelete, onDuplicate }: MealCardProps)
       {/* Add Food Button */}
       <button
         onClick={handleAddFood}
-        className="w-full flex items-center justify-center gap-2 px-4 py-3 text-sm font-medium text-blue-500 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/10 rounded-b-xl transition-colors border-t border-zinc-100 dark:border-zinc-800"
+        className="flex w-full items-center justify-center gap-2 rounded-b-2xl border-t border-zinc-100 px-4 py-3 text-sm font-semibold text-emerald-600 transition-colors hover:bg-emerald-500/5 hover:text-emerald-500 dark:border-white/6 dark:text-emerald-400"
       >
-        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-        </svg>
+        <FiPlus size={16} aria-hidden="true" />
         Add Food
       </button>
-    </div>
+    </Card>
   );
 }

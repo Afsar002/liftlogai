@@ -1,4 +1,7 @@
+import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
+
+import PageSkeleton from "../shared/components/ui/PageSkeleton";
 
 import Dashboard from "../features/dashboard/pages/Dashboard";
 import WorkoutPage from "../features/workout/pages/WorkoutPage";
@@ -16,6 +19,14 @@ import MealFoodSearchPage from "../features/meals/pages/FoodSearchPage";
 import ProgressHistoryPage from "../features/meals/pages/ProgressHistoryPage";
 import ProgressDetailPage from "../features/meals/pages/ProgressDetailPage";
 
+// Code-split so the ~1MB bundled exercise dataset only loads when needed.
+const ExerciseLibraryPage = lazy(
+  () => import("../features/exercises/pages/ExerciseLibraryPage")
+);
+const ExerciseDetailsPage = lazy(
+  () => import("../features/exercises/pages/ExerciseDetailsPage")
+);
+
 export default function App() {
   return (
     <Routes>
@@ -26,6 +37,16 @@ export default function App() {
       <Route path="/history/:id" element={<WorkoutDetailPage />} />
       <Route path="/profile" element={<ProfilePage />} />
       <Route path="/exercise/:name" element={<ExercisePage />} />
+      <Route path="/exercises" element={
+        <Suspense fallback={<PageSkeleton />}>
+          <ExerciseLibraryPage />
+        </Suspense>
+      } />
+      <Route path="/exercises/:id" element={
+        <Suspense fallback={<PageSkeleton />}>
+          <ExerciseDetailsPage />
+        </Suspense>
+      } />
       <Route path="/templates" element={<TemplatesPage />} />
       <Route path="/templates/:id" element={<EditTemplatePage />} />
       <Route path="/templates/:id/edit" element={<EditTemplatePage />} />

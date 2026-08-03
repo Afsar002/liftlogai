@@ -1,4 +1,6 @@
 import { FiGrid } from "react-icons/fi";
+
+import Card from "../../../shared/components/ui/Card";
 import type { HeatmapDay } from "../types";
 
 interface Props {
@@ -6,10 +8,28 @@ interface Props {
 }
 
 function getColor(count: number) {
-  if (count === 0) return "bg-slate-200 dark:bg-zinc-800";
+  if (count === 0) return "bg-zinc-200 dark:bg-white/8";
   if (count === 1) return "bg-emerald-300 dark:bg-emerald-600";
   if (count === 2) return "bg-emerald-500 dark:bg-emerald-500";
   return "bg-emerald-700 dark:bg-emerald-400";
+}
+
+function HeatmapHeader() {
+  return (
+    <div className="mb-6 flex items-center justify-between gap-3">
+      <div>
+        <h2 className="text-lg font-bold tracking-tight text-zinc-900 dark:text-white">
+          Workout Heatmap
+        </h2>
+        <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
+          Your training activity over time
+        </p>
+      </div>
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-zinc-100 text-zinc-500 dark:bg-white/8 dark:text-zinc-400">
+        <FiGrid size={20} aria-hidden="true" />
+      </div>
+    </div>
+  );
 }
 
 export default function WorkoutHeatmap({
@@ -17,23 +37,12 @@ export default function WorkoutHeatmap({
 }: Props) {
   if (!data || data.length === 0) {
     return (
-      <div className="group relative overflow-hidden rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-xl dark:border-zinc-800 dark:bg-zinc-900">
-        <div className="mb-6 flex items-center justify-between">
-          <div>
-            <h2 className="text-lg font-bold text-slate-950 dark:text-white">
-              Workout Heatmap
-            </h2>
-            <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
-              Your training activity over time
-            </p>
-          </div>
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-teal-500 text-white shadow-lg">
-            <FiGrid size={20} />
-          </div>
+      <Card padding="lg">
+        <HeatmapHeader />
+        <div className="py-4 text-center text-sm text-zinc-500 dark:text-zinc-400">
+          No heatmap data available.
         </div>
-
-        <div className="text-sm text-zinc-500 dark:text-zinc-400">No heatmap data available.</div>
-      </div>
+      </Card>
     );
   }
 
@@ -41,20 +50,8 @@ export default function WorkoutHeatmap({
   const firstDay = new Date(data[0].date);
   const startOffset = firstDay.getDay();
   return (
-    <div className="group relative overflow-hidden rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-xl dark:border-zinc-800 dark:bg-zinc-900">
-      <div className="mb-6 flex items-center justify-between">
-        <div>
-          <h2 className="text-lg font-bold text-slate-950 dark:text-white">
-            Workout Heatmap
-          </h2>
-          <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
-            Your training activity over time
-          </p>
-        </div>
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-teal-500 text-white shadow-lg">
-          <FiGrid size={20} />
-        </div>
-      </div>
+    <Card padding="lg">
+      <HeatmapHeader />
 
       <div className="grid grid-cols-7 gap-2">
         {/* Weekday headers */}
@@ -96,12 +93,12 @@ export default function WorkoutHeatmap({
 
       <div className="mt-5 flex items-center justify-end gap-2 text-xs text-zinc-500 dark:text-zinc-400">
         <span>Less</span>
-        <div className="h-4 w-4 rounded bg-slate-200 dark:bg-zinc-800" />
+        <div className="h-4 w-4 rounded bg-zinc-200 dark:bg-white/8" />
         <div className="h-4 w-4 rounded bg-emerald-300 dark:bg-emerald-600" />
         <div className="h-4 w-4 rounded bg-emerald-500 dark:bg-emerald-500" />
         <div className="h-4 w-4 rounded bg-emerald-700 dark:bg-emerald-400" />
         <span>More</span>
       </div>
-    </div>
+    </Card>
   );
 }

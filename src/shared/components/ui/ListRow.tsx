@@ -32,20 +32,21 @@ export default function ListRow({
 }: Props) {
   const content = (
     <>
-      <div className="flex items-center gap-3">
+      <div className="flex min-w-0 flex-1 items-center gap-3">
         {icon && (
           <div
             className={cn(
+              "flex h-9 w-9 shrink-0 items-center justify-center rounded-full",
               danger
-                ? "text-red-500 dark:text-red-400"
-                : "text-green-600 dark:text-green-400"
+                ? "bg-red-100 text-red-600 dark:bg-red-500/15 dark:text-red-400"
+                : "bg-zinc-100 text-zinc-500 dark:bg-white/8 dark:text-zinc-400"
             )}
           >
             {icon}
           </div>
         )}
 
-        <div className="text-left">
+        <div className="min-w-0 text-left">
           <p
             className={cn(
               "font-medium",
@@ -65,7 +66,7 @@ export default function ListRow({
         </div>
       </div>
 
-      <div className="flex items-center gap-2">
+      <div className="flex shrink-0 items-center gap-2">
         {trailing ?? (
           value && (
             <span className="text-sm text-zinc-500 dark:text-zinc-400">
@@ -90,8 +91,8 @@ export default function ListRow({
           "flex w-full items-center justify-between",
           "rounded-xl px-3 py-3",
           "transition-colors duration-200",
-          "hover:bg-zinc-100 dark:hover:bg-zinc-800",
-          "focus:outline-none focus:ring-2 focus:ring-green-500/50",
+          "hover:bg-zinc-100 dark:hover:bg-white/5",
+          "focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50",
           className
         )}
       >

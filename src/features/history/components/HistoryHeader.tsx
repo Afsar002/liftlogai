@@ -1,7 +1,7 @@
 export default function HistoryHeader() {
   return (
     <div>
-      <h1 className="text-4xl font-bold text-slate-950 dark:text-white">
+      <h1 className="text-4xl font-bold text-zinc-900 dark:text-white">
         Workout History
       </h1>
 

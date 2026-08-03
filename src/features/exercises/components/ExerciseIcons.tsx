@@ -41,7 +41,7 @@ export function ExerciseThumbnail({ name }: { name: string }) {
     .toUpperCase();
 
   return (
-    <div className="flex h-10 w-10 items-center justify-center rounded-md bg-slate-100 text-xs font-semibold text-slate-800 dark:bg-zinc-800 dark:text-white">
+    <div className="flex h-10 w-10 items-center justify-center rounded-md bg-zinc-100 text-xs font-semibold text-zinc-800 dark:bg-white/8 dark:text-white">
       {initials}
     </div>
   );
@@ -78,7 +78,7 @@ export function ExerciseIcon({ id, size = 36 }: { id: string; size?: number }) {
 
   if (emojiMap[id]) {
     return (
-      <div style={{ width: size, height: size }} className="flex items-center justify-center rounded-md bg-slate-100 text-lg dark:bg-zinc-800">
+      <div style={{ width: size, height: size }} className="flex items-center justify-center rounded-md bg-zinc-100 text-lg dark:bg-white/8">
         <span>{emojiMap[id]}</span>
       </div>
     );

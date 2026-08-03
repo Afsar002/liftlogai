@@ -25,7 +25,7 @@ function NutritionMetricCard({
   color: string;
   icon: string;
 }) {
-  const barColor = percentage >= 100 ? 'bg-green-500' : percentage >= 80 ? 'bg-yellow-500' : 'bg-blue-500';
+  const barColor = percentage >= 100 ? 'bg-emerald-500' : percentage >= 80 ? 'bg-lime-500' : 'bg-zinc-400 dark:bg-zinc-500';
 
   return (
     <Card>
@@ -52,7 +52,7 @@ function NutritionMetricCard({
           </span>
         </div>
 
-        <div className="w-full h-2 bg-zinc-200 dark:bg-zinc-700 rounded-full overflow-hidden">
+        <div className="w-full h-2 bg-zinc-200 dark:bg-white/8 rounded-full overflow-hidden">
           <div
             className={`h-full ${barColor} rounded-full transition-all duration-300`}
             style={{ width: `${Math.min(100, percentage)}%` }}

@@ -1,5 +1,5 @@
 import ExerciseCard from "./ExerciseCard";
-import type { LoggedExercise } from "../../../types/session";
+import type { LoggedExercise } from "../types/session";
 
 interface Props {
   exercises: LoggedExercise[];
@@ -11,7 +11,12 @@ export default function ExerciseList({ exercises }: Props) {
       {exercises.map((exercise) => (
         <ExerciseCard
           key={exercise.id}
-          exercise={exercise}
+          name={exercise.name}
+          exerciseId={exercise.exerciseId}
+          previousBest={exercise.previous}
+          primaryMuscle={exercise.primaryMuscle}
+          secondaryMuscles={exercise.secondaryMuscles}
+          onGuideClick={() => {}}
         />
       ))}
     </div>

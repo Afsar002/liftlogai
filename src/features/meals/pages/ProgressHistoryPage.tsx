@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FiCalendar, FiTrendingUp, FiZap, FiBarChart2 } from 'react-icons/fi';
+import { FiArrowLeft, FiCalendar, FiCheckCircle, FiTarget, FiTrendingUp } from 'react-icons/fi';
 import Layout from '../../../shared/components/layout/Layout';
+import Skeleton from '../../../shared/components/ui/Skeleton';
+import { AnimatedPage } from '../../../shared/components/motion';
 import { MealsRepository } from '../repository/MealsRepository';
 import type { NutritionProgress } from '../types';
 
@@ -45,8 +47,16 @@ export default function ProgressHistoryPage() {
   if (isLoading) {
     return (
       <Layout>
-        <div className="flex h-[70vh] items-center justify-center">
-          <p className="text-zinc-400 text-lg">Loading progress history...</p>
+        <div className="mx-auto max-w-3xl space-y-6">
+          <Skeleton variant="rectangular" className="h-44" />
+          <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+            {Array.from({ length: 4 }).map((_, index) => (
+              <Skeleton key={index} variant="card" className="h-24" />
+            ))}
+          </div>
+          <Skeleton variant="card" className="h-16" />
+          <Skeleton variant="card" className="h-16" />
+          <Skeleton variant="card" className="h-16" />
         </div>
       </Layout>
     );
@@ -56,7 +66,7 @@ export default function ProgressHistoryPage() {
     return (
       <Layout>
         <div className="p-4">
-          <div className="p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
+          <div className="rounded-xl border border-red-200 bg-red-50 p-3 dark:border-red-800 dark:bg-red-900/20">
             <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
           </div>
         </div>
@@ -66,41 +76,84 @@ export default function ProgressHistoryPage() {
 
   return (
     <Layout>
-      <div className="space-y-6">
-        <div>
-          <h1 className="text-xl font-bold text-zinc-900 dark:text-white">Nutrition Progress</h1>
-          <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1">
-            Track your daily nutrition history
-          </p>
-        </div>
+      <AnimatedPage>
+      <div className="mx-auto max-w-3xl space-y-7">
+        {/* Hero */}
+        <section className="relative overflow-hidden rounded-3xl bg-zinc-950 px-5 pb-5 pt-5 shadow-sm">
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-emerald-500/25 via-teal-500/10 to-transparent" />
+          <div className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-emerald-400/20 blur-3xl" />
+
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => navigate('/meals')}
+              aria-label="Back to meals"
+              className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/10 text-white transition hover:bg-white/20"
+            >
+              <FiArrowLeft size={14} aria-hidden="true" />
+            </button>
+
+            <span className="mt-4 block text-[10px] font-extrabold uppercase tracking-[0.2em] text-emerald-400/80">
+              Nutrition history
+            </span>
+            <h1 className="mt-1 text-2xl font-black tracking-tight text-white">
+              Progress
+            </h1>
+            <p className="mt-1 text-xs font-semibold text-white/60">
+              Track your daily nutrition history.
+            </p>
+
+            {totalDays > 0 && (
+              <div className="mt-4 flex flex-wrap gap-2">
+                <span className="flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1.5 text-[11px] font-bold text-white">
+                  <FiCalendar size={11} aria-hidden="true" />
+                  {totalDays} days
+                </span>
+                <span className="flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1.5 text-[11px] font-bold text-white/80">
+                  <FiTrendingUp size={11} aria-hidden="true" />
+                  Avg {avgCalories} kcal
+                </span>
+                <span className="flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1.5 text-[11px] font-bold text-white/80">
+                  <FiCheckCircle size={11} aria-hidden="true" />
+                  {onTrackDays} on track
+                </span>
+              </div>
+            )}
+          </div>
+        </section>
 
         {/* Summary Stats */}
         {totalDays > 0 && (
-          <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-            <div className="p-4 bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800">
-              <p className="text-xs text-zinc-500 dark:text-zinc-400">Days Tracked</p>
-              <p className="text-2xl font-bold text-zinc-900 dark:text-white">{totalDays}</p>
-            </div>
-            <div className="p-4 bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800">
-              <p className="text-xs text-zinc-500 dark:text-zinc-400">Avg Calories</p>
-              <p className="text-2xl font-bold text-zinc-900 dark:text-white">{avgCalories} kcal</p>
-            </div>
-            <div className="p-4 bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800">
-              <p className="text-xs text-zinc-500 dark:text-zinc-400">Avg Goal</p>
-              <p className="text-2xl font-bold text-zinc-900 dark:text-white">{avgGoal} kcal</p>
-            </div>
-            <div className="p-4 bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800">
-              <p className="text-xs text-zinc-500 dark:text-zinc-400">On Track</p>
-              <p className="text-2xl font-bold text-green-600 dark:text-green-400">{onTrackDays} / {totalDays}</p>
-            </div>
+          <div className="grid grid-cols-2 gap-3">
+            {[
+              { icon: <FiCalendar size={16} aria-hidden="true" />, label: 'Days tracked', value: String(totalDays), unit: 'days' },
+              { icon: <FiTrendingUp size={16} aria-hidden="true" />, label: 'Avg calories', value: avgCalories.toLocaleString(), unit: 'kcal' },
+              { icon: <FiTarget size={16} aria-hidden="true" />, label: 'Avg goal', value: avgGoal.toLocaleString(), unit: 'kcal' },
+              { icon: <FiCheckCircle size={16} aria-hidden="true" />, label: 'On track', value: `${onTrackDays}/${totalDays}`, unit: 'days' },
+            ].map((tile) => (
+              <div key={tile.label} className="rounded-2xl border border-zinc-200/70 bg-white p-4 shadow-sm dark:border-white/8 dark:bg-[#141417]">
+                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+                  {tile.icon}
+                </span>
+                <p className="mt-3 text-xl font-black tabular-nums leading-none text-zinc-950 dark:text-white">
+                  {tile.value}
+                  <span className="ml-1 text-xs font-bold text-zinc-400 dark:text-zinc-500">{tile.unit}</span>
+                </p>
+                <p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
+                  {tile.label}
+                </p>
+              </div>
+            ))}
           </div>
         )}
 
         {/* Progress List */}
         {history.length === 0 ? (
-          <div className="text-center py-12">
-            <FiBarChart2 className="w-12 h-12 mx-auto text-zinc-300 dark:text-zinc-600 mb-3" />
-            <p className="text-sm text-zinc-500 dark:text-zinc-400">
+          <div className="rounded-3xl border border-dashed border-zinc-300 py-12 text-center dark:border-white/10">
+            <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+              <FiCalendar size={22} aria-hidden="true" />
+            </div>
+            <p className="text-sm font-semibold text-zinc-500 dark:text-zinc-400">
               No progress recorded yet. Start logging your meals to track your nutrition history!
             </p>
           </div>
@@ -111,17 +164,17 @@ export default function ProgressHistoryPage() {
               const isOnTrack = entry.caloriesConsumed <= entry.calorieGoal;
 
               return (
-                <div
+                <button
                   key={entry.id}
                   onClick={() => navigate(`/progress/${entry.date}`)}
-                  className="flex items-center justify-between p-4 rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900 cursor-pointer hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition-colors"
+                  className="flex w-full items-center justify-between rounded-2xl border border-zinc-200/70 bg-white px-4 py-3.5 text-left shadow-card transition-all duration-150 hover:border-zinc-300 hover:shadow-card-hover dark:border-white/6 dark:bg-[#141417] dark:hover:border-white/10"
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="flex items-center justify-center w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-lg">
-                      <FiCalendar size={18} className="text-green-600 dark:text-green-400" />
+                  <div className="flex min-w-0 items-center gap-3">
+                    <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl ${isOnTrack ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400' : 'bg-amber-500/10 text-amber-500'}`}>
+                      <FiCalendar size={18} aria-hidden="true" />
                     </div>
-                    <div>
-                      <p className="text-sm font-medium text-zinc-900 dark:text-white">
+                    <div className="min-w-0">
+                      <p className="truncate text-sm font-semibold text-zinc-900 dark:text-white">
                         {formatDate(entry.date)}
                       </p>
                       <p className="text-xs text-zinc-500 dark:text-zinc-400">
@@ -130,31 +183,33 @@ export default function ProgressHistoryPage() {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-4">
+                  <div className="flex shrink-0 items-center gap-4">
                     <div className="text-right">
-                      <p className="text-sm font-medium text-zinc-900 dark:text-white">
+                      <p className="text-sm font-semibold tabular-nums text-zinc-900 dark:text-white">
                         {entry.caloriesConsumed} / {entry.calorieGoal} kcal
                       </p>
-                      <div className="w-20 h-1.5 bg-zinc-200 dark:bg-zinc-700 rounded-full overflow-hidden">
+                      <div className="ml-auto mt-1 h-1.5 w-20 overflow-hidden rounded-full bg-zinc-100 dark:bg-white/8">
                         <div
-                          className={`h-full rounded-full ${
-                            isOnTrack ? 'bg-green-500' : 'bg-orange-500'
-                          }`}
+                          className={`h-full rounded-full transition-all duration-300 ${isOnTrack ? 'bg-gradient-to-r from-emerald-500 to-lime-400' : 'bg-orange-500'}`}
                           style={{ width: `${percent}%` }}
                         />
                       </div>
                     </div>
-                    <FiZap
-                      size={16}
-                      className={isOnTrack ? 'text-green-500' : 'text-orange-500'}
-                    />
+                    {isOnTrack && (
+                      <FiCheckCircle
+                        size={18}
+                        className="text-emerald-500"
+                        aria-label="On track"
+                      />
+                    )}
                   </div>
-                </div>
+                </button>
               );
             })}
           </div>
         )}
       </div>
+      </AnimatedPage>
     </Layout>
   );
 }

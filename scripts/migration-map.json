@@ -1,0 +1,5240 @@
+[
+  {
+    "oldId": "3_4_Sit-Up",
+    "oldName": "3/4 Sit-Up",
+    "newId": "3_4_Sit-Up",
+    "status": "kept"
+  },
+  {
+    "oldId": "90_90_Hamstring",
+    "oldName": "90/90 Hamstring",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Ab_Crunch_Machine",
+    "oldName": "Ab Crunch Machine",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Ab_Roller",
+    "oldName": "Ab Roller",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Adductor",
+    "oldName": "Adductor",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Adductor_Groin",
+    "oldName": "Adductor/Groin",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Advanced_Kettlebell_Windmill",
+    "oldName": "Advanced Kettlebell Windmill",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Air_Bike",
+    "oldName": "Air Bike",
+    "newId": "Air_Bike",
+    "status": "kept"
+  },
+  {
+    "oldId": "All_Fours_Quad_Stretch",
+    "oldName": "All Fours Quad Stretch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Alternate_Hammer_Curl",
+    "oldName": "Alternate Hammer Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Alternate_Heel_Touchers",
+    "oldName": "Alternate Heel Touchers",
+    "newId": "Alternate_Heel_Touchers",
+    "status": "kept"
+  },
+  {
+    "oldId": "Alternate_Incline_Dumbbell_Curl",
+    "oldName": "Alternate Incline Dumbbell Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Alternate_Leg_Diagonal_Bound",
+    "oldName": "Alternate Leg Diagonal Bound",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Alternating_Cable_Shoulder_Press",
+    "oldName": "Alternating Cable Shoulder Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Alternating_Deltoid_Raise",
+    "oldName": "Alternating Deltoid Raise",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Alternating_Floor_Press",
+    "oldName": "Alternating Floor Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Alternating_Hang_Clean",
+    "oldName": "Alternating Hang Clean",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Alternating_Kettlebell_Press",
+    "oldName": "Alternating Kettlebell Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Alternating_Kettlebell_Row",
+    "oldName": "Alternating Kettlebell Row",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Alternating_Renegade_Row",
+    "oldName": "Alternating Renegade Row",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Ankle_Circles",
+    "oldName": "Ankle Circles",
+    "newId": "Ankle_Circles",
+    "status": "kept"
+  },
+  {
+    "oldId": "Ankle_On_The_Knee",
+    "oldName": "Ankle On The Knee",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Anterior_Tibialis-SMR",
+    "oldName": "Anterior Tibialis-SMR",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Anti-Gravity_Press",
+    "oldName": "Anti-Gravity Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Arm_Circles",
+    "oldName": "Arm Circles",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Arnold_Dumbbell_Press",
+    "oldName": "Arnold Dumbbell Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Around_The_Worlds",
+    "oldName": "Around The Worlds",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Atlas_Stone_Trainer",
+    "oldName": "Atlas Stone Trainer",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Atlas_Stones",
+    "oldName": "Atlas Stones",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Axle_Deadlift",
+    "oldName": "Axle Deadlift",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Back_Flyes_-_With_Bands",
+    "oldName": "Back Flyes - With Bands",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Backward_Drag",
+    "oldName": "Backward Drag",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Backward_Medicine_Ball_Throw",
+    "oldName": "Backward Medicine Ball Throw",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Balance_Board",
+    "oldName": "Balance Board",
+    "newId": "Balance_Board",
+    "status": "kept"
+  },
+  {
+    "oldId": "Ball_Leg_Curl",
+    "oldName": "Ball Leg Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Band_Assisted_Pull-Up",
+    "oldName": "Band Assisted Pull-Up",
+    "newId": "Band_Assisted_Pull-Up",
+    "status": "kept"
+  },
+  {
+    "oldId": "Band_Good_Morning",
+    "oldName": "Band Good Morning",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Band_Good_Morning_Pull_Through",
+    "oldName": "Band Good Morning (Pull Through)",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Band_Hip_Adductions",
+    "oldName": "Band Hip Adductions",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Band_Pull_Apart",
+    "oldName": "Band Pull Apart",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Band_Skull_Crusher",
+    "oldName": "Band Skull Crusher",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Barbell_Ab_Rollout",
+    "oldName": "Barbell Ab Rollout",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Barbell_Ab_Rollout_-_On_Knees",
+    "oldName": "Barbell Ab Rollout - On Knees",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Barbell_Bench_Press_-_Medium_Grip",
+    "oldName": "Barbell Bench Press - Medium Grip",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Barbell_Curl",
+    "oldName": "Barbell Curl",
+    "newId": "Barbell_Curl",
+    "status": "kept"
+  },
+  {
+    "oldId": "Barbell_Curls_Lying_Against_An_Incline",
+    "oldName": "Barbell Curls Lying Against An Incline",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Barbell_Deadlift",
+    "oldName": "Barbell Deadlift",
+    "newId": "Barbell_Deadlift",
+    "status": "kept"
+  },
+  {
+    "oldId": "Barbell_Full_Squat",
+    "oldName": "Barbell Full Squat",
+    "newId": "Barbell_Full_Squat",
+    "status": "kept"
+  },
+  {
+    "oldId": "Barbell_Glute_Bridge",
+    "oldName": "Barbell Glute Bridge",
+    "newId": "Barbell_Glute_Bridge",
+    "status": "kept"
+  },
+  {
+    "oldId": "Barbell_Guillotine_Bench_Press",
+    "oldName": "Barbell Guillotine Bench Press",
+    "newId": "Barbell_Guillotine_Bench_Press",
+    "status": "kept"
+  },
+  {
+    "oldId": "Barbell_Hack_Squat",
+    "oldName": "Barbell Hack Squat",
+    "newId": "Barbell_Hack_Squat",
+    "status": "kept"
+  },
+  {
+    "oldId": "Barbell_Hip_Thrust",
+    "oldName": "Barbell Hip Thrust",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Barbell_Incline_Bench_Press_-_Medium_Grip",
+    "oldName": "Barbell Incline Bench Press - Medium Grip",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Barbell_Incline_Shoulder_Raise",
+    "oldName": "Barbell Incline Shoulder Raise",
+    "newId": "Barbell_Incline_Shoulder_Raise",
+    "status": "kept"
+  },
+  {
+    "oldId": "Barbell_Lunge",
+    "oldName": "Barbell Lunge",
+    "newId": "Barbell_Lunge",
+    "status": "kept"
+  },
+  {
+    "oldId": "Barbell_Rear_Delt_Row",
+    "oldName": "Barbell Rear Delt Row",
+    "newId": "Barbell_Rear_Delt_Row",
+    "status": "kept"
+  },
+  {
+    "oldId": "Barbell_Rollout_from_Bench",
+    "oldName": "Barbell Rollout from Bench",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Barbell_Seated_Calf_Raise",
+    "oldName": "Barbell Seated Calf Raise",
+    "newId": "Barbell_Seated_Calf_Raise",
+    "status": "kept"
+  },
+  {
+    "oldId": "Barbell_Shoulder_Press",
+    "oldName": "Barbell Shoulder Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Barbell_Shrug",
+    "oldName": "Barbell Shrug",
+    "newId": "Barbell_Shrug",
+    "status": "kept"
+  },
+  {
+    "oldId": "Barbell_Shrug_Behind_The_Back",
+    "oldName": "Barbell Shrug Behind The Back",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Barbell_Side_Bend",
+    "oldName": "Barbell Side Bend",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Barbell_Side_Split_Squat",
+    "oldName": "Barbell Side Split Squat",
+    "newId": "Barbell_Side_Split_Squat",
+    "status": "kept"
+  },
+  {
+    "oldId": "Barbell_Squat",
+    "oldName": "Barbell Squat",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Barbell_Squat_To_A_Bench",
+    "oldName": "Barbell Squat To A Bench",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Barbell_Step_Ups",
+    "oldName": "Barbell Step Ups",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Barbell_Walking_Lunge",
+    "oldName": "Barbell Walking Lunge",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Battling_Ropes",
+    "oldName": "Battling Ropes",
+    "newId": "Battling_Ropes",
+    "status": "kept"
+  },
+  {
+    "oldId": "Bear_Crawl_Sled_Drags",
+    "oldName": "Bear Crawl Sled Drags",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Behind_Head_Chest_Stretch",
+    "oldName": "Behind Head Chest Stretch",
+    "newId": "Behind_Head_Chest_Stretch",
+    "status": "kept"
+  },
+  {
+    "oldId": "Bench_Dips",
+    "oldName": "Bench Dips",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Bench_Jump",
+    "oldName": "Bench Jump",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Bench_Press_-_Powerlifting",
+    "oldName": "Bench Press - Powerlifting",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Bench_Press_-_With_Bands",
+    "oldName": "Bench Press - With Bands",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Bench_Press_with_Chains",
+    "oldName": "Bench Press with Chains",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Bench_Sprint",
+    "oldName": "Bench Sprint",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Bent-Arm_Barbell_Pullover",
+    "oldName": "Bent-Arm Barbell Pullover",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Bent-Arm_Dumbbell_Pullover",
+    "oldName": "Bent-Arm Dumbbell Pullover",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Bent-Knee_Hip_Raise",
+    "oldName": "Bent-Knee Hip Raise",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Bent_Over_Barbell_Row",
+    "oldName": "Bent Over Barbell Row",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Bent_Over_Dumbbell_Rear_Delt_Raise_With_Head_On_Bench",
+    "oldName": "Bent Over Dumbbell Rear Delt Raise With Head On Bench",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Bent_Over_Low-Pulley_Side_Lateral",
+    "oldName": "Bent Over Low-Pulley Side Lateral",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Bent_Over_One-Arm_Long_Bar_Row",
+    "oldName": "Bent Over One-Arm Long Bar Row",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Bent_Over_Two-Arm_Long_Bar_Row",
+    "oldName": "Bent Over Two-Arm Long Bar Row",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Bent_Over_Two-Dumbbell_Row",
+    "oldName": "Bent Over Two-Dumbbell Row",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Bent_Over_Two-Dumbbell_Row_With_Palms_In",
+    "oldName": "Bent Over Two-Dumbbell Row With Palms In",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Bent_Press",
+    "oldName": "Bent Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Bicycling",
+    "oldName": "Bicycling",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Bicycling_Stationary",
+    "oldName": "Bicycling, Stationary",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Board_Press",
+    "oldName": "Board Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Body-Up",
+    "oldName": "Body-Up",
+    "newId": "Body-Up",
+    "status": "kept"
+  },
+  {
+    "oldId": "Body_Tricep_Press",
+    "oldName": "Body Tricep Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Bodyweight_Flyes",
+    "oldName": "Bodyweight Flyes",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Bodyweight_Mid_Row",
+    "oldName": "Bodyweight Mid Row",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Bodyweight_Squat",
+    "oldName": "Bodyweight Squat",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Bodyweight_Walking_Lunge",
+    "oldName": "Bodyweight Walking Lunge",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Bosu_Ball_Cable_Crunch_With_Side_Bends",
+    "oldName": "Bosu Ball Cable Crunch With Side Bends",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Bottoms-Up_Clean_From_The_Hang_Position",
+    "oldName": "Bottoms-Up Clean From The Hang Position",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Bottoms_Up",
+    "oldName": "Bottoms Up",
+    "newId": "Bottoms_Up",
+    "status": "kept"
+  },
+  {
+    "oldId": "Box_Jump_Multiple_Response",
+    "oldName": "Box Jump (Multiple Response)",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Box_Skip",
+    "oldName": "Box Skip",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Box_Squat",
+    "oldName": "Box Squat",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Box_Squat_with_Bands",
+    "oldName": "Box Squat with Bands",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Box_Squat_with_Chains",
+    "oldName": "Box Squat with Chains",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Brachialis-SMR",
+    "oldName": "Brachialis-SMR",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Bradford_Rocky_Presses",
+    "oldName": "Bradford/Rocky Presses",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Butt-Ups",
+    "oldName": "Butt-Ups",
+    "newId": "Butt-Ups",
+    "status": "kept"
+  },
+  {
+    "oldId": "Butt_Lift_Bridge",
+    "oldName": "Butt Lift (Bridge)",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Butterfly",
+    "oldName": "Butterfly",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Cable_Chest_Press",
+    "oldName": "Cable Chest Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Cable_Crossover",
+    "oldName": "Cable Crossover",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Cable_Crunch",
+    "oldName": "Cable Crunch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Cable_Deadlifts",
+    "oldName": "Cable Deadlifts",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Cable_Hammer_Curls_-_Rope_Attachment",
+    "oldName": "Cable Hammer Curls - Rope Attachment",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Cable_Hip_Adduction",
+    "oldName": "Cable Hip Adduction",
+    "newId": "Cable_Hip_Adduction",
+    "status": "kept"
+  },
+  {
+    "oldId": "Cable_Incline_Pushdown",
+    "oldName": "Cable Incline Pushdown",
+    "newId": "Cable_Incline_Pushdown",
+    "status": "kept"
+  },
+  {
+    "oldId": "Cable_Incline_Triceps_Extension",
+    "oldName": "Cable Incline Triceps Extension",
+    "newId": "Cable_Incline_Triceps_Extension",
+    "status": "kept"
+  },
+  {
+    "oldId": "Cable_Internal_Rotation",
+    "oldName": "Cable Internal Rotation",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Cable_Iron_Cross",
+    "oldName": "Cable Iron Cross",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Cable_Judo_Flip",
+    "oldName": "Cable Judo Flip",
+    "newId": "Cable_Judo_Flip",
+    "status": "kept"
+  },
+  {
+    "oldId": "Cable_Lying_Triceps_Extension",
+    "oldName": "Cable Lying Triceps Extension",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Cable_One_Arm_Tricep_Extension",
+    "oldName": "Cable One Arm Tricep Extension",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Cable_Preacher_Curl",
+    "oldName": "Cable Preacher Curl",
+    "newId": "Cable_Preacher_Curl",
+    "status": "kept"
+  },
+  {
+    "oldId": "Cable_Rear_Delt_Fly",
+    "oldName": "Cable Rear Delt Fly",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Cable_Reverse_Crunch",
+    "oldName": "Cable Reverse Crunch",
+    "newId": "Cable_Reverse_Crunch",
+    "status": "kept"
+  },
+  {
+    "oldId": "Cable_Rope_Overhead_Triceps_Extension",
+    "oldName": "Cable Rope Overhead Triceps Extension",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Cable_Rope_Rear-Delt_Rows",
+    "oldName": "Cable Rope Rear-Delt Rows",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Cable_Russian_Twists",
+    "oldName": "Cable Russian Twists",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Cable_Seated_Crunch",
+    "oldName": "Cable Seated Crunch",
+    "newId": "Cable_Seated_Crunch",
+    "status": "kept"
+  },
+  {
+    "oldId": "Cable_Seated_Lateral_Raise",
+    "oldName": "Cable Seated Lateral Raise",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Cable_Shoulder_Press",
+    "oldName": "Cable Shoulder Press",
+    "newId": "Cable_Shoulder_Press",
+    "status": "kept"
+  },
+  {
+    "oldId": "Cable_Shrugs",
+    "oldName": "Cable Shrugs",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Cable_Wrist_Curl",
+    "oldName": "Cable Wrist Curl",
+    "newId": "Cable_Wrist_Curl",
+    "status": "kept"
+  },
+  {
+    "oldId": "Calf-Machine_Shoulder_Shrug",
+    "oldName": "Calf-Machine Shoulder Shrug",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Calf_Press",
+    "oldName": "Calf Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Calf_Press_On_The_Leg_Press_Machine",
+    "oldName": "Calf Press On The Leg Press Machine",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Calf_Raise_On_A_Dumbbell",
+    "oldName": "Calf Raise On A Dumbbell",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Calf_Raises_-_With_Bands",
+    "oldName": "Calf Raises - With Bands",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Calf_Stretch_Elbows_Against_Wall",
+    "oldName": "Calf Stretch Elbows Against Wall",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Calf_Stretch_Hands_Against_Wall",
+    "oldName": "Calf Stretch Hands Against Wall",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Calves-SMR",
+    "oldName": "Calves-SMR",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Car_Deadlift",
+    "oldName": "Car Deadlift",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Car_Drivers",
+    "oldName": "Car Drivers",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Carioca_Quick_Step",
+    "oldName": "Carioca Quick Step",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Cat_Stretch",
+    "oldName": "Cat Stretch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Catch_and_Overhead_Throw",
+    "oldName": "Catch and Overhead Throw",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Chain_Handle_Extension",
+    "oldName": "Chain Handle Extension",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Chain_Press",
+    "oldName": "Chain Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Chair_Leg_Extended_Stretch",
+    "oldName": "Chair Leg Extended Stretch",
+    "newId": "Chair_Leg_Extended_Stretch",
+    "status": "kept"
+  },
+  {
+    "oldId": "Chair_Lower_Back_Stretch",
+    "oldName": "Chair Lower Back Stretch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Chair_Squat",
+    "oldName": "Chair Squat",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Chair_Upper_Body_Stretch",
+    "oldName": "Chair Upper Body Stretch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Chest_And_Front_Of_Shoulder_Stretch",
+    "oldName": "Chest And Front Of Shoulder Stretch",
+    "newId": "Chest_And_Front_Of_Shoulder_Stretch",
+    "status": "kept"
+  },
+  {
+    "oldId": "Chest_Push_from_3_point_stance",
+    "oldName": "Chest Push from 3 point stance",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Chest_Push_multiple_response",
+    "oldName": "Chest Push (multiple response)",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Chest_Push_single_response",
+    "oldName": "Chest Push (single response)",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Chest_Push_with_Run_Release",
+    "oldName": "Chest Push with Run Release",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Chest_Stretch_on_Stability_Ball",
+    "oldName": "Chest Stretch on Stability Ball",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Childs_Pose",
+    "oldName": "Child's Pose",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Chin-Up",
+    "oldName": "Chin-Up",
+    "newId": "Chin-Up",
+    "status": "kept"
+  },
+  {
+    "oldId": "Chin_To_Chest_Stretch",
+    "oldName": "Chin To Chest Stretch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Circus_Bell",
+    "oldName": "Circus Bell",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Clean",
+    "oldName": "Clean",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Clean_Deadlift",
+    "oldName": "Clean Deadlift",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Clean_Pull",
+    "oldName": "Clean Pull",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Clean_Shrug",
+    "oldName": "Clean Shrug",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Clean_and_Jerk",
+    "oldName": "Clean and Jerk",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Clean_and_Press",
+    "oldName": "Clean and Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Clean_from_Blocks",
+    "oldName": "Clean from Blocks",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Clock_Push-Up",
+    "oldName": "Clock Push-Up",
+    "newId": "Clock_Push-Up",
+    "status": "kept"
+  },
+  {
+    "oldId": "Close-Grip_Barbell_Bench_Press",
+    "oldName": "Close-Grip Barbell Bench Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Close-Grip_Dumbbell_Press",
+    "oldName": "Close-Grip Dumbbell Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Close-Grip_EZ-Bar_Curl_with_Band",
+    "oldName": "Close-Grip EZ-Bar Curl with Band",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Close-Grip_EZ-Bar_Press",
+    "oldName": "Close-Grip EZ-Bar Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Close-Grip_EZ_Bar_Curl",
+    "oldName": "Close-Grip EZ Bar Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Close-Grip_Front_Lat_Pulldown",
+    "oldName": "Close-Grip Front Lat Pulldown",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Close-Grip_Push-Up_off_of_a_Dumbbell",
+    "oldName": "Close-Grip Push-Up off of a Dumbbell",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Close-Grip_Standing_Barbell_Curl",
+    "oldName": "Close-Grip Standing Barbell Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Cocoons",
+    "oldName": "Cocoons",
+    "newId": "Cocoons",
+    "status": "kept"
+  },
+  {
+    "oldId": "Conans_Wheel",
+    "oldName": "Conan's Wheel",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Concentration_Curls",
+    "oldName": "Concentration Curls",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Cross-Body_Crunch",
+    "oldName": "Cross-Body Crunch",
+    "newId": "Cross-Body_Crunch",
+    "status": "kept"
+  },
+  {
+    "oldId": "Cross_Body_Hammer_Curl",
+    "oldName": "Cross Body Hammer Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Cross_Over_-_With_Bands",
+    "oldName": "Cross Over - With Bands",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Crossover_Reverse_Lunge",
+    "oldName": "Crossover Reverse Lunge",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Crucifix",
+    "oldName": "Crucifix",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Crunch_-_Hands_Overhead",
+    "oldName": "Crunch - Hands Overhead",
+    "newId": "Crunch_-_Hands_Overhead",
+    "status": "kept"
+  },
+  {
+    "oldId": "Crunch_-_Legs_On_Exercise_Ball",
+    "oldName": "Crunch - Legs On Exercise Ball",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Crunches",
+    "oldName": "Crunches",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Cuban_Press",
+    "oldName": "Cuban Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Dancers_Stretch",
+    "oldName": "Dancer's Stretch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Dead_Bug",
+    "oldName": "Dead Bug",
+    "newId": "Dead_Bug",
+    "status": "kept"
+  },
+  {
+    "oldId": "Deadlift_with_Bands",
+    "oldName": "Deadlift with Bands",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Deadlift_with_Chains",
+    "oldName": "Deadlift with Chains",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Decline_Barbell_Bench_Press",
+    "oldName": "Decline Barbell Bench Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Decline_Close-Grip_Bench_To_Skull_Crusher",
+    "oldName": "Decline Close-Grip Bench To Skull Crusher",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Decline_Crunch",
+    "oldName": "Decline Crunch",
+    "newId": "Decline_Crunch",
+    "status": "kept"
+  },
+  {
+    "oldId": "Decline_Dumbbell_Bench_Press",
+    "oldName": "Decline Dumbbell Bench Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Decline_Dumbbell_Flyes",
+    "oldName": "Decline Dumbbell Flyes",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Decline_Dumbbell_Triceps_Extension",
+    "oldName": "Decline Dumbbell Triceps Extension",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Decline_EZ_Bar_Triceps_Extension",
+    "oldName": "Decline EZ Bar Triceps Extension",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Decline_Oblique_Crunch",
+    "oldName": "Decline Oblique Crunch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Decline_Push-Up",
+    "oldName": "Decline Push-Up",
+    "newId": "Decline_Push-Up",
+    "status": "kept"
+  },
+  {
+    "oldId": "Decline_Reverse_Crunch",
+    "oldName": "Decline Reverse Crunch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Decline_Smith_Press",
+    "oldName": "Decline Smith Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Deficit_Deadlift",
+    "oldName": "Deficit Deadlift",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Depth_Jump_Leap",
+    "oldName": "Depth Jump Leap",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Dip_Machine",
+    "oldName": "Dip Machine",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Dips_-_Chest_Version",
+    "oldName": "Dips - Chest Version",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Dips_-_Triceps_Version",
+    "oldName": "Dips - Triceps Version",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Donkey_Calf_Raises",
+    "oldName": "Donkey Calf Raises",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Double_Kettlebell_Alternating_Hang_Clean",
+    "oldName": "Double Kettlebell Alternating Hang Clean",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Double_Kettlebell_Jerk",
+    "oldName": "Double Kettlebell Jerk",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Double_Kettlebell_Push_Press",
+    "oldName": "Double Kettlebell Push Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Double_Kettlebell_Snatch",
+    "oldName": "Double Kettlebell Snatch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Double_Kettlebell_Windmill",
+    "oldName": "Double Kettlebell Windmill",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Double_Leg_Butt_Kick",
+    "oldName": "Double Leg Butt Kick",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Downward_Facing_Balance",
+    "oldName": "Downward Facing Balance",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Drag_Curl",
+    "oldName": "Drag Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Drop_Push",
+    "oldName": "Drop Push",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Dumbbell_Alternate_Bicep_Curl",
+    "oldName": "Dumbbell Alternate Bicep Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Dumbbell_Bench_Press",
+    "oldName": "Dumbbell Bench Press",
+    "newId": "Dumbbell_Bench_Press",
+    "status": "kept"
+  },
+  {
+    "oldId": "Dumbbell_Bench_Press_with_Neutral_Grip",
+    "oldName": "Dumbbell Bench Press with Neutral Grip",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Dumbbell_Bicep_Curl",
+    "oldName": "Dumbbell Bicep Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Dumbbell_Clean",
+    "oldName": "Dumbbell Clean",
+    "newId": "Dumbbell_Clean",
+    "status": "kept"
+  },
+  {
+    "oldId": "Dumbbell_Floor_Press",
+    "oldName": "Dumbbell Floor Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Dumbbell_Flyes",
+    "oldName": "Dumbbell Flyes",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Dumbbell_Incline_Row",
+    "oldName": "Dumbbell Incline Row",
+    "newId": "Dumbbell_Incline_Row",
+    "status": "kept"
+  },
+  {
+    "oldId": "Dumbbell_Incline_Shoulder_Raise",
+    "oldName": "Dumbbell Incline Shoulder Raise",
+    "newId": "Dumbbell_Incline_Shoulder_Raise",
+    "status": "kept"
+  },
+  {
+    "oldId": "Dumbbell_Lunges",
+    "oldName": "Dumbbell Lunges",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Dumbbell_Lying_One-Arm_Rear_Lateral_Raise",
+    "oldName": "Dumbbell Lying One-Arm Rear Lateral Raise",
+    "newId": "Dumbbell_Lying_One-Arm_Rear_Lateral_Raise",
+    "status": "kept"
+  },
+  {
+    "oldId": "Dumbbell_Lying_Pronation",
+    "oldName": "Dumbbell Lying Pronation",
+    "newId": "Dumbbell_Lying_Pronation",
+    "status": "kept"
+  },
+  {
+    "oldId": "Dumbbell_Lying_Rear_Lateral_Raise",
+    "oldName": "Dumbbell Lying Rear Lateral Raise",
+    "newId": "Dumbbell_Lying_Rear_Lateral_Raise",
+    "status": "kept"
+  },
+  {
+    "oldId": "Dumbbell_Lying_Supination",
+    "oldName": "Dumbbell Lying Supination",
+    "newId": "Dumbbell_Lying_Supination",
+    "status": "kept"
+  },
+  {
+    "oldId": "Dumbbell_One-Arm_Shoulder_Press",
+    "oldName": "Dumbbell One-Arm Shoulder Press",
+    "newId": "Dumbbell_One-Arm_Shoulder_Press",
+    "status": "kept"
+  },
+  {
+    "oldId": "Dumbbell_One-Arm_Triceps_Extension",
+    "oldName": "Dumbbell One-Arm Triceps Extension",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Dumbbell_One-Arm_Upright_Row",
+    "oldName": "Dumbbell One-Arm Upright Row",
+    "newId": "Dumbbell_One-Arm_Upright_Row",
+    "status": "kept"
+  },
+  {
+    "oldId": "Dumbbell_Prone_Incline_Curl",
+    "oldName": "Dumbbell Prone Incline Curl",
+    "newId": "Dumbbell_Prone_Incline_Curl",
+    "status": "kept"
+  },
+  {
+    "oldId": "Dumbbell_Raise",
+    "oldName": "Dumbbell Raise",
+    "newId": "Dumbbell_Raise",
+    "status": "kept"
+  },
+  {
+    "oldId": "Dumbbell_Rear_Lunge",
+    "oldName": "Dumbbell Rear Lunge",
+    "newId": "Dumbbell_Rear_Lunge",
+    "status": "kept"
+  },
+  {
+    "oldId": "Dumbbell_Scaption",
+    "oldName": "Dumbbell Scaption",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Dumbbell_Seated_Box_Jump",
+    "oldName": "Dumbbell Seated Box Jump",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Dumbbell_Seated_One-Leg_Calf_Raise",
+    "oldName": "Dumbbell Seated One-Leg Calf Raise",
+    "newId": "Dumbbell_Seated_One-Leg_Calf_Raise",
+    "status": "kept"
+  },
+  {
+    "oldId": "Dumbbell_Shoulder_Press",
+    "oldName": "Dumbbell Shoulder Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Dumbbell_Shrug",
+    "oldName": "Dumbbell Shrug",
+    "newId": "Dumbbell_Shrug",
+    "status": "kept"
+  },
+  {
+    "oldId": "Dumbbell_Side_Bend",
+    "oldName": "Dumbbell Side Bend",
+    "newId": "Dumbbell_Side_Bend",
+    "status": "kept"
+  },
+  {
+    "oldId": "Dumbbell_Squat",
+    "oldName": "Dumbbell Squat",
+    "newId": "Dumbbell_Squat",
+    "status": "kept"
+  },
+  {
+    "oldId": "Dumbbell_Squat_To_A_Bench",
+    "oldName": "Dumbbell Squat To A Bench",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Dumbbell_Step_Ups",
+    "oldName": "Dumbbell Step Ups",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Dumbbell_Tricep_Extension_-Pronated_Grip",
+    "oldName": "Dumbbell Tricep Extension -Pronated Grip",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Dynamic_Back_Stretch",
+    "oldName": "Dynamic Back Stretch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Dynamic_Chest_Stretch",
+    "oldName": "Dynamic Chest Stretch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "EZ-Bar_Curl",
+    "oldName": "EZ-Bar Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "EZ-Bar_Skullcrusher",
+    "oldName": "EZ-Bar Skullcrusher",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Elbow_Circles",
+    "oldName": "Elbow Circles",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Elbow_to_Knee",
+    "oldName": "Elbow to Knee",
+    "newId": "Elbow_to_Knee",
+    "status": "kept"
+  },
+  {
+    "oldId": "Elbows_Back",
+    "oldName": "Elbows Back",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Elevated_Back_Lunge",
+    "oldName": "Elevated Back Lunge",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Elevated_Cable_Rows",
+    "oldName": "Elevated Cable Rows",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Elliptical_Trainer",
+    "oldName": "Elliptical Trainer",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Exercise_Ball_Crunch",
+    "oldName": "Exercise Ball Crunch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Exercise_Ball_Pull-In",
+    "oldName": "Exercise Ball Pull-In",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Extended_Range_One-Arm_Kettlebell_Floor_Press",
+    "oldName": "Extended Range One-Arm Kettlebell Floor Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "External_Rotation",
+    "oldName": "External Rotation",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "External_Rotation_with_Band",
+    "oldName": "External Rotation with Band",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "External_Rotation_with_Cable",
+    "oldName": "External Rotation with Cable",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Face_Pull",
+    "oldName": "Face Pull",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Farmers_Walk",
+    "oldName": "Farmer's Walk",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Fast_Skipping",
+    "oldName": "Fast Skipping",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Finger_Curls",
+    "oldName": "Finger Curls",
+    "newId": "Finger_Curls",
+    "status": "kept"
+  },
+  {
+    "oldId": "Flat_Bench_Cable_Flyes",
+    "oldName": "Flat Bench Cable Flyes",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Flat_Bench_Leg_Pull-In",
+    "oldName": "Flat Bench Leg Pull-In",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Flat_Bench_Lying_Leg_Raise",
+    "oldName": "Flat Bench Lying Leg Raise",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Flexor_Incline_Dumbbell_Curls",
+    "oldName": "Flexor Incline Dumbbell Curls",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Floor_Glute-Ham_Raise",
+    "oldName": "Floor Glute-Ham Raise",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Floor_Press",
+    "oldName": "Floor Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Floor_Press_with_Chains",
+    "oldName": "Floor Press with Chains",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Flutter_Kicks",
+    "oldName": "Flutter Kicks",
+    "newId": "Flutter_Kicks",
+    "status": "kept"
+  },
+  {
+    "oldId": "Foot-SMR",
+    "oldName": "Foot-SMR",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Forward_Drag_with_Press",
+    "oldName": "Forward Drag with Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Frankenstein_Squat",
+    "oldName": "Frankenstein Squat",
+    "newId": "Frankenstein_Squat",
+    "status": "kept"
+  },
+  {
+    "oldId": "Freehand_Jump_Squat",
+    "oldName": "Freehand Jump Squat",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Frog_Hops",
+    "oldName": "Frog Hops",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Frog_Sit-Ups",
+    "oldName": "Frog Sit-Ups",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Front_Barbell_Squat",
+    "oldName": "Front Barbell Squat",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Front_Barbell_Squat_To_A_Bench",
+    "oldName": "Front Barbell Squat To A Bench",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Front_Box_Jump",
+    "oldName": "Front Box Jump",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Front_Cable_Raise",
+    "oldName": "Front Cable Raise",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Front_Cone_Hops_or_hurdle_hops",
+    "oldName": "Front Cone Hops (or hurdle hops)",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Front_Dumbbell_Raise",
+    "oldName": "Front Dumbbell Raise",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Front_Incline_Dumbbell_Raise",
+    "oldName": "Front Incline Dumbbell Raise",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Front_Leg_Raises",
+    "oldName": "Front Leg Raises",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Front_Plate_Raise",
+    "oldName": "Front Plate Raise",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Front_Raise_And_Pullover",
+    "oldName": "Front Raise And Pullover",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Front_Squat_Clean_Grip",
+    "oldName": "Front Squat (Clean Grip)",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Front_Squats_With_Two_Kettlebells",
+    "oldName": "Front Squats With Two Kettlebells",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Front_Two-Dumbbell_Raise",
+    "oldName": "Front Two-Dumbbell Raise",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Full_Range-Of-Motion_Lat_Pulldown",
+    "oldName": "Full Range-Of-Motion Lat Pulldown",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Gironda_Sternum_Chins",
+    "oldName": "Gironda Sternum Chins",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Glute_Ham_Raise",
+    "oldName": "Glute Ham Raise",
+    "newId": "Glute_Ham_Raise",
+    "status": "kept"
+  },
+  {
+    "oldId": "Glute_Kickback",
+    "oldName": "Glute Kickback",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Goblet_Squat",
+    "oldName": "Goblet Squat",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Good_Morning",
+    "oldName": "Good Morning",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Good_Morning_off_Pins",
+    "oldName": "Good Morning off Pins",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Gorilla_Chin_Crunch",
+    "oldName": "Gorilla Chin/Crunch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Groin_and_Back_Stretch",
+    "oldName": "Groin and Back Stretch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Groiners",
+    "oldName": "Groiners",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Hack_Squat",
+    "oldName": "Hack Squat",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Hammer_Curls",
+    "oldName": "Hammer Curls",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Hammer_Grip_Incline_DB_Bench_Press",
+    "oldName": "Hammer Grip Incline DB Bench Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Hamstring-SMR",
+    "oldName": "Hamstring-SMR",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Hamstring_Stretch",
+    "oldName": "Hamstring Stretch",
+    "newId": "Hamstring_Stretch",
+    "status": "kept"
+  },
+  {
+    "oldId": "Handstand_Push-Ups",
+    "oldName": "Handstand Push-Ups",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Hang_Clean",
+    "oldName": "Hang Clean",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Hang_Clean_-_Below_the_Knees",
+    "oldName": "Hang Clean - Below the Knees",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Hang_Snatch",
+    "oldName": "Hang Snatch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Hang_Snatch_-_Below_Knees",
+    "oldName": "Hang Snatch - Below Knees",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Hanging_Bar_Good_Morning",
+    "oldName": "Hanging Bar Good Morning",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Hanging_Leg_Raise",
+    "oldName": "Hanging Leg Raise",
+    "newId": "Hanging_Leg_Raise",
+    "status": "kept"
+  },
+  {
+    "oldId": "Hanging_Pike",
+    "oldName": "Hanging Pike",
+    "newId": "Hanging_Pike",
+    "status": "kept"
+  },
+  {
+    "oldId": "Heaving_Snatch_Balance",
+    "oldName": "Heaving Snatch Balance",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Heavy_Bag_Thrust",
+    "oldName": "Heavy Bag Thrust",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "High_Cable_Curls",
+    "oldName": "High Cable Curls",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Hip_Circles_prone",
+    "oldName": "Hip Circles (prone)",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Hip_Extension_with_Bands",
+    "oldName": "Hip Extension with Bands",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Hip_Flexion_with_Band",
+    "oldName": "Hip Flexion with Band",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Hip_Lift_with_Band",
+    "oldName": "Hip Lift with Band",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Hug_A_Ball",
+    "oldName": "Hug A Ball",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Hug_Knees_To_Chest",
+    "oldName": "Hug Knees To Chest",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Hurdle_Hops",
+    "oldName": "Hurdle Hops",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Hyperextensions_Back_Extensions",
+    "oldName": "Hyperextensions (Back Extensions)",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Hyperextensions_With_No_Hyperextension_Bench",
+    "oldName": "Hyperextensions With No Hyperextension Bench",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "IT_Band_and_Glute_Stretch",
+    "oldName": "IT Band and Glute Stretch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Iliotibial_Tract-SMR",
+    "oldName": "Iliotibial Tract-SMR",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Inchworm",
+    "oldName": "Inchworm",
+    "newId": "Inchworm",
+    "status": "kept"
+  },
+  {
+    "oldId": "Incline_Barbell_Triceps_Extension",
+    "oldName": "Incline Barbell Triceps Extension",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Incline_Bench_Pull",
+    "oldName": "Incline Bench Pull",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Incline_Cable_Chest_Press",
+    "oldName": "Incline Cable Chest Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Incline_Cable_Flye",
+    "oldName": "Incline Cable Flye",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Incline_Dumbbell_Bench_With_Palms_Facing_In",
+    "oldName": "Incline Dumbbell Bench With Palms Facing In",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Incline_Dumbbell_Curl",
+    "oldName": "Incline Dumbbell Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Incline_Dumbbell_Flyes",
+    "oldName": "Incline Dumbbell Flyes",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Incline_Dumbbell_Flyes_-_With_A_Twist",
+    "oldName": "Incline Dumbbell Flyes - With A Twist",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Incline_Dumbbell_Press",
+    "oldName": "Incline Dumbbell Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Incline_Hammer_Curls",
+    "oldName": "Incline Hammer Curls",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Incline_Inner_Biceps_Curl",
+    "oldName": "Incline Inner Biceps Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Incline_Push-Up",
+    "oldName": "Incline Push-Up",
+    "newId": "Incline_Push-Up",
+    "status": "kept"
+  },
+  {
+    "oldId": "Incline_Push-Up_Close-Grip",
+    "oldName": "Incline Push-Up Close-Grip",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Incline_Push-Up_Depth_Jump",
+    "oldName": "Incline Push-Up Depth Jump",
+    "newId": "Incline_Push-Up_Depth_Jump",
+    "status": "kept"
+  },
+  {
+    "oldId": "Incline_Push-Up_Medium",
+    "oldName": "Incline Push-Up Medium",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Incline_Push-Up_Reverse_Grip",
+    "oldName": "Incline Push-Up Reverse Grip",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Incline_Push-Up_Wide",
+    "oldName": "Incline Push-Up Wide",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Intermediate_Groin_Stretch",
+    "oldName": "Intermediate Groin Stretch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Intermediate_Hip_Flexor_and_Quad_Stretch",
+    "oldName": "Intermediate Hip Flexor and Quad Stretch",
+    "newId": "Intermediate_Hip_Flexor_and_Quad_Stretch",
+    "status": "kept"
+  },
+  {
+    "oldId": "Internal_Rotation_with_Band",
+    "oldName": "Internal Rotation with Band",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Inverted_Row",
+    "oldName": "Inverted Row",
+    "newId": "Inverted_Row",
+    "status": "kept"
+  },
+  {
+    "oldId": "Inverted_Row_with_Straps",
+    "oldName": "Inverted Row with Straps",
+    "newId": "Inverted_Row_with_Straps",
+    "status": "kept"
+  },
+  {
+    "oldId": "Iron_Cross",
+    "oldName": "Iron Cross",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Iron_Crosses_stretch",
+    "oldName": "Iron Crosses (stretch)",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Isometric_Chest_Squeezes",
+    "oldName": "Isometric Chest Squeezes",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Isometric_Neck_Exercise_-_Front_And_Back",
+    "oldName": "Isometric Neck Exercise - Front And Back",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Isometric_Neck_Exercise_-_Sides",
+    "oldName": "Isometric Neck Exercise - Sides",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Isometric_Wipers",
+    "oldName": "Isometric Wipers",
+    "newId": "Isometric_Wipers",
+    "status": "kept"
+  },
+  {
+    "oldId": "JM_Press",
+    "oldName": "JM Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Jackknife_Sit-Up",
+    "oldName": "Jackknife Sit-Up",
+    "newId": "Jackknife_Sit-Up",
+    "status": "kept"
+  },
+  {
+    "oldId": "Janda_Sit-Up",
+    "oldName": "Janda Sit-Up",
+    "newId": "Janda_Sit-Up",
+    "status": "kept"
+  },
+  {
+    "oldId": "Jefferson_Squats",
+    "oldName": "Jefferson Squats",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Jerk_Balance",
+    "oldName": "Jerk Balance",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Jerk_Dip_Squat",
+    "oldName": "Jerk Dip Squat",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Jogging_Treadmill",
+    "oldName": "Jogging, Treadmill",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Keg_Load",
+    "oldName": "Keg Load",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Kettlebell_Arnold_Press",
+    "oldName": "Kettlebell Arnold Press",
+    "newId": "Kettlebell_Arnold_Press",
+    "status": "kept"
+  },
+  {
+    "oldId": "Kettlebell_Dead_Clean",
+    "oldName": "Kettlebell Dead Clean",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Kettlebell_Figure_8",
+    "oldName": "Kettlebell Figure 8",
+    "newId": "Kettlebell_Figure_8",
+    "status": "kept"
+  },
+  {
+    "oldId": "Kettlebell_Hang_Clean",
+    "oldName": "Kettlebell Hang Clean",
+    "newId": "Kettlebell_Hang_Clean",
+    "status": "kept"
+  },
+  {
+    "oldId": "Kettlebell_One-Legged_Deadlift",
+    "oldName": "Kettlebell One-Legged Deadlift",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Kettlebell_Pass_Between_The_Legs",
+    "oldName": "Kettlebell Pass Between The Legs",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Kettlebell_Pirate_Ships",
+    "oldName": "Kettlebell Pirate Ships",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Kettlebell_Pistol_Squat",
+    "oldName": "Kettlebell Pistol Squat",
+    "newId": "Kettlebell_Pistol_Squat",
+    "status": "kept"
+  },
+  {
+    "oldId": "Kettlebell_Seated_Press",
+    "oldName": "Kettlebell Seated Press",
+    "newId": "Kettlebell_Seated_Press",
+    "status": "kept"
+  },
+  {
+    "oldId": "Kettlebell_Seesaw_Press",
+    "oldName": "Kettlebell Seesaw Press",
+    "newId": "Kettlebell_Seesaw_Press",
+    "status": "kept"
+  },
+  {
+    "oldId": "Kettlebell_Sumo_High_Pull",
+    "oldName": "Kettlebell Sumo High Pull",
+    "newId": "Kettlebell_Sumo_High_Pull",
+    "status": "kept"
+  },
+  {
+    "oldId": "Kettlebell_Thruster",
+    "oldName": "Kettlebell Thruster",
+    "newId": "Kettlebell_Thruster",
+    "status": "kept"
+  },
+  {
+    "oldId": "Kettlebell_Turkish_Get-Up_Lunge_style",
+    "oldName": "Kettlebell Turkish Get-Up (Lunge style)",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Kettlebell_Turkish_Get-Up_Squat_style",
+    "oldName": "Kettlebell Turkish Get-Up (Squat style)",
+    "newId": "Kettlebell_Turkish_Get-Up_Squat_style",
+    "status": "kept"
+  },
+  {
+    "oldId": "Kettlebell_Windmill",
+    "oldName": "Kettlebell Windmill",
+    "newId": "Kettlebell_Windmill",
+    "status": "kept"
+  },
+  {
+    "oldId": "Kipping_Muscle_Up",
+    "oldName": "Kipping Muscle Up",
+    "newId": "Kipping_Muscle_Up",
+    "status": "kept"
+  },
+  {
+    "oldId": "Knee_Across_The_Body",
+    "oldName": "Knee Across The Body",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Knee_Circles",
+    "oldName": "Knee Circles",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Knee_Hip_Raise_On_Parallel_Bars",
+    "oldName": "Knee/Hip Raise On Parallel Bars",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Knee_Tuck_Jump",
+    "oldName": "Knee Tuck Jump",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Kneeling_Arm_Drill",
+    "oldName": "Kneeling Arm Drill",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Kneeling_Cable_Crunch_With_Alternating_Oblique_Twists",
+    "oldName": "Kneeling Cable Crunch With Alternating Oblique Twists",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Kneeling_Cable_Triceps_Extension",
+    "oldName": "Kneeling Cable Triceps Extension",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Kneeling_Forearm_Stretch",
+    "oldName": "Kneeling Forearm Stretch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Kneeling_High_Pulley_Row",
+    "oldName": "Kneeling High Pulley Row",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Kneeling_Hip_Flexor",
+    "oldName": "Kneeling Hip Flexor",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Kneeling_Jump_Squat",
+    "oldName": "Kneeling Jump Squat",
+    "newId": "Kneeling_Jump_Squat",
+    "status": "kept"
+  },
+  {
+    "oldId": "Kneeling_Single-Arm_High_Pulley_Row",
+    "oldName": "Kneeling Single-Arm High Pulley Row",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Kneeling_Squat",
+    "oldName": "Kneeling Squat",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Landmine_180s",
+    "oldName": "Landmine 180's",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Landmine_Linear_Jammer",
+    "oldName": "Landmine Linear Jammer",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Lateral_Bound",
+    "oldName": "Lateral Bound",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Lateral_Box_Jump",
+    "oldName": "Lateral Box Jump",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Lateral_Cone_Hops",
+    "oldName": "Lateral Cone Hops",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Lateral_Raise_-_With_Bands",
+    "oldName": "Lateral Raise - With Bands",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Latissimus_Dorsi-SMR",
+    "oldName": "Latissimus Dorsi-SMR",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Leg-Over_Floor_Press",
+    "oldName": "Leg-Over Floor Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Leg-Up_Hamstring_Stretch",
+    "oldName": "Leg-Up Hamstring Stretch",
+    "newId": "Leg-Up_Hamstring_Stretch",
+    "status": "kept"
+  },
+  {
+    "oldId": "Leg_Extensions",
+    "oldName": "Leg Extensions",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Leg_Lift",
+    "oldName": "Leg Lift",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Leg_Press",
+    "oldName": "Leg Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Leg_Pull-In",
+    "oldName": "Leg Pull-In",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Leverage_Chest_Press",
+    "oldName": "Leverage Chest Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Leverage_Deadlift",
+    "oldName": "Leverage Deadlift",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Leverage_Decline_Chest_Press",
+    "oldName": "Leverage Decline Chest Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Leverage_High_Row",
+    "oldName": "Leverage High Row",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Leverage_Incline_Chest_Press",
+    "oldName": "Leverage Incline Chest Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Leverage_Iso_Row",
+    "oldName": "Leverage Iso Row",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Leverage_Shoulder_Press",
+    "oldName": "Leverage Shoulder Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Leverage_Shrug",
+    "oldName": "Leverage Shrug",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Linear_3-Part_Start_Technique",
+    "oldName": "Linear 3-Part Start Technique",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Linear_Acceleration_Wall_Drill",
+    "oldName": "Linear Acceleration Wall Drill",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Linear_Depth_Jump",
+    "oldName": "Linear Depth Jump",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Log_Lift",
+    "oldName": "Log Lift",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "London_Bridges",
+    "oldName": "London Bridges",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Looking_At_Ceiling",
+    "oldName": "Looking At Ceiling",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Low_Cable_Crossover",
+    "oldName": "Low Cable Crossover",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Low_Cable_Triceps_Extension",
+    "oldName": "Low Cable Triceps Extension",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Low_Pulley_Row_To_Neck",
+    "oldName": "Low Pulley Row To Neck",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Lower_Back-SMR",
+    "oldName": "Lower Back-SMR",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Lower_Back_Curl",
+    "oldName": "Lower Back Curl",
+    "newId": "Lower_Back_Curl",
+    "status": "kept"
+  },
+  {
+    "oldId": "Lunge_Pass_Through",
+    "oldName": "Lunge Pass Through",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Lunge_Sprint",
+    "oldName": "Lunge Sprint",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Lying_Bent_Leg_Groin",
+    "oldName": "Lying Bent Leg Groin",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Lying_Cable_Curl",
+    "oldName": "Lying Cable Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Lying_Cambered_Barbell_Row",
+    "oldName": "Lying Cambered Barbell Row",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Lying_Close-Grip_Bar_Curl_On_High_Pulley",
+    "oldName": "Lying Close-Grip Bar Curl On High Pulley",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Lying_Close-Grip_Barbell_Triceps_Extension_Behind_The_Head",
+    "oldName": "Lying Close-Grip Barbell Triceps Extension Behind The Head",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Lying_Close-Grip_Barbell_Triceps_Press_To_Chin",
+    "oldName": "Lying Close-Grip Barbell Triceps Press To Chin",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Lying_Crossover",
+    "oldName": "Lying Crossover",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Lying_Dumbbell_Tricep_Extension",
+    "oldName": "Lying Dumbbell Tricep Extension",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Lying_Face_Down_Plate_Neck_Resistance",
+    "oldName": "Lying Face Down Plate Neck Resistance",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Lying_Face_Up_Plate_Neck_Resistance",
+    "oldName": "Lying Face Up Plate Neck Resistance",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Lying_Glute",
+    "oldName": "Lying Glute",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Lying_Hamstring",
+    "oldName": "Lying Hamstring",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Lying_High_Bench_Barbell_Curl",
+    "oldName": "Lying High Bench Barbell Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Lying_Leg_Curls",
+    "oldName": "Lying Leg Curls",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Lying_Machine_Squat",
+    "oldName": "Lying Machine Squat",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Lying_One-Arm_Lateral_Raise",
+    "oldName": "Lying One-Arm Lateral Raise",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Lying_Prone_Quadriceps",
+    "oldName": "Lying Prone Quadriceps",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Lying_Rear_Delt_Raise",
+    "oldName": "Lying Rear Delt Raise",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Lying_Supine_Dumbbell_Curl",
+    "oldName": "Lying Supine Dumbbell Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Lying_T-Bar_Row",
+    "oldName": "Lying T-Bar Row",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Lying_Triceps_Press",
+    "oldName": "Lying Triceps Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Machine_Bench_Press",
+    "oldName": "Machine Bench Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Machine_Bicep_Curl",
+    "oldName": "Machine Bicep Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Machine_Preacher_Curls",
+    "oldName": "Machine Preacher Curls",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Machine_Shoulder_Military_Press",
+    "oldName": "Machine Shoulder (Military) Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Machine_Triceps_Extension",
+    "oldName": "Machine Triceps Extension",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Medicine_Ball_Chest_Pass",
+    "oldName": "Medicine Ball Chest Pass",
+    "newId": "Medicine_Ball_Chest_Pass",
+    "status": "kept"
+  },
+  {
+    "oldId": "Medicine_Ball_Full_Twist",
+    "oldName": "Medicine Ball Full Twist",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Medicine_Ball_Scoop_Throw",
+    "oldName": "Medicine Ball Scoop Throw",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Middle_Back_Shrug",
+    "oldName": "Middle Back Shrug",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Middle_Back_Stretch",
+    "oldName": "Middle Back Stretch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Mixed_Grip_Chin",
+    "oldName": "Mixed Grip Chin",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Monster_Walk",
+    "oldName": "Monster Walk",
+    "newId": "Monster_Walk",
+    "status": "kept"
+  },
+  {
+    "oldId": "Mountain_Climbers",
+    "oldName": "Mountain Climbers",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Moving_Claw_Series",
+    "oldName": "Moving Claw Series",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Muscle_Snatch",
+    "oldName": "Muscle Snatch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Muscle_Up",
+    "oldName": "Muscle Up",
+    "newId": "Muscle_Up",
+    "status": "kept"
+  },
+  {
+    "oldId": "Narrow_Stance_Hack_Squats",
+    "oldName": "Narrow Stance Hack Squats",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Narrow_Stance_Leg_Press",
+    "oldName": "Narrow Stance Leg Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Narrow_Stance_Squats",
+    "oldName": "Narrow Stance Squats",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Natural_Glute_Ham_Raise",
+    "oldName": "Natural Glute Ham Raise",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Neck-SMR",
+    "oldName": "Neck-SMR",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Neck_Press",
+    "oldName": "Neck Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Oblique_Crunches",
+    "oldName": "Oblique Crunches",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Oblique_Crunches_-_On_The_Floor",
+    "oldName": "Oblique Crunches - On The Floor",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Olympic_Squat",
+    "oldName": "Olympic Squat",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "On-Your-Back_Quad_Stretch",
+    "oldName": "On-Your-Back Quad Stretch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "On_Your_Side_Quad_Stretch",
+    "oldName": "On Your Side Quad Stretch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "One-Arm_Dumbbell_Row",
+    "oldName": "One-Arm Dumbbell Row",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "One-Arm_Flat_Bench_Dumbbell_Flye",
+    "oldName": "One-Arm Flat Bench Dumbbell Flye",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "One-Arm_High-Pulley_Cable_Side_Bends",
+    "oldName": "One-Arm High-Pulley Cable Side Bends",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "One-Arm_Incline_Lateral_Raise",
+    "oldName": "One-Arm Incline Lateral Raise",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "One-Arm_Kettlebell_Clean",
+    "oldName": "One-Arm Kettlebell Clean",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "One-Arm_Kettlebell_Clean_and_Jerk",
+    "oldName": "One-Arm Kettlebell Clean and Jerk",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "One-Arm_Kettlebell_Floor_Press",
+    "oldName": "One-Arm Kettlebell Floor Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "One-Arm_Kettlebell_Jerk",
+    "oldName": "One-Arm Kettlebell Jerk",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "One-Arm_Kettlebell_Military_Press_To_The_Side",
+    "oldName": "One-Arm Kettlebell Military Press To The Side",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "One-Arm_Kettlebell_Para_Press",
+    "oldName": "One-Arm Kettlebell Para Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "One-Arm_Kettlebell_Push_Press",
+    "oldName": "One-Arm Kettlebell Push Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "One-Arm_Kettlebell_Row",
+    "oldName": "One-Arm Kettlebell Row",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "One-Arm_Kettlebell_Snatch",
+    "oldName": "One-Arm Kettlebell Snatch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "One-Arm_Kettlebell_Split_Jerk",
+    "oldName": "One-Arm Kettlebell Split Jerk",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "One-Arm_Kettlebell_Split_Snatch",
+    "oldName": "One-Arm Kettlebell Split Snatch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "One-Arm_Kettlebell_Swings",
+    "oldName": "One-Arm Kettlebell Swings",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "One-Arm_Long_Bar_Row",
+    "oldName": "One-Arm Long Bar Row",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "One-Arm_Medicine_Ball_Slam",
+    "oldName": "One-Arm Medicine Ball Slam",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "One-Arm_Open_Palm_Kettlebell_Clean",
+    "oldName": "One-Arm Open Palm Kettlebell Clean",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "One-Arm_Overhead_Kettlebell_Squats",
+    "oldName": "One-Arm Overhead Kettlebell Squats",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "One-Arm_Side_Deadlift",
+    "oldName": "One-Arm Side Deadlift",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "One-Arm_Side_Laterals",
+    "oldName": "One-Arm Side Laterals",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "One-Legged_Cable_Kickback",
+    "oldName": "One-Legged Cable Kickback",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "One_Arm_Against_Wall",
+    "oldName": "One Arm Against Wall",
+    "newId": "One_Arm_Against_Wall",
+    "status": "kept"
+  },
+  {
+    "oldId": "One_Arm_Chin-Up",
+    "oldName": "One Arm Chin-Up",
+    "newId": "One_Arm_Chin-Up",
+    "status": "kept"
+  },
+  {
+    "oldId": "One_Arm_Dumbbell_Bench_Press",
+    "oldName": "One Arm Dumbbell Bench Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "One_Arm_Dumbbell_Preacher_Curl",
+    "oldName": "One Arm Dumbbell Preacher Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "One_Arm_Floor_Press",
+    "oldName": "One Arm Floor Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "One_Arm_Lat_Pulldown",
+    "oldName": "One Arm Lat Pulldown",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "One_Arm_Pronated_Dumbbell_Triceps_Extension",
+    "oldName": "One Arm Pronated Dumbbell Triceps Extension",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "One_Arm_Supinated_Dumbbell_Triceps_Extension",
+    "oldName": "One Arm Supinated Dumbbell Triceps Extension",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "One_Half_Locust",
+    "oldName": "One Half Locust",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "One_Handed_Hang",
+    "oldName": "One Handed Hang",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "One_Knee_To_Chest",
+    "oldName": "One Knee To Chest",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "One_Leg_Barbell_Squat",
+    "oldName": "One Leg Barbell Squat",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Open_Palm_Kettlebell_Clean",
+    "oldName": "Open Palm Kettlebell Clean",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Otis-Up",
+    "oldName": "Otis-Up",
+    "newId": "Otis-Up",
+    "status": "kept"
+  },
+  {
+    "oldId": "Overhead_Cable_Curl",
+    "oldName": "Overhead Cable Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Overhead_Lat",
+    "oldName": "Overhead Lat",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Overhead_Slam",
+    "oldName": "Overhead Slam",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Overhead_Squat",
+    "oldName": "Overhead Squat",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Overhead_Stretch",
+    "oldName": "Overhead Stretch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Overhead_Triceps",
+    "oldName": "Overhead Triceps",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Pallof_Press",
+    "oldName": "Pallof Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Pallof_Press_With_Rotation",
+    "oldName": "Pallof Press With Rotation",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Palms-Down_Dumbbell_Wrist_Curl_Over_A_Bench",
+    "oldName": "Palms-Down Dumbbell Wrist Curl Over A Bench",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Palms-Down_Wrist_Curl_Over_A_Bench",
+    "oldName": "Palms-Down Wrist Curl Over A Bench",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Palms-Up_Barbell_Wrist_Curl_Over_A_Bench",
+    "oldName": "Palms-Up Barbell Wrist Curl Over A Bench",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Palms-Up_Dumbbell_Wrist_Curl_Over_A_Bench",
+    "oldName": "Palms-Up Dumbbell Wrist Curl Over A Bench",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Parallel_Bar_Dip",
+    "oldName": "Parallel Bar Dip",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Pelvic_Tilt_Into_Bridge",
+    "oldName": "Pelvic Tilt Into Bridge",
+    "newId": "Pelvic_Tilt_Into_Bridge",
+    "status": "kept"
+  },
+  {
+    "oldId": "Peroneals-SMR",
+    "oldName": "Peroneals-SMR",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Peroneals_Stretch",
+    "oldName": "Peroneals Stretch",
+    "newId": "Peroneals_Stretch",
+    "status": "kept"
+  },
+  {
+    "oldId": "Physioball_Hip_Bridge",
+    "oldName": "Physioball Hip Bridge",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Pin_Presses",
+    "oldName": "Pin Presses",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Piriformis-SMR",
+    "oldName": "Piriformis-SMR",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Plank",
+    "oldName": "Plank",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Plate_Pinch",
+    "oldName": "Plate Pinch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Plate_Twist",
+    "oldName": "Plate Twist",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Platform_Hamstring_Slides",
+    "oldName": "Platform Hamstring Slides",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Plie_Dumbbell_Squat",
+    "oldName": "Plie Dumbbell Squat",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Plyo_Kettlebell_Pushups",
+    "oldName": "Plyo Kettlebell Pushups",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Plyo_Push-up",
+    "oldName": "Plyo Push-up",
+    "newId": "Plyo_Push-up",
+    "status": "kept"
+  },
+  {
+    "oldId": "Posterior_Tibialis_Stretch",
+    "oldName": "Posterior Tibialis Stretch",
+    "newId": "Posterior_Tibialis_Stretch",
+    "status": "kept"
+  },
+  {
+    "oldId": "Power_Clean",
+    "oldName": "Power Clean",
+    "newId": "Power_Clean",
+    "status": "kept"
+  },
+  {
+    "oldId": "Power_Clean_from_Blocks",
+    "oldName": "Power Clean from Blocks",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Power_Jerk",
+    "oldName": "Power Jerk",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Power_Partials",
+    "oldName": "Power Partials",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Power_Snatch",
+    "oldName": "Power Snatch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Power_Snatch_from_Blocks",
+    "oldName": "Power Snatch from Blocks",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Power_Stairs",
+    "oldName": "Power Stairs",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Preacher_Curl",
+    "oldName": "Preacher Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Preacher_Hammer_Dumbbell_Curl",
+    "oldName": "Preacher Hammer Dumbbell Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Press_Sit-Up",
+    "oldName": "Press Sit-Up",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Prone_Manual_Hamstring",
+    "oldName": "Prone Manual Hamstring",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Prowler_Sprint",
+    "oldName": "Prowler Sprint",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Pull_Through",
+    "oldName": "Pull Through",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Pullups",
+    "oldName": "Pullups",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Push-Up_Wide",
+    "oldName": "Push-Up Wide",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Push-Ups_-_Close_Triceps_Position",
+    "oldName": "Push-Ups - Close Triceps Position",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Push-Ups_With_Feet_Elevated",
+    "oldName": "Push-Ups With Feet Elevated",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Push-Ups_With_Feet_On_An_Exercise_Ball",
+    "oldName": "Push-Ups With Feet On An Exercise Ball",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Push_Press",
+    "oldName": "Push Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Push_Press_-_Behind_the_Neck",
+    "oldName": "Push Press - Behind the Neck",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Push_Up_to_Side_Plank",
+    "oldName": "Push Up to Side Plank",
+    "newId": "Push_Up_to_Side_Plank",
+    "status": "kept"
+  },
+  {
+    "oldId": "Pushups",
+    "oldName": "Pushups",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Pushups_Close_and_Wide_Hand_Positions",
+    "oldName": "Pushups (Close and Wide Hand Positions)",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Pyramid",
+    "oldName": "Pyramid",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Quad_Stretch",
+    "oldName": "Quad Stretch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Quadriceps-SMR",
+    "oldName": "Quadriceps-SMR",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Quick_Leap",
+    "oldName": "Quick Leap",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Rack_Delivery",
+    "oldName": "Rack Delivery",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Rack_Pull_with_Bands",
+    "oldName": "Rack Pull with Bands",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Rack_Pulls",
+    "oldName": "Rack Pulls",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Rear_Leg_Raises",
+    "oldName": "Rear Leg Raises",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Recumbent_Bike",
+    "oldName": "Recumbent Bike",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Return_Push_from_Stance",
+    "oldName": "Return Push from Stance",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Reverse_Band_Bench_Press",
+    "oldName": "Reverse Band Bench Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Reverse_Band_Box_Squat",
+    "oldName": "Reverse Band Box Squat",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Reverse_Band_Deadlift",
+    "oldName": "Reverse Band Deadlift",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Reverse_Band_Power_Squat",
+    "oldName": "Reverse Band Power Squat",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Reverse_Band_Sumo_Deadlift",
+    "oldName": "Reverse Band Sumo Deadlift",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Reverse_Barbell_Curl",
+    "oldName": "Reverse Barbell Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Reverse_Barbell_Preacher_Curls",
+    "oldName": "Reverse Barbell Preacher Curls",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Reverse_Cable_Curl",
+    "oldName": "Reverse Cable Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Reverse_Crunch",
+    "oldName": "Reverse Crunch",
+    "newId": "Reverse_Crunch",
+    "status": "kept"
+  },
+  {
+    "oldId": "Reverse_Flyes",
+    "oldName": "Reverse Flyes",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Reverse_Flyes_With_External_Rotation",
+    "oldName": "Reverse Flyes With External Rotation",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Reverse_Grip_Bent-Over_Rows",
+    "oldName": "Reverse Grip Bent-Over Rows",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Reverse_Grip_Triceps_Pushdown",
+    "oldName": "Reverse Grip Triceps Pushdown",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Reverse_Hyperextension",
+    "oldName": "Reverse Hyperextension",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Reverse_Machine_Flyes",
+    "oldName": "Reverse Machine Flyes",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Reverse_Plate_Curls",
+    "oldName": "Reverse Plate Curls",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Reverse_Triceps_Bench_Press",
+    "oldName": "Reverse Triceps Bench Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Rhomboids-SMR",
+    "oldName": "Rhomboids-SMR",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Rickshaw_Carry",
+    "oldName": "Rickshaw Carry",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Rickshaw_Deadlift",
+    "oldName": "Rickshaw Deadlift",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Ring_Dips",
+    "oldName": "Ring Dips",
+    "newId": "Ring_Dips",
+    "status": "kept"
+  },
+  {
+    "oldId": "Rocket_Jump",
+    "oldName": "Rocket Jump",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Rocking_Standing_Calf_Raise",
+    "oldName": "Rocking Standing Calf Raise",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Rocky_Pull-Ups_Pulldowns",
+    "oldName": "Rocky Pull-Ups/Pulldowns",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Romanian_Deadlift",
+    "oldName": "Romanian Deadlift",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Romanian_Deadlift_from_Deficit",
+    "oldName": "Romanian Deadlift from Deficit",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Rope_Climb",
+    "oldName": "Rope Climb",
+    "newId": "Rope_Climb",
+    "status": "kept"
+  },
+  {
+    "oldId": "Rope_Crunch",
+    "oldName": "Rope Crunch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Rope_Jumping",
+    "oldName": "Rope Jumping",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Rope_Straight-Arm_Pulldown",
+    "oldName": "Rope Straight-Arm Pulldown",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Round_The_World_Shoulder_Stretch",
+    "oldName": "Round The World Shoulder Stretch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Rowing_Stationary",
+    "oldName": "Rowing, Stationary",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Runners_Stretch",
+    "oldName": "Runner's Stretch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Running_Treadmill",
+    "oldName": "Running, Treadmill",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Russian_Twist",
+    "oldName": "Russian Twist",
+    "newId": "Russian_Twist",
+    "status": "kept"
+  },
+  {
+    "oldId": "Sandbag_Load",
+    "oldName": "Sandbag Load",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Scapular_Pull-Up",
+    "oldName": "Scapular Pull-Up",
+    "newId": "Scapular_Pull-Up",
+    "status": "kept"
+  },
+  {
+    "oldId": "Scissor_Kick",
+    "oldName": "Scissor Kick",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Scissors_Jump",
+    "oldName": "Scissors Jump",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Seated_Band_Hamstring_Curl",
+    "oldName": "Seated Band Hamstring Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Seated_Barbell_Military_Press",
+    "oldName": "Seated Barbell Military Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Seated_Barbell_Twist",
+    "oldName": "Seated Barbell Twist",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Seated_Bent-Over_One-Arm_Dumbbell_Triceps_Extension",
+    "oldName": "Seated Bent-Over One-Arm Dumbbell Triceps Extension",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Seated_Bent-Over_Rear_Delt_Raise",
+    "oldName": "Seated Bent-Over Rear Delt Raise",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Seated_Bent-Over_Two-Arm_Dumbbell_Triceps_Extension",
+    "oldName": "Seated Bent-Over Two-Arm Dumbbell Triceps Extension",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Seated_Biceps",
+    "oldName": "Seated Biceps",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Seated_Cable_Rows",
+    "oldName": "Seated Cable Rows",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Seated_Cable_Shoulder_Press",
+    "oldName": "Seated Cable Shoulder Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Seated_Calf_Raise",
+    "oldName": "Seated Calf Raise",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Seated_Calf_Stretch",
+    "oldName": "Seated Calf Stretch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Seated_Close-Grip_Concentration_Barbell_Curl",
+    "oldName": "Seated Close-Grip Concentration Barbell Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Seated_Dumbbell_Curl",
+    "oldName": "Seated Dumbbell Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Seated_Dumbbell_Inner_Biceps_Curl",
+    "oldName": "Seated Dumbbell Inner Biceps Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Seated_Dumbbell_Palms-Down_Wrist_Curl",
+    "oldName": "Seated Dumbbell Palms-Down Wrist Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Seated_Dumbbell_Palms-Up_Wrist_Curl",
+    "oldName": "Seated Dumbbell Palms-Up Wrist Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Seated_Dumbbell_Press",
+    "oldName": "Seated Dumbbell Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Seated_Flat_Bench_Leg_Pull-In",
+    "oldName": "Seated Flat Bench Leg Pull-In",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Seated_Floor_Hamstring_Stretch",
+    "oldName": "Seated Floor Hamstring Stretch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Seated_Front_Deltoid",
+    "oldName": "Seated Front Deltoid",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Seated_Glute",
+    "oldName": "Seated Glute",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Seated_Good_Mornings",
+    "oldName": "Seated Good Mornings",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Seated_Hamstring",
+    "oldName": "Seated Hamstring",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Seated_Hamstring_and_Calf_Stretch",
+    "oldName": "Seated Hamstring and Calf Stretch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Seated_Head_Harness_Neck_Resistance",
+    "oldName": "Seated Head Harness Neck Resistance",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Seated_Leg_Curl",
+    "oldName": "Seated Leg Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Seated_Leg_Tucks",
+    "oldName": "Seated Leg Tucks",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Seated_One-Arm_Dumbbell_Palms-Down_Wrist_Curl",
+    "oldName": "Seated One-Arm Dumbbell Palms-Down Wrist Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Seated_One-Arm_Dumbbell_Palms-Up_Wrist_Curl",
+    "oldName": "Seated One-Arm Dumbbell Palms-Up Wrist Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Seated_One-arm_Cable_Pulley_Rows",
+    "oldName": "Seated One-arm Cable Pulley Rows",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Seated_Overhead_Stretch",
+    "oldName": "Seated Overhead Stretch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Seated_Palm-Up_Barbell_Wrist_Curl",
+    "oldName": "Seated Palm-Up Barbell Wrist Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Seated_Palms-Down_Barbell_Wrist_Curl",
+    "oldName": "Seated Palms-Down Barbell Wrist Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Seated_Side_Lateral_Raise",
+    "oldName": "Seated Side Lateral Raise",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Seated_Triceps_Press",
+    "oldName": "Seated Triceps Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Seated_Two-Arm_Palms-Up_Low-Pulley_Wrist_Curl",
+    "oldName": "Seated Two-Arm Palms-Up Low-Pulley Wrist Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "See-Saw_Press_Alternating_Side_Press",
+    "oldName": "See-Saw Press (Alternating Side Press)",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Shotgun_Row",
+    "oldName": "Shotgun Row",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Shoulder_Circles",
+    "oldName": "Shoulder Circles",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Shoulder_Press_-_With_Bands",
+    "oldName": "Shoulder Press - With Bands",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Shoulder_Raise",
+    "oldName": "Shoulder Raise",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Shoulder_Stretch",
+    "oldName": "Shoulder Stretch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Side-Lying_Floor_Stretch",
+    "oldName": "Side-Lying Floor Stretch",
+    "newId": "Side-Lying_Floor_Stretch",
+    "status": "kept"
+  },
+  {
+    "oldId": "Side_Bridge",
+    "oldName": "Side Bridge",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Side_Hop-Sprint",
+    "oldName": "Side Hop-Sprint",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Side_Jackknife",
+    "oldName": "Side Jackknife",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Side_Lateral_Raise",
+    "oldName": "Side Lateral Raise",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Side_Laterals_to_Front_Raise",
+    "oldName": "Side Laterals to Front Raise",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Side_Leg_Raises",
+    "oldName": "Side Leg Raises",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Side_Lying_Groin_Stretch",
+    "oldName": "Side Lying Groin Stretch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Side_Neck_Stretch",
+    "oldName": "Side Neck Stretch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Side_Standing_Long_Jump",
+    "oldName": "Side Standing Long Jump",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Side_To_Side_Chins",
+    "oldName": "Side To Side Chins",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Side_Wrist_Pull",
+    "oldName": "Side Wrist Pull",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Side_to_Side_Box_Shuffle",
+    "oldName": "Side to Side Box Shuffle",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Single-Arm_Cable_Crossover",
+    "oldName": "Single-Arm Cable Crossover",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Single-Arm_Linear_Jammer",
+    "oldName": "Single-Arm Linear Jammer",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Single-Arm_Push-Up",
+    "oldName": "Single-Arm Push-Up",
+    "newId": "Single-Arm_Push-Up",
+    "status": "kept"
+  },
+  {
+    "oldId": "Single-Cone_Sprint_Drill",
+    "oldName": "Single-Cone Sprint Drill",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Single-Leg_High_Box_Squat",
+    "oldName": "Single-Leg High Box Squat",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Single-Leg_Hop_Progression",
+    "oldName": "Single-Leg Hop Progression",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Single-Leg_Lateral_Hop",
+    "oldName": "Single-Leg Lateral Hop",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Single-Leg_Leg_Extension",
+    "oldName": "Single-Leg Leg Extension",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Single-Leg_Stride_Jump",
+    "oldName": "Single-Leg Stride Jump",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Single_Dumbbell_Raise",
+    "oldName": "Single Dumbbell Raise",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Single_Leg_Butt_Kick",
+    "oldName": "Single Leg Butt Kick",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Single_Leg_Glute_Bridge",
+    "oldName": "Single Leg Glute Bridge",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Single_Leg_Push-off",
+    "oldName": "Single Leg Push-off",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Sit-Up",
+    "oldName": "Sit-Up",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Sit_Squats",
+    "oldName": "Sit Squats",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Skating",
+    "oldName": "Skating",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Sled_Drag_-_Harness",
+    "oldName": "Sled Drag - Harness",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Sled_Overhead_Backward_Walk",
+    "oldName": "Sled Overhead Backward Walk",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Sled_Overhead_Triceps_Extension",
+    "oldName": "Sled Overhead Triceps Extension",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Sled_Push",
+    "oldName": "Sled Push",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Sled_Reverse_Flye",
+    "oldName": "Sled Reverse Flye",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Sled_Row",
+    "oldName": "Sled Row",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Sledgehammer_Swings",
+    "oldName": "Sledgehammer Swings",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Smith_Incline_Shoulder_Raise",
+    "oldName": "Smith Incline Shoulder Raise",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Smith_Machine_Behind_the_Back_Shrug",
+    "oldName": "Smith Machine Behind the Back Shrug",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Smith_Machine_Bench_Press",
+    "oldName": "Smith Machine Bench Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Smith_Machine_Bent_Over_Row",
+    "oldName": "Smith Machine Bent Over Row",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Smith_Machine_Calf_Raise",
+    "oldName": "Smith Machine Calf Raise",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Smith_Machine_Close-Grip_Bench_Press",
+    "oldName": "Smith Machine Close-Grip Bench Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Smith_Machine_Decline_Press",
+    "oldName": "Smith Machine Decline Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Smith_Machine_Hang_Power_Clean",
+    "oldName": "Smith Machine Hang Power Clean",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Smith_Machine_Hip_Raise",
+    "oldName": "Smith Machine Hip Raise",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Smith_Machine_Incline_Bench_Press",
+    "oldName": "Smith Machine Incline Bench Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Smith_Machine_Leg_Press",
+    "oldName": "Smith Machine Leg Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Smith_Machine_One-Arm_Upright_Row",
+    "oldName": "Smith Machine One-Arm Upright Row",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Smith_Machine_Overhead_Shoulder_Press",
+    "oldName": "Smith Machine Overhead Shoulder Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Smith_Machine_Pistol_Squat",
+    "oldName": "Smith Machine Pistol Squat",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Smith_Machine_Reverse_Calf_Raises",
+    "oldName": "Smith Machine Reverse Calf Raises",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Smith_Machine_Squat",
+    "oldName": "Smith Machine Squat",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Smith_Machine_Stiff-Legged_Deadlift",
+    "oldName": "Smith Machine Stiff-Legged Deadlift",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Smith_Machine_Upright_Row",
+    "oldName": "Smith Machine Upright Row",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Smith_Single-Leg_Split_Squat",
+    "oldName": "Smith Single-Leg Split Squat",
+    "newId": "Smith_Single-Leg_Split_Squat",
+    "status": "kept"
+  },
+  {
+    "oldId": "Snatch",
+    "oldName": "Snatch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Snatch_Balance",
+    "oldName": "Snatch Balance",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Snatch_Deadlift",
+    "oldName": "Snatch Deadlift",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Snatch_Pull",
+    "oldName": "Snatch Pull",
+    "newId": "Snatch_Pull",
+    "status": "kept"
+  },
+  {
+    "oldId": "Snatch_Shrug",
+    "oldName": "Snatch Shrug",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Snatch_from_Blocks",
+    "oldName": "Snatch from Blocks",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Speed_Band_Overhead_Triceps",
+    "oldName": "Speed Band Overhead Triceps",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Speed_Box_Squat",
+    "oldName": "Speed Box Squat",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Speed_Squats",
+    "oldName": "Speed Squats",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Spell_Caster",
+    "oldName": "Spell Caster",
+    "newId": "Spell_Caster",
+    "status": "kept"
+  },
+  {
+    "oldId": "Spider_Crawl",
+    "oldName": "Spider Crawl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Spider_Curl",
+    "oldName": "Spider Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Spinal_Stretch",
+    "oldName": "Spinal Stretch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Split_Clean",
+    "oldName": "Split Clean",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Split_Jerk",
+    "oldName": "Split Jerk",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Split_Jump",
+    "oldName": "Split Jump",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Split_Snatch",
+    "oldName": "Split Snatch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Split_Squat_with_Dumbbells",
+    "oldName": "Split Squat with Dumbbells",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Split_Squats",
+    "oldName": "Split Squats",
+    "newId": "Split_Squats",
+    "status": "kept"
+  },
+  {
+    "oldId": "Squat_Jerk",
+    "oldName": "Squat Jerk",
+    "newId": "Squat_Jerk",
+    "status": "kept"
+  },
+  {
+    "oldId": "Squat_with_Bands",
+    "oldName": "Squat with Bands",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Squat_with_Chains",
+    "oldName": "Squat with Chains",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Squat_with_Plate_Movers",
+    "oldName": "Squat with Plate Movers",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Squats_-_With_Bands",
+    "oldName": "Squats - With Bands",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Stairmaster",
+    "oldName": "Stairmaster",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Alternating_Dumbbell_Press",
+    "oldName": "Standing Alternating Dumbbell Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Barbell_Calf_Raise",
+    "oldName": "Standing Barbell Calf Raise",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Barbell_Press_Behind_Neck",
+    "oldName": "Standing Barbell Press Behind Neck",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Bent-Over_One-Arm_Dumbbell_Triceps_Extension",
+    "oldName": "Standing Bent-Over One-Arm Dumbbell Triceps Extension",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Bent-Over_Two-Arm_Dumbbell_Triceps_Extension",
+    "oldName": "Standing Bent-Over Two-Arm Dumbbell Triceps Extension",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Biceps_Cable_Curl",
+    "oldName": "Standing Biceps Cable Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Biceps_Stretch",
+    "oldName": "Standing Biceps Stretch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Bradford_Press",
+    "oldName": "Standing Bradford Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Cable_Chest_Press",
+    "oldName": "Standing Cable Chest Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Cable_Lift",
+    "oldName": "Standing Cable Lift",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Cable_Wood_Chop",
+    "oldName": "Standing Cable Wood Chop",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Calf_Raises",
+    "oldName": "Standing Calf Raises",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Concentration_Curl",
+    "oldName": "Standing Concentration Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Dumbbell_Calf_Raise",
+    "oldName": "Standing Dumbbell Calf Raise",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Dumbbell_Press",
+    "oldName": "Standing Dumbbell Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Dumbbell_Reverse_Curl",
+    "oldName": "Standing Dumbbell Reverse Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Dumbbell_Straight-Arm_Front_Delt_Raise_Above_Head",
+    "oldName": "Standing Dumbbell Straight-Arm Front Delt Raise Above Head",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Dumbbell_Triceps_Extension",
+    "oldName": "Standing Dumbbell Triceps Extension",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Dumbbell_Upright_Row",
+    "oldName": "Standing Dumbbell Upright Row",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Elevated_Quad_Stretch",
+    "oldName": "Standing Elevated Quad Stretch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Front_Barbell_Raise_Over_Head",
+    "oldName": "Standing Front Barbell Raise Over Head",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Gastrocnemius_Calf_Stretch",
+    "oldName": "Standing Gastrocnemius Calf Stretch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Hamstring_and_Calf_Stretch",
+    "oldName": "Standing Hamstring and Calf Stretch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Hip_Circles",
+    "oldName": "Standing Hip Circles",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Hip_Flexors",
+    "oldName": "Standing Hip Flexors",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Inner-Biceps_Curl",
+    "oldName": "Standing Inner-Biceps Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Lateral_Stretch",
+    "oldName": "Standing Lateral Stretch",
+    "newId": "Standing_Lateral_Stretch",
+    "status": "kept"
+  },
+  {
+    "oldId": "Standing_Leg_Curl",
+    "oldName": "Standing Leg Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Long_Jump",
+    "oldName": "Standing Long Jump",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Low-Pulley_Deltoid_Raise",
+    "oldName": "Standing Low-Pulley Deltoid Raise",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Low-Pulley_One-Arm_Triceps_Extension",
+    "oldName": "Standing Low-Pulley One-Arm Triceps Extension",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Military_Press",
+    "oldName": "Standing Military Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Olympic_Plate_Hand_Squeeze",
+    "oldName": "Standing Olympic Plate Hand Squeeze",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_One-Arm_Cable_Curl",
+    "oldName": "Standing One-Arm Cable Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_One-Arm_Dumbbell_Curl_Over_Incline_Bench",
+    "oldName": "Standing One-Arm Dumbbell Curl Over Incline Bench",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_One-Arm_Dumbbell_Triceps_Extension",
+    "oldName": "Standing One-Arm Dumbbell Triceps Extension",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Overhead_Barbell_Triceps_Extension",
+    "oldName": "Standing Overhead Barbell Triceps Extension",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Palm-In_One-Arm_Dumbbell_Press",
+    "oldName": "Standing Palm-In One-Arm Dumbbell Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Palms-In_Dumbbell_Press",
+    "oldName": "Standing Palms-In Dumbbell Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Palms-Up_Barbell_Behind_The_Back_Wrist_Curl",
+    "oldName": "Standing Palms-Up Barbell Behind The Back Wrist Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Pelvic_Tilt",
+    "oldName": "Standing Pelvic Tilt",
+    "newId": "Standing_Pelvic_Tilt",
+    "status": "kept"
+  },
+  {
+    "oldId": "Standing_Rope_Crunch",
+    "oldName": "Standing Rope Crunch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Soleus_And_Achilles_Stretch",
+    "oldName": "Standing Soleus And Achilles Stretch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Toe_Touches",
+    "oldName": "Standing Toe Touches",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Towel_Triceps_Extension",
+    "oldName": "Standing Towel Triceps Extension",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Standing_Two-Arm_Overhead_Throw",
+    "oldName": "Standing Two-Arm Overhead Throw",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Star_Jump",
+    "oldName": "Star Jump",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Step-up_with_Knee_Raise",
+    "oldName": "Step-up with Knee Raise",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Step_Mill",
+    "oldName": "Step Mill",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Stiff-Legged_Barbell_Deadlift",
+    "oldName": "Stiff-Legged Barbell Deadlift",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Stiff-Legged_Dumbbell_Deadlift",
+    "oldName": "Stiff-Legged Dumbbell Deadlift",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Stiff_Leg_Barbell_Good_Morning",
+    "oldName": "Stiff Leg Barbell Good Morning",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Stomach_Vacuum",
+    "oldName": "Stomach Vacuum",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Straight-Arm_Dumbbell_Pullover",
+    "oldName": "Straight-Arm Dumbbell Pullover",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Straight-Arm_Pulldown",
+    "oldName": "Straight-Arm Pulldown",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Straight_Bar_Bench_Mid_Rows",
+    "oldName": "Straight Bar Bench Mid Rows",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Straight_Raises_on_Incline_Bench",
+    "oldName": "Straight Raises on Incline Bench",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Stride_Jump_Crossover",
+    "oldName": "Stride Jump Crossover",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Sumo_Deadlift",
+    "oldName": "Sumo Deadlift",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Sumo_Deadlift_with_Bands",
+    "oldName": "Sumo Deadlift with Bands",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Sumo_Deadlift_with_Chains",
+    "oldName": "Sumo Deadlift with Chains",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Superman",
+    "oldName": "Superman",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Supine_Chest_Throw",
+    "oldName": "Supine Chest Throw",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Supine_One-Arm_Overhead_Throw",
+    "oldName": "Supine One-Arm Overhead Throw",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Supine_Two-Arm_Overhead_Throw",
+    "oldName": "Supine Two-Arm Overhead Throw",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Suspended_Fallout",
+    "oldName": "Suspended Fallout",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Suspended_Push-Up",
+    "oldName": "Suspended Push-Up",
+    "newId": "Suspended_Push-Up",
+    "status": "kept"
+  },
+  {
+    "oldId": "Suspended_Reverse_Crunch",
+    "oldName": "Suspended Reverse Crunch",
+    "newId": "Suspended_Reverse_Crunch",
+    "status": "kept"
+  },
+  {
+    "oldId": "Suspended_Row",
+    "oldName": "Suspended Row",
+    "newId": "Suspended_Row",
+    "status": "kept"
+  },
+  {
+    "oldId": "Suspended_Split_Squat",
+    "oldName": "Suspended Split Squat",
+    "newId": "Suspended_Split_Squat",
+    "status": "kept"
+  },
+  {
+    "oldId": "Svend_Press",
+    "oldName": "Svend Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "T-Bar_Row_with_Handle",
+    "oldName": "T-Bar Row with Handle",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Tate_Press",
+    "oldName": "Tate Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "The_Straddle",
+    "oldName": "The Straddle",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Thigh_Abductor",
+    "oldName": "Thigh Abductor",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Thigh_Adductor",
+    "oldName": "Thigh Adductor",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Tire_Flip",
+    "oldName": "Tire Flip",
+    "newId": "Tire_Flip",
+    "status": "kept"
+  },
+  {
+    "oldId": "Toe_Touchers",
+    "oldName": "Toe Touchers",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Torso_Rotation",
+    "oldName": "Torso Rotation",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Trail_Running_Walking",
+    "oldName": "Trail Running/Walking",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Trap_Bar_Deadlift",
+    "oldName": "Trap Bar Deadlift",
+    "newId": "Trap_Bar_Deadlift",
+    "status": "kept"
+  },
+  {
+    "oldId": "Tricep_Dumbbell_Kickback",
+    "oldName": "Tricep Dumbbell Kickback",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Tricep_Side_Stretch",
+    "oldName": "Tricep Side Stretch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Triceps_Overhead_Extension_with_Rope",
+    "oldName": "Triceps Overhead Extension with Rope",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Triceps_Pushdown",
+    "oldName": "Triceps Pushdown",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Triceps_Pushdown_-_Rope_Attachment",
+    "oldName": "Triceps Pushdown - Rope Attachment",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Triceps_Pushdown_-_V-Bar_Attachment",
+    "oldName": "Triceps Pushdown - V-Bar Attachment",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Triceps_Stretch",
+    "oldName": "Triceps Stretch",
+    "newId": "Triceps_Stretch",
+    "status": "kept"
+  },
+  {
+    "oldId": "Tuck_Crunch",
+    "oldName": "Tuck Crunch",
+    "newId": "Tuck_Crunch",
+    "status": "kept"
+  },
+  {
+    "oldId": "Two-Arm_Dumbbell_Preacher_Curl",
+    "oldName": "Two-Arm Dumbbell Preacher Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Two-Arm_Kettlebell_Clean",
+    "oldName": "Two-Arm Kettlebell Clean",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Two-Arm_Kettlebell_Jerk",
+    "oldName": "Two-Arm Kettlebell Jerk",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Two-Arm_Kettlebell_Military_Press",
+    "oldName": "Two-Arm Kettlebell Military Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Two-Arm_Kettlebell_Row",
+    "oldName": "Two-Arm Kettlebell Row",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Underhand_Cable_Pulldowns",
+    "oldName": "Underhand Cable Pulldowns",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Upper_Back-Leg_Grab",
+    "oldName": "Upper Back-Leg Grab",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Upper_Back_Stretch",
+    "oldName": "Upper Back Stretch",
+    "newId": "Upper_Back_Stretch",
+    "status": "kept"
+  },
+  {
+    "oldId": "Upright_Barbell_Row",
+    "oldName": "Upright Barbell Row",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Upright_Cable_Row",
+    "oldName": "Upright Cable Row",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Upright_Row_-_With_Bands",
+    "oldName": "Upright Row - With Bands",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Upward_Stretch",
+    "oldName": "Upward Stretch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "V-Bar_Pulldown",
+    "oldName": "V-Bar Pulldown",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "V-Bar_Pullup",
+    "oldName": "V-Bar Pullup",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Vertical_Swing",
+    "oldName": "Vertical Swing",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Walking_Treadmill",
+    "oldName": "Walking, Treadmill",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Weighted_Ball_Hyperextension",
+    "oldName": "Weighted Ball Hyperextension",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Weighted_Ball_Side_Bend",
+    "oldName": "Weighted Ball Side Bend",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Weighted_Bench_Dip",
+    "oldName": "Weighted Bench Dip",
+    "newId": "Weighted_Bench_Dip",
+    "status": "kept"
+  },
+  {
+    "oldId": "Weighted_Crunches",
+    "oldName": "Weighted Crunches",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Weighted_Jump_Squat",
+    "oldName": "Weighted Jump Squat",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Weighted_Pull_Ups",
+    "oldName": "Weighted Pull Ups",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Weighted_Sissy_Squat",
+    "oldName": "Weighted Sissy Squat",
+    "newId": "Weighted_Sissy_Squat",
+    "status": "kept"
+  },
+  {
+    "oldId": "Weighted_Sit-Ups_-_With_Bands",
+    "oldName": "Weighted Sit-Ups - With Bands",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Weighted_Squat",
+    "oldName": "Weighted Squat",
+    "newId": "Weighted_Squat",
+    "status": "kept"
+  },
+  {
+    "oldId": "Wide-Grip_Barbell_Bench_Press",
+    "oldName": "Wide-Grip Barbell Bench Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Wide-Grip_Decline_Barbell_Bench_Press",
+    "oldName": "Wide-Grip Decline Barbell Bench Press",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Wide-Grip_Decline_Barbell_Pullover",
+    "oldName": "Wide-Grip Decline Barbell Pullover",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Wide-Grip_Lat_Pulldown",
+    "oldName": "Wide-Grip Lat Pulldown",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Wide-Grip_Pulldown_Behind_The_Neck",
+    "oldName": "Wide-Grip Pulldown Behind The Neck",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Wide-Grip_Rear_Pull-Up",
+    "oldName": "Wide-Grip Rear Pull-Up",
+    "newId": "Wide-Grip_Rear_Pull-Up",
+    "status": "kept"
+  },
+  {
+    "oldId": "Wide-Grip_Standing_Barbell_Curl",
+    "oldName": "Wide-Grip Standing Barbell Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Wide_Stance_Barbell_Squat",
+    "oldName": "Wide Stance Barbell Squat",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Wide_Stance_Stiff_Legs",
+    "oldName": "Wide Stance Stiff Legs",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Wind_Sprints",
+    "oldName": "Wind Sprints",
+    "newId": "Wind_Sprints",
+    "status": "kept"
+  },
+  {
+    "oldId": "Windmills",
+    "oldName": "Windmills",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Worlds_Greatest_Stretch",
+    "oldName": "World's Greatest Stretch",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Wrist_Circles",
+    "oldName": "Wrist Circles",
+    "newId": "Wrist_Circles",
+    "status": "kept"
+  },
+  {
+    "oldId": "Wrist_Roller",
+    "oldName": "Wrist Roller",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Wrist_Rotations_with_Straight_Bar",
+    "oldName": "Wrist Rotations with Straight Bar",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Yoke_Walk",
+    "oldName": "Yoke Walk",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Zercher_Squats",
+    "oldName": "Zercher Squats",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Zottman_Curl",
+    "oldName": "Zottman Curl",
+    "newId": null,
+    "status": "removed"
+  },
+  {
+    "oldId": "Zottman_Preacher_Curl",
+    "oldName": "Zottman Preacher Curl",
+    "newId": null,
+    "status": "removed"
+  }
+]

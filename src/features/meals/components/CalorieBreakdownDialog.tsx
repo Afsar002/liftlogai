@@ -1,5 +1,6 @@
 import { Dialog, DialogPanel, DialogTitle } from '@headlessui/react';
 import { FiX } from 'react-icons/fi';
+import { AnimatedOverlay, AnimatedPanel } from '../../../shared/components/motion/AnimatedDialog';
 import type { UserSettings } from '../../settings/types';
 import type { CalorieCalculation } from '../../../shared/lib/calorieCalculator';
 import { ACTIVITY_MULTIPLIERS, GOAL_ADJUSTMENTS } from '../../../shared/lib/calorieCalculator';
@@ -37,16 +38,18 @@ export default function CalorieBreakdownDialog({ open, onClose, calculation, set
 
   return (
     <Dialog open={open} onClose={onClose} className="relative z-50">
-      <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" />
+      <AnimatedOverlay className="fixed inset-0 bg-black/50 backdrop-blur-sm" />
       <div className="fixed inset-0 flex items-center justify-center p-4">
-        <DialogPanel className="w-full max-w-md rounded-2xl border bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
+        <AnimatedPanel className="w-full max-w-md">
+        <DialogPanel className="w-full max-w-md rounded-2xl border bg-white p-6 dark:border-white/6 dark:bg-[#141417]">
           <div className="flex items-center justify-between mb-4">
             <DialogTitle className="text-xl font-bold text-zinc-900 dark:text-white">
               Calorie Calculation
             </DialogTitle>
             <button
               onClick={onClose}
-              className="p-1 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+              aria-label="Close"
+              className="p-1.5 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 rounded-xl hover:bg-zinc-100 dark:hover:bg-white/8 transition-colors focus-visible:ring-2 focus-visible:ring-emerald-500/50"
             >
               <FiX size={20} />
             </button>
@@ -96,7 +99,7 @@ export default function CalorieBreakdownDialog({ open, onClose, calculation, set
                     × {ACTIVITY_MULTIPLIERS[settings.activityLevel]}
                   </span>
                 </div>
-                <div className="flex justify-between border-t border-zinc-200 dark:border-zinc-800 pt-2">
+                <div className="flex justify-between border-t border-zinc-200/80 dark:border-white/6 pt-2">
                   <span className="text-zinc-500 dark:text-zinc-400">TDEE:</span>
                   <span className="text-zinc-900 dark:text-white font-medium">{calculation.tdee} kcal</span>
                 </div>
@@ -108,7 +111,7 @@ export default function CalorieBreakdownDialog({ open, onClose, calculation, set
                     × {GOAL_ADJUSTMENTS[settings.goal]}
                   </span>
                 </div>
-                <div className="flex justify-between border-t border-zinc-200 dark:border-zinc-800 pt-2">
+                <div className="flex justify-between border-t border-zinc-200/80 dark:border-white/6 pt-2">
                   <span className="text-zinc-500 dark:text-zinc-400">Adjustment:</span>
                   <span className={`font-medium ${
                     calculation.deficitOrSurplus > 0
@@ -120,9 +123,9 @@ export default function CalorieBreakdownDialog({ open, onClose, calculation, set
                     {deficitLabel}
                   </span>
                 </div>
-                <div className="flex justify-between text-lg font-bold border-t border-zinc-200 dark:border-zinc-800 pt-2">
+                <div className="flex justify-between text-lg font-bold border-t border-zinc-200/80 dark:border-white/6 pt-2">
                   <span className="text-zinc-900 dark:text-white">Required Calories:</span>
-                  <span className="text-green-600 dark:text-green-400">{calculation.requiredCalories} kcal</span>
+                  <span className="text-emerald-600 dark:text-emerald-400">{calculation.requiredCalories} kcal</span>
                 </div>
               </div>
             </div>
@@ -133,6 +136,7 @@ export default function CalorieBreakdownDialog({ open, onClose, calculation, set
             </p>
           </div>
         </DialogPanel>
+        </AnimatedPanel>
       </div>
     </Dialog>
   );

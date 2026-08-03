@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import BottomNav from "./BottomNav";
+import AnimatedPage from "../motion/AnimatedPage";
 import { cn } from "../../lib/cn";
 
 interface LayoutProps {
@@ -15,8 +16,8 @@ export default function Layout({
     <div
       className={cn(
         "relative min-h-screen transition-colors duration-150",
-        "bg-zinc-50 text-zinc-900",
-        "dark:bg-zinc-950 dark:text-zinc-100",
+        "bg-base-50 text-zinc-900",
+        "dark:bg-base-950 dark:text-zinc-100",
         className
       )}
     >
@@ -25,21 +26,21 @@ export default function Layout({
           mx-auto
           w-full
           max-w-lg
-          px-4
-          py-6
-          pb-28
+          px-6
+          py-8
+          pb-32
 
           sm:max-w-xl
-          sm:px-6
+          sm:px-8
 
           md:max-w-3xl
-          md:px-8
+          md:px-10
 
           lg:max-w-5xl
           xl:max-w-7xl
         "
       >
-        {children}
+        <AnimatedPage orchestrate staggerChildren>{children}</AnimatedPage>
       </main>
 
       <BottomNav />

@@ -12,14 +12,14 @@ export default function Skeleton({
   const variants = {
     text: "h-4 w-full rounded",
     circular: "h-10 w-10 rounded-full",
-    rectangular: "h-32 w-full rounded-xl",
-    card: "h-40 w-full rounded-xl",
+    rectangular: "h-32 w-full rounded-2xl",
+    card: "h-40 w-full rounded-2xl",
   };
 
   return (
     <div
       className={cn(
-        "animate-pulse bg-zinc-200 dark:bg-zinc-800",
+        "animate-pulse bg-zinc-200/80 dark:bg-white/8",
         variants[variant],
         className
       )}

@@ -1,5 +1,6 @@
 import Card from "./Card";
 import Button from "./Button";
+import { AnimatedOverlay, AnimatedPanel } from "../motion/AnimatedDialog";
 interface ConfirmDialogProps {
   open: boolean;
   title: string;
@@ -30,36 +31,40 @@ export default function ConfirmDialog({
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
-      <Card className="w-full max-w-md">
-        <h2 className="text-xl font-semibold">{title}</h2>
+    <AnimatedOverlay className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
+      <AnimatedPanel className="w-full max-w-md">
+        <Card>
+          <h2 className="text-xl font-semibold text-zinc-900 dark:text-white">
+            {title}
+          </h2>
 
-        <p className="mt-3 text-sm text-gray-400">
-          {description}
-        </p>
+          <p className="mt-3 text-sm text-zinc-500 dark:text-zinc-400">
+            {description}
+          </p>
 
-        <div className="mt-6 flex justify-end gap-3">
-          <Button
-            variant="secondary"
-            onClick={onCancel}
-            disabled={loading}
-          >
-            {cancelText}
-          </Button>
+          <div className="mt-6 flex justify-end gap-3">
+            <Button
+              variant="secondary"
+              onClick={onCancel}
+              disabled={loading}
+            >
+              {cancelText}
+            </Button>
 
-          <Button
-            variant={
-              variant === "danger"
-                ? "danger"
-                : "primary"
-            }
-            onClick={onConfirm}
-            disabled={loading}
-          >
-            {confirmText}
-          </Button>
-        </div>
-      </Card>
-    </div>
+            <Button
+              variant={
+                variant === "danger"
+                  ? "danger"
+                  : "primary"
+              }
+              onClick={onConfirm}
+              disabled={loading}
+            >
+              {confirmText}
+            </Button>
+          </div>
+        </Card>
+      </AnimatedPanel>
+    </AnimatedOverlay>
   );
 }

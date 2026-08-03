@@ -35,6 +35,8 @@ export default function Header({ name }: HeaderProps) {
       </div>
 
       <button
+        type="button"
+        aria-label="Notifications"
         className="
           rounded-xl
           border

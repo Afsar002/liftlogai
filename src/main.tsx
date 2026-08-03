@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
+import { MotionConfig } from "framer-motion";
 import { Toaster } from "react-hot-toast";
 
 import { RestTimerProvider } from "./features/workout/context/RestTimerContext";
@@ -21,7 +22,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <RestTimerProvider>
             <ThemeProvider>
               <MealProvider>
-                <App />
+                <MotionConfig reducedMotion="user">
+                  <App />
+                </MotionConfig>
               </MealProvider>
               <Toaster
                 position="top-center"

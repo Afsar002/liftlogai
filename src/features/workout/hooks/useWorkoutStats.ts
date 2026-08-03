@@ -1,7 +1,8 @@
 import type { WorkoutSession } from "../types/session";
 
 export function useWorkoutStats(
-  session: WorkoutSession | null
+  session: WorkoutSession | null,
+  startedAt?: Date
 ) {
   if (!session) {
     return {
@@ -10,6 +11,7 @@ export function useWorkoutStats(
       totalExercises: 0,
       completedExercises: 0,
       totalVolume: 0,
+      durationMinutes: 0,
     };
   }
 
@@ -31,11 +33,17 @@ export function useWorkoutStats(
     0
   );
 
+  // Calculate duration in minutes
+  const durationMinutes = startedAt
+    ? Math.max(1, Math.round((Date.now() - startedAt.getTime()) / 60000))
+    : 0;
+
   return {
     totalSets: allSets.length,
     completedSets: completedSets.length,
     totalExercises: session.exercises.length,
     completedExercises,
     totalVolume,
+    durationMinutes,
   };
 }

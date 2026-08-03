@@ -27,9 +27,7 @@ export default function EditableCell({
 
   const save = () => {
     const number = Number(localValue);
-
     onChange(Number.isNaN(number) ? 0 : number);
-
     setEditing(false);
   };
 
@@ -45,7 +43,7 @@ export default function EditableCell({
         onKeyDown={(e) => {
           if (e.key === "Enter") save();
         }}
-        className="w-full rounded-lg border border-green-500 bg-white px-2 py-2 text-center text-slate-950 outline-none shadow-sm dark:border-green-500 dark:bg-zinc-900 dark:text-white"
+        className="w-full rounded-full border border-emerald-500 bg-white px-2 py-1.5 text-center text-sm font-semibold tabular-nums text-zinc-900 shadow-sm outline-none dark:bg-[#141417] dark:text-white"
       />
     );
   }
@@ -53,7 +51,7 @@ export default function EditableCell({
   return (
     <button
       onClick={() => setEditing(true)}
-      className="w-full rounded-lg bg-white px-2 py-2 text-center font-medium text-slate-950 transition hover:bg-slate-100 dark:bg-zinc-900 dark:text-white dark:hover:bg-zinc-800"
+      className="w-full rounded-full bg-zinc-100 px-2 py-1.5 text-center text-sm font-semibold tabular-nums text-zinc-900 transition-colors hover:bg-zinc-200 dark:bg-white/8 dark:text-white dark:hover:bg-white/12"
     >
       {value}
     </button>

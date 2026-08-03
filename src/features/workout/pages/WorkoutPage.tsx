@@ -1,30 +1,27 @@
-import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { FiTrash2, FiPlus, FiX } from "react-icons/fi";
+import { FiPlus } from "react-icons/fi";
+import { motion } from "framer-motion";
 
 import { WorkoutRepository } from "../services/WorkoutRepository";
-import { WorkoutSessionFactory } from "../services/WorkoutSessionFactory";
 import type { WorkoutSessionDB } from "../../../database/types";
 
 import Layout from "../../../shared/components/layout/Layout";
-import Card from "../../../shared/components/ui/Card";
-import Button from "../../../shared/components/ui/Button";
+import { AnimatedList, AnimatedItem } from "../../../shared/components/motion";
 
-import WorkoutHeader from "../components/WorkoutHeader";
-import ExerciseHeader from "../components/ExerciseHeader";
-import PreviousPerformance from "../components/PreviousPerformance";
-import SetTable from "../components/SetTable";
-import AddSetButton from "../components/AddSetButton";
-import FinishWorkoutButton from "../components/FinishWorkoutButton";
-import WorkoutSummary from "../components/WorkoutSummary";
-import ExercisePickerModal from "../../exercises/components/ExercisePickerModal";
+import SessionHero from "../components/SessionHero";
+import ExerciseProgressRail from "../components/ExerciseProgressRail";
+import ExerciseLoggerCard from "../components/ExerciseLoggerCard";
+import SessionDock from "../components/SessionDock";
+import WorkoutReviewSheet from "../components/WorkoutReviewSheet";
+import ExercisePickerSheet from "../components/ExercisePickerSheet";
+import RestTimerOverlay from "../components/RestTimerOverlay";
 
 import { useWorkout } from "../context/WorkoutContext";
 import { useWorkoutStats } from "../hooks/useWorkoutStats";
 import { useWorkoutTimer } from "../hooks/useWorkoutTimer";
 
-import RestTimer from "../components/RestTimer";
 import { useRestTimer } from "../context/RestTimerContext";
 
 import { HistoryRepository } from "../../history/repositories/HistoryRepository";
@@ -32,15 +29,46 @@ import { HistoryRepository } from "../../history/repositories/HistoryRepository"
 import { detectPRs } from "../../records/services/PRDetector";
 import type { PersonalRecord } from "../../records/types";
 
+import { ExerciseService } from "../../exercises/services/ExerciseService";
+
 import { db } from "../../../database/db";
 
+/**
+ * Scroll position saved when the user opens an in-workout exercise guide, so
+ * returning to the session ("Continue Workout") restores where they were.
+ * The active session itself lives in WorkoutProvider (above <Routes>) and is
+ * persisted to localStorage, so only the scroll offset needs bridging here.
+ */
+const WORKOUT_SCROLL_KEY = "liftlog_workout_scroll";
+
+function saveWorkoutScroll() {
+  try {
+    sessionStorage.setItem(WORKOUT_SCROLL_KEY, String(window.scrollY));
+  } catch {
+    // Storage unavailable — scroll won't be restored; the workout is unaffected.
+  }
+}
+
+function restoreWorkoutScroll() {
+  try {
+    const saved = sessionStorage.getItem(WORKOUT_SCROLL_KEY);
+    if (saved !== null) {
+      sessionStorage.removeItem(WORKOUT_SCROLL_KEY);
+      window.scrollTo(0, Number(saved) || 0);
+    }
+  } catch {
+    // Storage unavailable — nothing to restore.
+  }
+}
+
 export default function WorkoutPage() {
-  const { session, setSession, resetWorkout, removeExercise, addExercise } = useWorkout();
+  const { session, resetWorkout, removeExercise, addExercise } = useWorkout();
   const navigate = useNavigate();
   const restTimer = useRestTimer();
   const [finished, setFinished] = useState(false);
   const [finalDuration, setFinalDuration] = useState<string | null>(null);
   const [showExercisePicker, setShowExercisePicker] = useState(false);
+  const [expandedId, setExpandedId] = useState<string | null>(null);
 
   const startedAt = session?.startedAt
     ? typeof session.startedAt === "string"
@@ -49,8 +77,36 @@ export default function WorkoutPage() {
     : new Date();
 
   const { formatted } = useWorkoutTimer(startedAt);
-  const stats = useWorkoutStats(session);
+  const stats = useWorkoutStats(session, startedAt);
   const [newPRs, setNewPRs] = useState<PersonalRecord[]>([]);
+
+  // Restore the scroll offset saved when the in-workout guide was opened, so
+  // "Continue Workout" drops the user back where they left off.
+  useEffect(() => {
+    restoreWorkoutScroll();
+  }, []);
+
+  // Default the expanded exercise to the first one with incomplete sets.
+  useEffect(() => {
+    if (!session) return;
+    const current = session.exercises.find((exercise) =>
+      exercise.sets.some((set) => !set.completed)
+    );
+    setExpandedId(current?.id ?? session.exercises[0]?.id ?? null);
+  }, []);
+
+  const railExercises = useMemo(() => {
+    if (!session) return [];
+    return session.exercises.map((exercise) => ({
+      id: exercise.id,
+      name: exercise.name,
+      done:
+        exercise.sets.length > 0 && exercise.sets.every((set) => set.completed),
+      active: exercise.id === expandedId,
+    }));
+  }, [session, expandedId]);
+
+  const completion = session && stats.totalSets > 0 ? stats.completedSets / stats.totalSets : 0;
 
   if (!session) {
     return (
@@ -68,7 +124,7 @@ export default function WorkoutPage() {
     return (
       <Layout>
         <div className="mx-auto max-w-2xl space-y-6">
-          <WorkoutSummary
+          <WorkoutReviewSheet
             workoutName={session.workoutName}
             duration={finalDuration ?? formatted}
             exercises={session.exercises.length}
@@ -138,104 +194,116 @@ export default function WorkoutPage() {
                 toast.error("Failed to save workout");
               }
             }}
+            onClose={() => {
+              resetWorkout();
+              navigate("/");
+            }}
           />
         </div>
       </Layout>
     );
   }
 
+  const endWorkout = async () => {
+    const prs = await detectPRs(session.exercises);
+    setNewPRs(prs);
+    setFinalDuration(formatted);
+    setFinished(true);
+  };
+
+  const jumpToExercise = (id: string) => {
+    setExpandedId(id);
+    document.getElementById(`exercise-${id}`)?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   return (
     <Layout>
-      <div className="mx-auto max-w-2xl space-y-6">
-        <WorkoutHeader
-          title={session.workoutName}
-          duration={formatted}
-        />
-
-        {session.exercises.map((exercise) => (
-          <Card key={exercise.id}>
-            <div className="space-y-4">
-              <div className="flex items-start justify-between">
-                <Link
-                  to={`/exercise/${encodeURIComponent(exercise.name)}`}
-                  className="hover:opacity-80 transition-opacity"
-                >
-                  <ExerciseHeader name={exercise.name} />
-                </Link>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  icon={<FiTrash2 size={16} />}
-                  onClick={() => removeExercise(exercise.id)}
-                  className="text-red-400 hover:text-red-600 hover:bg-red-500/10"
-                  aria-label="Remove exercise"
-                />
-              </div>
-
-              <PreviousPerformance
-                value={exercise.previous ?? "-"}
-              />
-
-              <SetTable
-                exerciseId={exercise.id}
-                sets={exercise.sets}
-              />
-
-              <AddSetButton exerciseId={exercise.id} />
-            </div>
-          </Card>
-        ))}
-
-        {/* Add Exercise Button */}
-        <Button
-          variant="outline"
-          size="lg"
-          className="w-full py-4 border-dashed"
-          icon={<FiPlus size={20} />}
-          onClick={() => setShowExercisePicker(true)}
-        >
-          Add Exercise
-        </Button>
-
-        {/* Exercise Picker Modal */}
-        <ExercisePickerModal
-          open={showExercisePicker}
-          onClose={() => setShowExercisePicker(false)}
-          existingNames={session.exercises.map(e => e.name)}
-          onSelect={(exerciseId) => {
-            import("../../exercises/services/ExerciseLibraryRepository").then(async ({ ExerciseLibraryRepository }) => {
-              const exercise = await ExerciseLibraryRepository.getById(exerciseId);
-              if (exercise) {
-                addExercise({
-                  id: crypto.randomUUID(),
-                  name: exercise.name,
-                  exerciseId: exerciseId,
-                });
-              }
-            });
+      <div className="relative min-h-dvh">
+        {/* Sticky session hero — gradient cockpit with live timer */}
+        <SessionHero
+          workoutName={session.workoutName}
+          formatted={formatted}
+          stats={{
+            volume: stats.totalVolume,
+            completedSets: stats.completedSets,
+            totalSets: stats.totalSets,
+            totalExercises: session.exercises.length,
           }}
+          onFinish={endWorkout}
         />
 
-        {restTimer.secondsLeft > 0 && (
-          <RestTimer
-            formatted={restTimer.formatted}
-            running={restTimer.running}
-            secondsLeft={restTimer.secondsLeft}
-            onPause={restTimer.pause}
-            onResume={restTimer.resume}
-            onReset={restTimer.reset}
-            onSkip={restTimer.skip}
+        <div className="mx-auto max-w-2xl space-y-4 pt-5">
+          {/* Exercise progress rail — chapter navigation for the session */}
+          {session.exercises.length > 1 && (
+            <ExerciseProgressRail exercises={railExercises} onSelect={jumpToExercise} />
+          )}
+
+          <AnimatedList className="space-y-3">
+            {session.exercises.map((exercise, index) => (
+              <AnimatedItem key={exercise.id}>
+                <div id={`exercise-${exercise.id}`} className="scroll-mt-32">
+                  <ExerciseLoggerCard
+                    exercise={exercise}
+                    index={index}
+                    expanded={expandedId === exercise.id}
+                    onToggle={() =>
+                      setExpandedId((current) =>
+                        current === exercise.id ? null : exercise.id
+                      )
+                    }
+                    onRemove={() => removeExercise(exercise.id)}
+                    onOpenGuide={() => {
+                      saveWorkoutScroll();
+                      navigate(`/exercises/${encodeURIComponent(exercise.exerciseId)}?from=workout`);
+                    }}
+                  />
+                </div>
+              </AnimatedItem>
+            ))}
+          </AnimatedList>
+
+          {/* Inline add exercise (for desktop/long sessions) */}
+          <motion.button
+            type="button"
+            onClick={() => setShowExercisePicker(true)}
+            whileTap={{ scale: 0.99 }}
+            className="flex w-full items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-zinc-300 py-4 text-sm font-semibold text-zinc-500 transition-colors hover:border-emerald-400 hover:text-emerald-700 hover:bg-emerald-500/5 dark:border-white/15 dark:text-zinc-400 dark:hover:border-emerald-400 dark:hover:text-emerald-400"
+          >
+            <FiPlus size={18} aria-hidden="true" />
+            Add Exercise
+          </motion.button>
+        </div>
+
+        {/* Bottom session dock — all session actions in one bar */}
+        <SessionDock
+          completion={completion}
+          onAddExercise={() => setShowExercisePicker(true)}
+          onFinish={endWorkout}
+        />
+
+        <RestTimerOverlay />
+
+        {/* Exercise Picker Sheet */}
+        {showExercisePicker && (
+          <ExercisePickerSheet
+            onClose={() => setShowExercisePicker(false)}
+            existingNames={session.exercises.map((e) => e.name)}
+            onSelect={(exerciseId) => {
+              ExerciseService.getExerciseById(exerciseId).then((exercise) => {
+                if (exercise) {
+                  addExercise({
+                    id: crypto.randomUUID(),
+                    name: exercise.name,
+                    exerciseId: exerciseId,
+                  });
+                }
+              });
+            }}
           />
         )}
-
-        <FinishWorkoutButton
-          onClick={async () => {
-            const prs = await detectPRs(session.exercises);
-            setNewPRs(prs);
-            setFinalDuration(formatted);
-            setFinished(true);
-          }}
-        />
       </div>
     </Layout>
   );

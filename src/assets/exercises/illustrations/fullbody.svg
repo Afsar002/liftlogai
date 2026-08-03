@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="currentColor" aria-hidden="true">
+  <!-- Deadlift silhouette -->
+  <g>
+    <circle cx="60" cy="22" r="8" />
+    <rect x="50" y="30" width="20" height="42" rx="10" transform="rotate(-6 60 51)" />
+    <rect x="42" y="68" width="11" height="26" rx="5.5" transform="rotate(8 47 81)" />
+    <rect x="66" y="68" width="11" height="26" rx="5.5" transform="rotate(-8 71 81)" />
+    <rect x="38" y="90" width="16" height="9" rx="4.5" transform="rotate(8 46 94)" />
+    <rect x="66" y="90" width="16" height="9" rx="4.5" transform="rotate(-8 74 94)" />
+    <!-- straight arms down to the bar -->
+    <rect x="48" y="52" width="10" height="28" rx="5" transform="rotate(4 53 66)" />
+    <rect x="62" y="52" width="10" height="28" rx="5" transform="rotate(-4 67 66)" />
+    <rect x="40" y="80" width="40" height="6" rx="3" opacity="0.6" />
+    <!-- loaded plates -->
+    <rect x="28" y="72" width="12" height="22" rx="2" opacity="0.6" />
+    <rect x="80" y="72" width="12" height="22" rx="2" opacity="0.6" />
+  </g>
+</svg>

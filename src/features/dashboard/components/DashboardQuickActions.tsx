@@ -1,33 +1,29 @@
+import type { ComponentType } from "react";
 import { useNavigate } from "react-router-dom";
 import Card from "../../../shared/components/ui/Card";
+import { cn } from "../../../shared/lib/cn";
 import {
   FiActivity,
   FiBarChart2,
   FiClock,
+  FiGrid,
   FiTarget,
 } from "react-icons/fi";
 
-const actions = [
-  {
-    title: "Workout Templates",
-    icon: FiTarget,
-    href: "/templates",
-  },
-  {
-    title: "Personal Records",
-    icon: FiBarChart2,
-    href: "/records",
-  },
-  {
-    title: "Weekly Progress",
-    icon: FiClock,
-    targetId: "weekly-progress",
-  },
-  {
-    title: "Goal Insights",
-    icon: FiActivity,
-    targetId: "goals",
-  },
+interface QuickAction {
+  title: string;
+  icon: ComponentType<{ size?: number | string; className?: string }>;
+  href?: string;
+  targetId?: string;
+  wide?: boolean;
+}
+
+const actions: QuickAction[] = [
+  { title: "Workout Templates", icon: FiTarget, href: "/templates" },
+  { title: "Personal Records", icon: FiBarChart2, href: "/records" },
+  { title: "Weekly Progress", icon: FiClock, targetId: "weekly-progress" },
+  { title: "Goal Insights", icon: FiActivity, targetId: "goals" },
+  { title: "Exercise Library", icon: FiGrid, href: "/exercises", wide: true },
 ];
 
 export default function QuickActions() {
@@ -46,48 +42,26 @@ export default function QuickActions() {
               return;
             }
           }
-
           if (action.href) {
             navigate(action.href);
           }
         }
 
         return (
-          <Card key={action.title} className="overflow-hidden" padding="none">
+          <Card
+            key={action.title}
+            className={cn("overflow-hidden", action.wide && "col-span-2")}
+            padding="none"
+          >
             <button
               type="button"
               onClick={handleClick}
-              className="
-                flex
-                w-full
-                flex-col
-                items-center
-                gap-3
-                rounded-[1.75rem]
-                border
-                border-zinc-200/70
-                bg-white/90
-                px-5
-                py-6
-                text-zinc-900
-                transition
-                duration-200
-                hover:-translate-y-0.5
-                hover:border-green-300/70
-                hover:bg-green-50/80
-                dark:border-zinc-800/70
-                dark:bg-zinc-950/90
-                dark:text-zinc-100
-                dark:hover:border-green-400/70
-                dark:hover:bg-green-950/80
-              "
+              className="group flex w-full flex-col items-center gap-3 rounded-2xl px-4 py-5 text-center transition-colors duration-200 hover:bg-zinc-50 focus-visible:ring-2 focus-visible:ring-emerald-500/50 dark:hover:bg-white/5"
             >
-              <Icon
-                size={26}
-                className="text-green-500"
-              />
-
-              <span className="font-medium">
+              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-zinc-100 text-zinc-500 transition-transform duration-200 group-hover:scale-110 dark:bg-white/8 dark:text-zinc-400">
+                <Icon size={22} aria-hidden="true" />
+              </span>
+              <span className="text-sm font-medium text-zinc-900 dark:text-white">
                 {action.title}
               </span>
             </button>

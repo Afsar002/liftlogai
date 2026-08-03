@@ -2,6 +2,7 @@ import { useState, useMemo, useEffect, useRef } from 'react';
 import Card from '../../../../shared/components/ui/Card';
 import Button from '../../../../shared/components/ui/Button';
 import Badge from '../../../../shared/components/ui/Badge';
+import Select from '../../../../shared/components/ui/Select';
 import { allFoods, searchFoods, getFoodsByCategory } from '../../data/foodDatabase';
 import { createOnlineFoodProvider } from '../../services/OnlineFoodProvider';
 import { NutritionEngine } from '../../services/NutritionEngine';
@@ -340,7 +341,7 @@ const handleLog = async () => {
                 onKeyPress={(e) => e.key === 'Enter' && searchOnline()}
                 placeholder="Search foods..."
                 autoFocus
-                className="flex-1 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 px-4 py-2.5 text-sm text-zinc-900 dark:text-white placeholder-zinc-400 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20"
+                className="flex-1 rounded-xl border border-zinc-200/80 dark:border-white/10 bg-white dark:bg-white/5 px-4 py-2.5 text-sm text-zinc-900 dark:text-white placeholder-zinc-400 focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
               />
               <Button 
                 variant="secondary" 
@@ -370,7 +371,7 @@ const handleLog = async () => {
                     setSelectedCategory(cat.key); 
                     setShowOnlineResults(false); 
                   }}
-                  className={`px-3 py-1.5 text-xs font-medium rounded-full transition-colors ${selectedCategory === cat.key && !showOnlineResults ? 'bg-green-500 text-white' : 'bg-zinc-100 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-300'}`}
+                  className={`px-3 py-1.5 text-xs font-medium rounded-full transition-colors ${selectedCategory === cat.key && !showOnlineResults ? 'bg-emerald-600 text-white' : 'bg-zinc-100 dark:bg-white/8 text-zinc-600 dark:text-zinc-300'}`}
                 >
                   {cat.icon} {cat.label}
                 </button>
@@ -378,7 +379,7 @@ const handleLog = async () => {
               {showOnlineResults && (
                 <button
                   onClick={() => setShowOnlineResults(false)}
-                  className="px-3 py-1.5 text-xs font-medium rounded-full bg-blue-500 text-white"
+                  className="rounded-full bg-zinc-100 px-3 py-1.5 text-xs font-medium text-zinc-600 transition-colors dark:bg-white/8 dark:text-zinc-300"
                 >
                   ✕ Clear Search
                 </button>
@@ -396,7 +397,7 @@ const handleLog = async () => {
                   <button
                     key={food.id}
                     onClick={() => handleSelectFood(food)}
-                    className="text-left p-3 rounded-xl border transition-all hover:border-green-300 dark:hover:border-green-700 bg-white dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700"
+                    className="text-left p-3 rounded-xl border transition-all hover:border-emerald-400/60 dark:hover:border-emerald-500/40 bg-white dark:bg-white/5 border-zinc-200/80 dark:border-white/10"
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2 flex-1 min-w-0">
@@ -428,7 +429,7 @@ const handleLog = async () => {
       {isSearchCollapsed && (
         <button
           onClick={handleChangeFood}
-          className="text-sm text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 font-medium transition-colors"
+          className="text-sm text-emerald-600 dark:text-emerald-400 hover:text-emerald-500 dark:hover:text-emerald-300 font-medium transition-colors"
         >
           ← Change Food
         </button>
@@ -436,7 +437,7 @@ const handleLog = async () => {
 
       {/* Sticky Selected Food Panel */}
       {selectedFood && (
-        <Card className="border-2 border-green-200 dark:border-green-800 bg-green-50/50 dark:bg-green-900/10 transition-all duration-300 ease-in-out">
+        <Card className="border-2 border-emerald-500/30 dark:border-emerald-500/20 bg-emerald-500/5 dark:bg-emerald-500/5 transition-all duration-300 ease-in-out">
           <div className="space-y-4">
             {/* Food Header */}
             <div className="flex items-center justify-between">
@@ -461,15 +462,12 @@ const handleLog = async () => {
                 <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 block mb-1">
                   Preparation
                 </label>
-                <select
+                <Select
                   value={selectedPreparationId}
-                  onChange={(e) => setSelectedPreparationId(e.target.value)}
-                  className="w-full rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 px-3 py-2 text-sm text-zinc-900 dark:text-white focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20"
-                >
-                  {selectedFood.preparations.map((prep: FoodPreparation) => (
-                    <option key={prep.id} value={prep.id}>{prep.name}</option>
-                  ))}
-                </select>
+                  onChange={(value) => setSelectedPreparationId(value)}
+                  options={selectedFood.preparations.map((prep: FoodPreparation) => ({ label: prep.name, value: prep.id }))}
+                  ariaLabel="Preparation"
+                />
               </div>
             )}
 
@@ -479,22 +477,19 @@ const handleLog = async () => {
                 <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 block mb-1">
                   {inputMode === 'grams' ? 'Mode' : 'Serving'}
                 </label>
-                <select
+                <Select
                   value={selectedServingId}
-                  onChange={(e) => {
-                    setSelectedServingId(e.target.value);
-                    const serving = servings.find(s => s.id === e.target.value);
+                  onChange={(value) => {
+                    setSelectedServingId(value);
+                    const serving = servings.find(s => s.id === value);
                     if (serving) {
                       setInputMode('serving');
                       setWeight(String(serving.grams));
                     }
                   }}
-                  className="w-full rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 px-3 py-2 text-sm text-zinc-900 dark:text-white focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20"
-                >
-                  {servings.map((serving) => (
-                    <option key={serving.id} value={serving.id}>{serving.name}</option>
-                  ))}
-                </select>
+                  options={servings.map((serving) => ({ label: serving.name, value: serving.id }))}
+                  ariaLabel={inputMode === 'grams' ? 'Mode' : 'Serving'}
+                />
               </div>
               <div>
                 <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 block mb-1">
@@ -513,7 +508,7 @@ const handleLog = async () => {
                   onKeyDown={handleKeyDown}
                   min="1"
                   step="1"
-                  className="w-full rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 px-3 py-2 text-sm text-zinc-900 dark:text-white focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20"
+                  className="w-full rounded-xl border border-zinc-200/80 dark:border-white/10 bg-white dark:bg-white/5 px-3 py-2 text-sm text-zinc-900 dark:text-white focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
                 />
               </div>
             </div>
@@ -529,7 +524,7 @@ const handleLog = async () => {
             {inputMode === 'serving' && (
               <button
                 onClick={() => setInputMode('grams')}
-                className="text-xs text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300"
+                className="text-xs text-emerald-600 dark:text-emerald-400 hover:text-emerald-500 dark:hover:text-emerald-300"
               >
                 Switch to grams
               </button>
@@ -540,46 +535,47 @@ const handleLog = async () => {
               <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 block mb-1">
                 Meal
               </label>
-              <select
+              <Select
                 value={mealId}
-                onChange={(e) => setMealId(e.target.value)}
-                className="w-full rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 px-3 py-2 text-sm text-zinc-900 dark:text-white focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20"
-              >
-                <option value="default">General</option>
-                <option value="breakfast">Breakfast</option>
-                <option value="lunch">Lunch</option>
-                <option value="dinner">Dinner</option>
-                <option value="snacks">Snacks</option>
-              </select>
+                onChange={(value) => setMealId(value)}
+                options={[
+                  { label: 'General', value: 'default' },
+                  { label: 'Breakfast', value: 'breakfast' },
+                  { label: 'Lunch', value: 'lunch' },
+                  { label: 'Dinner', value: 'dinner' },
+                  { label: 'Snacks', value: 'snacks' },
+                ]}
+                ariaLabel="Meal"
+              />
             </div>
 
             {/* Nutrition Preview */}
             {nutrition && (
-              <div className="p-3 bg-white dark:bg-zinc-800 rounded-lg space-y-2">
+              <div className="p-3 bg-zinc-50 dark:bg-white/5 rounded-xl space-y-2">
                 <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
                   <div>
                     <span className="text-xs text-zinc-500">Calories</span>
-                    <p className="font-bold text-green-600 dark:text-green-400">{nutrition.calories}</p>
+                    <p className="font-bold text-emerald-600 dark:text-emerald-400">{nutrition.calories}</p>
                   </div>
                   <div>
                     <span className="text-xs text-zinc-500">Protein</span>
-                    <p className="font-bold text-green-600 dark:text-green-400">{nutrition.protein}g</p>
+                    <p className="font-bold text-emerald-600 dark:text-emerald-400">{nutrition.protein}g</p>
                   </div>
                   <div>
                     <span className="text-xs text-zinc-500">Carbs</span>
-                    <p className="font-bold text-green-600 dark:text-green-400">{nutrition.carbs}g</p>
+                    <p className="font-bold text-emerald-600 dark:text-emerald-400">{nutrition.carbs}g</p>
                   </div>
                   <div>
                     <span className="text-xs text-zinc-500">Fat</span>
-                    <p className="font-bold text-green-600 dark:text-green-400">{nutrition.fat}g</p>
+                    <p className="font-bold text-emerald-600 dark:text-emerald-400">{nutrition.fat}g</p>
                   </div>
                   <div>
                     <span className="text-xs text-zinc-500">Fiber</span>
-                    <p className="font-bold text-green-600 dark:text-green-400">{nutrition.fiber}g</p>
+                    <p className="font-bold text-emerald-600 dark:text-emerald-400">{nutrition.fiber}g</p>
                   </div>
                 </div>
                 {micronutrientRows.length > 0 && (
-                  <div className="pt-2 border-t border-zinc-200 dark:border-zinc-700">
+                  <div className="pt-2 border-t border-zinc-200/80 dark:border-white/10">
                     <p className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">Micronutrients</p>
                     <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
                       {micronutrientRows.map((row) => (
@@ -615,7 +611,7 @@ const handleLog = async () => {
             <h3 className="font-semibold text-zinc-900 dark:text-white">Today's Food Log</h3>
             <div className="space-y-2 max-h-64 overflow-y-auto">
               {logs.map((log) => (
-                <div key={log.id} className="flex items-center justify-between p-2.5 rounded-lg bg-zinc-50 dark:bg-zinc-800/50">
+                <div key={log.id} className="flex items-center justify-between p-2.5 rounded-xl bg-zinc-50 dark:bg-white/5">
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium text-zinc-900 dark:text-white truncate">{log.foodName}</p>
                     <p className="text-xs text-zinc-500">

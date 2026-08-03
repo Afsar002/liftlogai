@@ -1,29 +1,56 @@
+import { useState } from "react";
 import Layout from "../../../shared/components/layout/Layout";
+import Skeleton from "../../../shared/components/ui/Skeleton";
+import { AnimatedPage } from "../../../shared/components/motion";
 
-import AboutCard from "../components/AboutCard";
-import DataCard from "../components/DataCard";
-import SettingsCard from "../components/SettingsCard";
-import StatsCard from "../components/StatsCard";
+import ProfileHero from "../components/ProfileHero";
+import BodyMetrics from "../components/BodyMetrics";
+import JourneyStats from "../components/JourneyStats";
+import SettingsGroups from "../components/SettingsGroups";
 import UserProfileCard from "../components/UserProfileCard";
+import DataCard from "../components/DataCard";
+import AboutCard from "../components/AboutCard";
 
 import { useProfile } from "../hooks/useProfile";
+import { useSettings } from "../../settings/hooks/SettingsProvider";
 
 export default function ProfilePage() {
-  const { stats } = useProfile();
+  const { stats, loading } = useProfile();
+  const { settings } = useSettings();
+  const [showEditor, setShowEditor] = useState(false);
 
   return (
     <Layout>
-      <div className="space-y-6">
-        <UserProfileCard />
+      <AnimatedPage>
+        <div className="mx-auto max-w-2xl space-y-7">
+          <ProfileHero
+            settings={settings}
+            editing={showEditor}
+            onToggleEdit={() => setShowEditor((open) => !open)}
+          />
 
-        <StatsCard stats={stats} />
+          {showEditor && <UserProfileCard onClose={() => setShowEditor(false)} />}
 
-        <SettingsCard />
+          <BodyMetrics settings={settings} />
 
-        <DataCard />
+          {loading ? (
+            <div className="grid grid-cols-2 gap-3">
+              <Skeleton variant="card" className="h-32" />
+              <Skeleton variant="card" className="h-32" />
+              <Skeleton variant="card" className="h-32" />
+              <Skeleton variant="card" className="h-32" />
+            </div>
+          ) : (
+            <JourneyStats stats={stats} />
+          )}
 
-        <AboutCard />
-      </div>
+          <SettingsGroups />
+
+          <DataCard />
+
+          <AboutCard />
+        </div>
+      </AnimatedPage>
     </Layout>
   );
 }

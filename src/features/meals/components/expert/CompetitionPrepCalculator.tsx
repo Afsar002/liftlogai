@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Card from '../../../../shared/components/ui/Card';
 import Button from '../../../../shared/components/ui/Button';
 import Badge from '../../../../shared/components/ui/Badge';
+import Select from '../../../../shared/components/ui/Select';
 import type { CompetitionPrepInputs, CompetitionPrepResults } from '../../types/expert';
 
 interface Props {
@@ -43,48 +44,53 @@ export default function CompetitionPrepCalculator({ onCalculate }: Props) {
             <div>
               <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400">Current Weight (kg)</label>
               <input type="number" value={inputs.currentWeight} onChange={(e) => updateInput('currentWeight', parseFloat(e.target.value) || 0)}
-                className="w-full mt-1 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 px-4 py-2 text-sm text-zinc-900 dark:text-white focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20" />
+                className="w-full mt-1 rounded-xl border border-zinc-200/80 dark:border-white/10 bg-white dark:bg-white/5 px-4 py-2 text-sm text-zinc-900 dark:text-white focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/30" />
             </div>
             <div>
               <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400">Target Weight (kg)</label>
               <input type="number" value={inputs.targetWeight} onChange={(e) => updateInput('targetWeight', parseFloat(e.target.value) || 0)}
-                className="w-full mt-1 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 px-4 py-2 text-sm text-zinc-900 dark:text-white focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20" />
+                className="w-full mt-1 rounded-xl border border-zinc-200/80 dark:border-white/10 bg-white dark:bg-white/5 px-4 py-2 text-sm text-zinc-900 dark:text-white focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/30" />
             </div>
             <div>
               <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400">Body Fat (%)</label>
               <input type="number" value={inputs.bodyFatPercentage} onChange={(e) => updateInput('bodyFatPercentage', parseFloat(e.target.value) || 0)}
-                className="w-full mt-1 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 px-4 py-2 text-sm text-zinc-900 dark:text-white focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20" />
+                className="w-full mt-1 rounded-xl border border-zinc-200/80 dark:border-white/10 bg-white dark:bg-white/5 px-4 py-2 text-sm text-zinc-900 dark:text-white focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/30" />
             </div>
             <div>
               <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400">Weeks Until Show</label>
               <input type="number" value={inputs.weeksUntilShow} onChange={(e) => updateInput('weeksUntilShow', parseFloat(e.target.value) || 0)}
-                className="w-full mt-1 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 px-4 py-2 text-sm text-zinc-900 dark:text-white focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20" />
+                className="w-full mt-1 rounded-xl border border-zinc-200/80 dark:border-white/10 bg-white dark:bg-white/5 px-4 py-2 text-sm text-zinc-900 dark:text-white focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/30" />
             </div>
             <div>
               <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400">Target Weekly Loss (kg)</label>
               <input type="number" step="0.1" value={inputs.targetWeeklyLoss} onChange={(e) => updateInput('targetWeeklyLoss', parseFloat(e.target.value) || 0)}
-                className="w-full mt-1 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 px-4 py-2 text-sm text-zinc-900 dark:text-white focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20" />
+                className="w-full mt-1 rounded-xl border border-zinc-200/80 dark:border-white/10 bg-white dark:bg-white/5 px-4 py-2 text-sm text-zinc-900 dark:text-white focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/30" />
             </div>
             <div>
               <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400">Daily Activity</label>
-              <select value={inputs.dailyActivity} onChange={(e) => updateInput('dailyActivity', e.target.value)}
-                className="w-full mt-1 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 px-4 py-2 text-sm text-zinc-900 dark:text-white focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20">
-                <option value="sedentary">Sedentary</option>
-                <option value="light">Light</option>
-                <option value="moderate">Moderate</option>
-                <option value="active">Active</option>
-                <option value="very_active">Very Active</option>
-              </select>
+              <Select
+                value={inputs.dailyActivity}
+                onChange={(value) => updateInput('dailyActivity', value)}
+                options={[
+                  { label: 'Sedentary', value: 'sedentary' },
+                  { label: 'Light', value: 'light' },
+                  { label: 'Moderate', value: 'moderate' },
+                  { label: 'Active', value: 'active' },
+                  { label: 'Very Active', value: 'very_active' },
+                ]}
+                className="mt-1"
+                ariaLabel="Daily Activity"
+              />
             </div>
             <div>
               <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400">Training Days/Week</label>
               <input type="number" value={inputs.trainingDays} onChange={(e) => updateInput('trainingDays', parseFloat(e.target.value) || 0)}
-                className="w-full mt-1 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 px-4 py-2 text-sm text-zinc-900 dark:text-white focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20" />
+                className="w-full mt-1 rounded-xl border border-zinc-200/80 dark:border-white/10 bg-white dark:bg-white/5 px-4 py-2 text-sm text-zinc-900 dark:text-white focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/30" />
             </div>
             <div>
               <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400">Cardio Sessions/Week</label>
               <input type="number" value={inputs.cardioSessions} onChange={(e) => updateInput('cardioSessions', parseFloat(e.target.value) || 0)}
-                className="w-full mt-1 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 px-4 py-2 text-sm text-zinc-900 dark:text-white focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20" />
+                className="w-full mt-1 rounded-xl border border-zinc-200/80 dark:border-white/10 bg-white dark:bg-white/5 px-4 py-2 text-sm text-zinc-900 dark:text-white focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/30" />
             </div>
           </div>
 
@@ -99,9 +105,9 @@ export default function CompetitionPrepCalculator({ onCalculate }: Props) {
           <div className="space-y-4">
             <h3 className="font-semibold text-zinc-900 dark:text-white">Results</h3>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-              <div className="p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
+              <div className="p-3 bg-emerald-500/5 dark:bg-emerald-500/10 rounded-xl">
                 <span className="text-xs text-zinc-500">Maintenance Calories</span>
-                <p className="font-bold text-lg text-green-600 dark:text-green-400">{results.maintenanceCalories}</p>
+                <p className="font-bold text-lg text-emerald-600 dark:text-emerald-400">{results.maintenanceCalories}</p>
               </div>
               <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
                 <span className="text-xs text-zinc-500">Contest Calories</span>
@@ -120,7 +126,7 @@ export default function CompetitionPrepCalculator({ onCalculate }: Props) {
                 <p className="font-bold text-lg text-purple-600 dark:text-purple-400">{results.projectedStageWeight} kg</p>
               </div>
             </div>
-            <div className="border-t border-zinc-200 dark:border-zinc-700 pt-3">
+            <div className="border-t border-zinc-200/80 dark:border-white/10 pt-3">
               <h4 className="text-sm font-semibold text-zinc-900 dark:text-white mb-2">Recommended Daily Intake</h4>
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
                 <div><span className="text-xs text-zinc-500">Protein</span><p className="font-bold text-zinc-900 dark:text-white">{results.proteinRecommendation}g</p></div>

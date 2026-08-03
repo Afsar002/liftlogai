@@ -1,37 +1,22 @@
 import { db } from "../../../database/db";
 import type { ExerciseDB } from "../../../database/types";
 
+/**
+ * ExerciseLibraryRepository — Dexie persistence for user-created custom
+ * exercises. The bundled dataset lives in `src/data/exercises.json` and is
+ * surfaced through ExerciseService; this repository only reads/writes the
+ * `exercises` table for custom entries.
+ */
 export class ExerciseLibraryRepository {
-  static async getAll(): Promise<ExerciseDB[]> {
-    const saved = await db.exercises.toArray();
-    const { exerciseLibrary } = await import("../data/exerciseLibrary");
-    const builtins = exerciseLibrary;
-
-    const merged = [
-      ...builtins.map((b) => ({
-        id: b.id,
-        name: b.name,
-        muscle: b.muscle,
-        equipment: b.equipment,
-      })),
-      ...saved,
-    ];
-
-    return merged;
-  }
-
-  static async getById(id: string): Promise<ExerciseDB | undefined> {
-    const saved = await db.exercises.get(id);
-    if (saved) return saved;
-    const builtins = (await import("../data/exerciseLibrary")).exerciseLibrary;
-    return builtins.find((b) => b.id === id);
+  static async getCustom(): Promise<ExerciseDB[]> {
+    return db.exercises.toArray();
   }
 
   static async create(payload: {
     name: string;
     muscle?: string;
     equipment?: string;
-  }) {
+  }): Promise<ExerciseDB> {
     const id = crypto.randomUUID();
 
     const record: ExerciseDB = {
@@ -43,7 +28,6 @@ export class ExerciseLibraryRepository {
     };
 
     await db.exercises.put(record);
-
     return record;
   }
 }

@@ -1,42 +1,36 @@
 import Layout from "../../../shared/components/layout/Layout";
 
-import GreetingCard from "../components/GreetingCard";
-import WorkoutCard from "../components/WorkoutCard";
-import StatCard from "../components/StatCard";
-import GoalCard from "../components/GoalCard";
-import QuickActions from "../components/DashboardQuickActions";
-import WeeklyProgress from "../components/WeeklyProgress";
-import DashboardTemplates from "../components/DashboardTemplates";
+import TodayOverview from "../components/TodayOverview";
+import WeeklyActivity from "../components/WeeklyActivity";
+import PersonalRecordsPreview from "../components/PersonalRecordsPreview";
+import RecoveryStreakWidget from "../components/RecoveryStreakWidget";
+import QuickActionGrid from "../components/QuickActionGrid";
+import NutritionSnapshot from "../components/NutritionSnapshot";
+import TemplateCarousel from "../components/TemplateCarousel";
+import RecentActivityFeed from "../components/RecentActivityFeed";
 import { useDashboard } from "../hooks/useDashboard";
-import DashboardRecentWorkouts from "../components/DashboardRecentWorkouts";
-import NutritionCard from "../../meals/components/NutritionCard";
-
-import {
-  FiTrendingUp,
-  FiActivity,
-  FiZap,
-  FiDroplet,
-} from "react-icons/fi";
-import { useSettings } from "../../settings/hooks/SettingsProvider";
 import Skeleton from "../../../shared/components/ui/Skeleton";
 
 export default function Dashboard() {
   const { stats, loading } = useDashboard();
-  const { settings } = useSettings();
 
   if (loading || !stats) {
     return (
       <Layout>
         <div className="space-y-6">
-          <Skeleton variant="text" className="h-6 w-48" />
-          <Skeleton variant="text" className="h-8 w-64" />
-          <Skeleton variant="card" className="h-32" />
+          <Skeleton variant="card" className="h-56" />
+          <Skeleton variant="card" className="h-40" />
+          <Skeleton variant="card" className="h-48" />
           <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-            <Skeleton variant="card" />
-            <Skeleton variant="card" />
-            <Skeleton variant="card" />
-            <Skeleton variant="card" />
+            <Skeleton variant="card" className="h-48" />
+            <Skeleton variant="card" className="h-48" />
+            <Skeleton variant="card" className="h-48" />
+            <Skeleton variant="card" className="h-48" />
           </div>
+          <Skeleton variant="card" className="h-56" />
+          <Skeleton variant="card" className="h-72" />
+          <Skeleton variant="card" className="h-56" />
+          <Skeleton variant="card" className="h-56" />
         </div>
       </Layout>
     );
@@ -44,50 +38,53 @@ export default function Dashboard() {
 
   return (
     <Layout>
-      <div className="space-y-6">
-        <GreetingCard name={settings?.username || "User"} />
-
-        <WorkoutCard
-          workout={stats.lastWorkout ?? "No Workout"}
-        />
-
-        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-          <StatCard
-            title="Workout Streak"
-            value={`${stats.streak} Day`}
-            icon={<FiTrendingUp size={20} />}
+      <div className="space-y-6" id="dashboard">
+        {/* Today Overview - Hero Section */}
+        <section id="today">
+          <TodayOverview
+            lastWorkout={stats.lastWorkout}
+            lastWorkoutDate={stats.lastWorkoutDate}
+            workoutsThisWeek={stats.workoutsThisWeek}
+            streak={stats.streak}
+            totalVolume={stats.totalVolume}
+            averageDuration={stats.averageDuration}
           />
+        </section>
 
-          <StatCard
-            title="Avg Duration"
-            value={`${stats.averageDuration} min`}
-            icon={<FiActivity size={20} />}
-          />
+        {/* Quick Actions */}
+        <section id="quick-actions">
+          <QuickActionGrid />
+        </section>
 
-          <StatCard
-            title="Total Volume"
-            value={`${stats.totalVolume.toLocaleString()} kg`}
-            icon={<FiZap size={20} />}
-          />
+        {/* Weekly Activity - Replaces Progress Rings */}
+        <section id="weekly-activity">
+          <WeeklyActivity />
+        </section>
 
-          <StatCard
-            title="This Week"
-            value={`${stats.workoutsThisWeek}`}
-            icon={<FiDroplet size={20} />}
-          />
-        </div>
+        {/* Personal Records Preview */}
+        <section id="personal-records">
+          <PersonalRecordsPreview limit={3} />
+        </section>
 
-        <NutritionCard />
+        {/* Recovery & Streak Widget */}
+        <section id="recovery">
+          <RecoveryStreakWidget />
+        </section>
 
-        <DashboardTemplates />
-        
-        <DashboardRecentWorkouts />
+        {/* Nutrition Snapshot */}
+        <section id="nutrition">
+          <NutritionSnapshot />
+        </section>
 
-        <div id="goals">
-          <GoalCard />
-        </div>
+        {/* Template Carousel */}
+        <section id="templates">
+          <TemplateCarousel limit={3} />
+        </section>
 
-        <QuickActions />
+        {/* Recent Activity Feed */}
+        <section id="recent-activity">
+          <RecentActivityFeed limit={5} />
+        </section>
       </div>
     </Layout>
   );

@@ -6,10 +6,8 @@ export default function ExerciseHeader({
   name,
 }: Props) {
   return (
-    <div className="mb-3">
-      <h2 className="text-xl font-bold">
-        {name}
-      </h2>
-    </div>
+    <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-white">
+      {name}
+    </h2>
   );
 }

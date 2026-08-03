@@ -13,7 +13,7 @@ export default function SetTable({
   sets,
 }: Props) {
   return (
-    <div className="mt-4 space-y-3">
+    <div className="space-y-2">
       <SetHeader />
 
       {sets.map((set, index) => (

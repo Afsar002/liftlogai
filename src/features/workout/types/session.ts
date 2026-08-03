@@ -19,6 +19,14 @@ export interface LoggedExercise {
 
   previous?: string;
 
+  primaryMuscle?: string;
+
+  secondaryMuscles?: string[];
+
+  isPR?: boolean;
+
+  prType?: "weight" | "reps" | "volume";
+
   sets: LoggedSet[];
 }
 

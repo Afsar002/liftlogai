@@ -3,11 +3,13 @@ import {
   useContext,
   useState,
   useEffect,
+  useCallback,
   type ReactNode,
 } from "react";
 import { useSettings } from "../../settings/hooks/SettingsProvider";
 
 const TIMER_STORAGE_KEY = "liftlog_rest_timer_state";
+const VOICE_STORAGE_KEY = "liftlog_rest_timer_voice";
 
 interface StoredRestTimer {
   endTime: number | null;
@@ -40,10 +42,34 @@ function saveRestTimerState(state: StoredRestTimer | null) {
   }
 }
 
+function loadVoiceEnabled(): boolean {
+  try {
+    if (typeof window === "undefined" || !window.localStorage) return true;
+    const raw = localStorage.getItem(VOICE_STORAGE_KEY);
+    if (!raw) return true;
+    return JSON.parse(raw);
+  } catch (e) {
+    return true;
+  }
+}
+
+function saveVoiceEnabled(enabled: boolean) {
+  try {
+    if (typeof window === "undefined" || !window.localStorage) return;
+    localStorage.setItem(VOICE_STORAGE_KEY, JSON.stringify(enabled));
+  } catch (e) {
+    // Graceful error handling
+  }
+}
+
 interface RestTimerContextType {
   secondsLeft: number;
   formatted: string;
   running: boolean;
+  duration: number;
+  isIdle: boolean;
+  voiceEnabled: boolean;
+  setVoiceEnabled: (enabled: boolean) => void;
 
   start: (seconds?: number) => void;
   pause: () => void;
@@ -92,6 +118,10 @@ export function RestTimerProvider({
     return DEFAULT_TIME;
   });
 
+  const [voiceEnabled, setVoiceEnabled] = useState<boolean>(() =>
+    loadVoiceEnabled()
+  );
+
   // Keep state synced with localStorage
   useEffect(() => {
     if (running || pausedRemaining !== null) {
@@ -105,6 +135,22 @@ export function RestTimerProvider({
       saveRestTimerState(null);
     }
   }, [endTime, pausedRemaining, running, DEFAULT_TIME]);
+
+  // Keep the displayed time in sync with the default while the timer is idle.
+  // Settings load asynchronously, so DEFAULT_TIME can change after mount
+  // (e.g. 90 → the user's saved value). Without this, secondsLeft would drift
+  // from duration and the overlay's idle check (secondsLeft === duration)
+  // would fail, showing the rest timer even though it was never started.
+  useEffect(() => {
+    if (!running && pausedRemaining === null) {
+      setSecondsLeft(DEFAULT_TIME);
+    }
+  }, [DEFAULT_TIME, running, pausedRemaining]);
+
+  // Persist voice preference
+  useEffect(() => {
+    saveVoiceEnabled(voiceEnabled);
+  }, [voiceEnabled]);
 
   // Main timer tick effect
   useEffect(() => {
@@ -121,9 +167,14 @@ export function RestTimerProvider({
         setPausedRemaining(0);
         saveRestTimerState(null);
 
-        new Audio("/notification.mp3")
-          .play()
-          .catch(() => {});
+        // Play completion sound
+        if (voiceEnabled) {
+          speak("Rest complete");
+        } else {
+          new Audio("/notification.mp3")
+            .play()
+            .catch(() => {});
+        }
       }
     };
 
@@ -142,7 +193,18 @@ export function RestTimerProvider({
       clearInterval(interval);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
-  }, [running, endTime]);
+  }, [running, endTime, voiceEnabled]);
+
+  // Speech synthesis for voice cues
+  const speak = useCallback((text: string) => {
+    if (!voiceEnabled || typeof window === "undefined" || !window.speechSynthesis) return;
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.rate = 1.1;
+    utterance.pitch = 1;
+    utterance.volume = 0.8;
+    window.speechSynthesis.speak(utterance);
+  }, [voiceEnabled]);
 
   function start(seconds = DEFAULT_TIME) {
     const newEndTime = Date.now() + seconds * 1000;
@@ -194,12 +256,25 @@ export function RestTimerProvider({
     .toString()
     .padStart(2, "0")}`;
 
+  // True when the timer has never been started, has been reset, or has
+  // finished (completed or skipped). The overlay uses this to decide whether
+  // to render — it must not depend on secondsLeft === duration, because
+  // settings load asynchronously and duration can change after mount.
+  const isIdle =
+    !running &&
+    endTime === null &&
+    (pausedRemaining === null || pausedRemaining === 0);
+
   return (
     <RestTimerContext.Provider
       value={{
         secondsLeft,
         formatted,
         running,
+        duration: DEFAULT_TIME,
+        isIdle,
+        voiceEnabled,
+        setVoiceEnabled,
         start,
         pause,
         resume,

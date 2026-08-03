@@ -1,13 +1,11 @@
 import { useState } from 'react';
-import { FiEdit3, FiSave, FiUser, FiCamera, FiToggleLeft, FiToggleRight } from 'react-icons/fi';
+import { FiSave, FiUser, FiCamera } from 'react-icons/fi';
 import Card from '../../../shared/components/ui/Card';
 import ListRow from '../../../shared/components/ui/ListRow';
 import SectionTitle from '../../../shared/components/ui/SectionTitle';
 import SelectDialog from '../../../shared/components/ui/SelectDialog';
 import { useSettings } from '../../settings/hooks/SettingsProvider';
 import type { Gender, ActivityLevel, FitnessGoal } from '../../settings/types';
-import { calculateRequiredCalories } from '../../../shared/lib/calorieCalculator';
-import { SettingsService } from '../../settings/services/SettingsService';
 
 const GENDER_OPTIONS: { label: string; value: Gender }[] = [
   { label: 'Male', value: 'male' },
@@ -29,10 +27,14 @@ const GOAL_OPTIONS: { label: string; value: FitnessGoal }[] = [
   { label: 'Gain Weight', value: 'gain' },
 ];
 
-export default function UserProfileCard() {
-  const { settings, updateProfile, updateGender, updateActivityLevel, updateFitnessGoal, updateHeightUnit, updateUsername, updateProfilePicture, updateExpertMode } = useSettings();
+interface UserProfileCardProps {
+  /** Called when Save or Cancel is pressed so the parent can collapse the editor. */
+  onClose?: () => void;
+}
 
-  const [editing, setEditing] = useState(false);
+export default function UserProfileCard({ onClose }: UserProfileCardProps) {
+  const { settings, updateProfile, updateGender, updateActivityLevel, updateFitnessGoal, updateHeightUnit, updateUsername, updateProfilePicture } = useSettings();
+
   const [ageInput, setAgeInput] = useState('');
   const [heightInput, setHeightInput] = useState('');
   const [heightFeet, setHeightFeet] = useState('');
@@ -47,8 +49,6 @@ export default function UserProfileCard() {
   if (!settings) {
     return null;
   }
-
-  const calculation = calculateRequiredCalories(settings);
 
   const handleSave = async () => {
     const updates: Record<string, unknown> = {};
@@ -68,7 +68,7 @@ export default function UserProfileCard() {
     if (targetWeightInput) updates.targetWeight = parseFloat(targetWeightInput);
     if (usernameInput) updates.username = usernameInput;
     await updateProfile(updates);
-    setEditing(false);
+    onClose?.();
     setAgeInput('');
     setHeightInput('');
     setHeightFeet('');
@@ -92,7 +92,7 @@ export default function UserProfileCard() {
   };
 
   const handleCancel = () => {
-    setEditing(false);
+    onClose?.();
     setAgeInput('');
     setHeightInput('');
     setWeightInput('');
@@ -114,24 +114,24 @@ export default function UserProfileCard() {
             <img
               src={settings.profilePicture}
               alt="Profile"
-              className="w-24 h-24 rounded-full object-cover border-2 border-zinc-200 dark:border-zinc-700"
+              className="h-24 w-24 rounded-full border-2 border-zinc-100 object-cover dark:border-white/6"
             />
           ) : (
-            <div className="w-24 h-24 rounded-full bg-zinc-200 dark:bg-zinc-700 flex items-center justify-center">
+            <div className="flex h-24 w-24 items-center justify-center rounded-full bg-zinc-100 dark:bg-white/8">
               <FiUser size={40} className="text-zinc-400" />
             </div>
           )}
-          {editing && (
-            <label className="absolute bottom-0 right-0 p-2 bg-blue-500 text-white rounded-full cursor-pointer hover:bg-blue-600 transition-colors">
-              <FiCamera size={16} />
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleProfilePictureChange}
-                className="hidden"
-              />
-            </label>
-          )}
+          <label
+            aria-label="Change profile picture"
+            className="absolute bottom-0 right-0 cursor-pointer rounded-full bg-gradient-to-r from-emerald-500 to-lime-400 p-2 text-emerald-950 shadow-md shadow-emerald-500/25 transition hover:from-emerald-400 hover:to-lime-300">
+            <FiCamera size={16} />
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleProfilePictureChange}
+              className="hidden"
+            />
+          </label>
         </div>
       </div>
 
@@ -141,15 +141,13 @@ export default function UserProfileCard() {
           title="Name"
           value={settings.username}
           trailing={
-            editing ? (
-              <input
-                type="text"
-                value={usernameInput}
-                onChange={(e) => setUsernameInput(e.target.value)}
-                placeholder={settings.username}
-                className="w-32 px-1 py-0.5 text-sm text-right bg-zinc-100 dark:bg-zinc-800 rounded border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white"
-              />
-            ) : undefined
+            <input
+              type="text"
+              value={usernameInput}
+              onChange={(e) => setUsernameInput(e.target.value)}
+              placeholder={settings.username}
+              className="w-32 px-1 py-0.5 text-sm text-right rounded-lg bg-zinc-100 text-right text-zinc-900 ring-1 ring-zinc-200 transition focus:ring-2 focus:ring-emerald-500/30 focus:outline-none dark:bg-white/8 dark:text-white dark:ring-white/10"
+            />
           }
         />
 
@@ -158,15 +156,13 @@ export default function UserProfileCard() {
           title="Age"
           value={settings.age}
           trailing={
-            editing ? (
-              <input
-                type="number"
-                value={ageInput}
-                onChange={(e) => setAgeInput(e.target.value)}
-                placeholder={settings.age.toString()}
-                className="w-16 px-1 py-0.5 text-xs text-right bg-zinc-100 dark:bg-zinc-800 rounded border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white"
-              />
-            ) : undefined
+            <input
+              type="number"
+              value={ageInput}
+              onChange={(e) => setAgeInput(e.target.value)}
+              placeholder={settings.age.toString()}
+              className="w-16 px-1 py-0.5 text-xs text-right rounded-lg bg-zinc-100 text-right text-zinc-900 ring-1 ring-zinc-200 transition focus:ring-2 focus:ring-emerald-500/30 focus:outline-none dark:bg-white/8 dark:text-white dark:ring-white/10"
+            />
           }
         />
 
@@ -175,22 +171,20 @@ export default function UserProfileCard() {
           title="Gender"
           value={<span className="capitalize">{settings.gender}</span>}
           trailing={
-            editing ? (
-              <SelectDialog
-                open={genderDialogOpen}
-                title="Select Gender"
-                selected={settings.gender}
-                onClose={() => setGenderDialogOpen(false)}
-                onSelect={(value) => {
-                  updateGender(value as Gender);
-                  setGenderDialogOpen(false);
-                }}
-                options={GENDER_OPTIONS}
-              />
-            ) : undefined
+            <SelectDialog
+              open={genderDialogOpen}
+              title="Select Gender"
+              selected={settings.gender}
+              onClose={() => setGenderDialogOpen(false)}
+              onSelect={(value) => {
+                updateGender(value as Gender);
+                setGenderDialogOpen(false);
+              }}
+              options={GENDER_OPTIONS}
+            />
           }
-          onClick={editing ? () => setGenderDialogOpen(true) : undefined}
-          clickable={editing}
+          onClick={() => setGenderDialogOpen(true)}
+          clickable
         />
 
         {/* Height */}
@@ -198,49 +192,47 @@ export default function UserProfileCard() {
           title="Height"
           value={settings.heightUnit === 'cm' ? `${settings.height} cm` : `${Math.floor(settings.height / 2.54 / 12)}'${Math.round((settings.height / 2.54) % 12)}"`}
           trailing={
-            editing ? (
-              <div className="flex items-center gap-1">
-                {settings.heightUnit === 'cm' ? (
+            <div className="flex flex-wrap items-center justify-end gap-1">
+              {settings.heightUnit === 'cm' ? (
+                <input
+                  type="number"
+                  value={heightInput}
+                  onChange={(e) => setHeightInput(e.target.value)}
+                  placeholder={settings.height.toString()}
+                  className="w-16 px-1 py-0.5 text-xs text-right rounded-lg bg-zinc-100 text-right text-zinc-900 ring-1 ring-zinc-200 transition focus:ring-2 focus:ring-emerald-500/30 focus:outline-none dark:bg-white/8 dark:text-white dark:ring-white/10"
+                />
+              ) : (
+                <div className="flex items-center gap-1">
                   <input
                     type="number"
-                    value={heightInput}
-                    onChange={(e) => setHeightInput(e.target.value)}
-                    placeholder={settings.height.toString()}
-                    className="w-16 px-1 py-0.5 text-xs text-right bg-zinc-100 dark:bg-zinc-800 rounded border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white"
+                    value={heightFeet}
+                    onChange={(e) => setHeightFeet(e.target.value)}
+                    placeholder={Math.floor(settings.height / 2.54 / 12).toString()}
+                    className="w-12 px-1 py-0.5 text-xs text-right rounded-lg bg-zinc-100 text-right text-zinc-900 ring-1 ring-zinc-200 transition focus:ring-2 focus:ring-emerald-500/30 focus:outline-none dark:bg-white/8 dark:text-white dark:ring-white/10"
                   />
-                ) : (
-                  <div className="flex items-center gap-1">
-                    <input
-                      type="number"
-                      value={heightFeet}
-                      onChange={(e) => setHeightFeet(e.target.value)}
-                      placeholder={Math.floor(settings.height / 2.54 / 12).toString()}
-                      className="w-12 px-1 py-0.5 text-xs text-right bg-zinc-100 dark:bg-zinc-800 rounded border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white"
-                    />
-                    <span className="text-xs text-zinc-500">'</span>
-                    <input
-                      type="number"
-                      value={heightInches}
-                      onChange={(e) => setHeightInches(e.target.value)}
-                      placeholder={Math.round((settings.height / 2.54) % 12).toString()}
-                      className="w-12 px-1 py-0.5 text-xs text-right bg-zinc-100 dark:bg-zinc-800 rounded border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white"
-                    />
-                    <span className="text-xs text-zinc-500">"</span>
-                  </div>
-                )}
-                <button
-                  onClick={() => {
-                    updateHeightUnit(settings.heightUnit === 'cm' ? 'ft' : 'cm');
-                    setHeightInput('');
-                    setHeightFeet('');
-                    setHeightInches('');
-                  }}
-                  className="px-1.5 py-0.5 text-xs bg-zinc-200 dark:bg-zinc-700 rounded hover:bg-zinc-300 dark:hover:bg-zinc-600"
-                >
-                  {settings.heightUnit === 'cm' ? 'cm' : 'ft'}
-                </button>
-              </div>
-            ) : undefined
+                  <span className="text-xs text-zinc-500">'</span>
+                  <input
+                    type="number"
+                    value={heightInches}
+                    onChange={(e) => setHeightInches(e.target.value)}
+                    placeholder={Math.round((settings.height / 2.54) % 12).toString()}
+                    className="w-12 px-1 py-0.5 text-xs text-right rounded-lg bg-zinc-100 text-right text-zinc-900 ring-1 ring-zinc-200 transition focus:ring-2 focus:ring-emerald-500/30 focus:outline-none dark:bg-white/8 dark:text-white dark:ring-white/10"
+                  />
+                  <span className="text-xs text-zinc-500">"</span>
+                </div>
+              )}
+              <button
+                onClick={() => {
+                  updateHeightUnit(settings.heightUnit === 'cm' ? 'ft' : 'cm');
+                  setHeightInput('');
+                  setHeightFeet('');
+                  setHeightInches('');
+                }}
+                className="rounded-lg bg-zinc-100 px-1.5 py-0.5 text-xs font-semibold transition hover:bg-zinc-200 dark:bg-white/8 dark:hover:bg-white/12"
+              >
+                {settings.heightUnit === 'cm' ? 'cm' : 'ft'}
+              </button>
+            </div>
           }
         />
 
@@ -249,15 +241,13 @@ export default function UserProfileCard() {
           title="Weight"
           value={`${settings.weight} kg`}
           trailing={
-            editing ? (
-              <input
-                type="number"
-                value={weightInput}
-                onChange={(e) => setWeightInput(e.target.value)}
-                placeholder={settings.weight.toString()}
-                className="w-20 px-1 py-0.5 text-sm text-right bg-zinc-100 dark:bg-zinc-800 rounded border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white"
-              />
-            ) : undefined
+            <input
+              type="number"
+              value={weightInput}
+              onChange={(e) => setWeightInput(e.target.value)}
+              placeholder={settings.weight.toString()}
+              className="w-20 px-1 py-0.5 text-sm text-right rounded-lg bg-zinc-100 text-right text-zinc-900 ring-1 ring-zinc-200 transition focus:ring-2 focus:ring-emerald-500/30 focus:outline-none dark:bg-white/8 dark:text-white dark:ring-white/10"
+            />
           }
         />
 
@@ -266,22 +256,20 @@ export default function UserProfileCard() {
           title="Activity Level"
           value={<span className="capitalize">{settings.activityLevel.replace('_', ' ')}</span>}
           trailing={
-            editing ? (
-              <SelectDialog
-                open={activityDialogOpen}
-                title="Select Activity Level"
-                selected={settings.activityLevel}
-                onClose={() => setActivityDialogOpen(false)}
-                onSelect={(value) => {
-                  updateActivityLevel(value as ActivityLevel);
-                  setActivityDialogOpen(false);
-                }}
-                options={ACTIVITY_OPTIONS}
-              />
-            ) : undefined
+            <SelectDialog
+              open={activityDialogOpen}
+              title="Select Activity Level"
+              selected={settings.activityLevel}
+              onClose={() => setActivityDialogOpen(false)}
+              onSelect={(value) => {
+                updateActivityLevel(value as ActivityLevel);
+                setActivityDialogOpen(false);
+              }}
+              options={ACTIVITY_OPTIONS}
+            />
           }
-          onClick={editing ? () => setActivityDialogOpen(true) : undefined}
-          clickable={editing}
+          onClick={() => setActivityDialogOpen(true)}
+          clickable
         />
 
         {/* Goal */}
@@ -289,22 +277,20 @@ export default function UserProfileCard() {
           title="Fitness Goal"
           value={<span className="capitalize">{settings.goal.replace('_', ' ')}</span>}
           trailing={
-            editing ? (
-              <SelectDialog
-                open={goalDialogOpen}
-                title="Select Goal"
-                selected={settings.goal}
-                onClose={() => setGoalDialogOpen(false)}
-                onSelect={(value) => {
-                  updateFitnessGoal(value as FitnessGoal);
-                  setGoalDialogOpen(false);
-                }}
-                options={GOAL_OPTIONS}
-              />
-            ) : undefined
+            <SelectDialog
+              open={goalDialogOpen}
+              title="Select Goal"
+              selected={settings.goal}
+              onClose={() => setGoalDialogOpen(false)}
+              onSelect={(value) => {
+                updateFitnessGoal(value as FitnessGoal);
+                setGoalDialogOpen(false);
+              }}
+              options={GOAL_OPTIONS}
+            />
           }
-          onClick={editing ? () => setGoalDialogOpen(true) : undefined}
-          clickable={editing}
+          onClick={() => setGoalDialogOpen(true)}
+          clickable
         />
 
         {/* Target Weight */}
@@ -312,46 +298,32 @@ export default function UserProfileCard() {
           title="Target Weight"
           value={`${settings.targetWeight} kg`}
           trailing={
-            editing ? (
-              <input
-                type="number"
-                value={targetWeightInput}
-                onChange={(e) => setTargetWeightInput(e.target.value)}
-                placeholder={settings.targetWeight.toString()}
-                className="w-20 px-1 py-0.5 text-sm text-right bg-zinc-100 dark:bg-zinc-800 rounded border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white"
-              />
-            ) : undefined
+            <input
+              type="number"
+              value={targetWeightInput}
+              onChange={(e) => setTargetWeightInput(e.target.value)}
+              placeholder={settings.targetWeight.toString()}
+              className="w-20 px-1 py-0.5 text-sm text-right rounded-lg bg-zinc-100 text-right text-zinc-900 ring-1 ring-zinc-200 transition focus:ring-2 focus:ring-emerald-500/30 focus:outline-none dark:bg-white/8 dark:text-white dark:ring-white/10"
+            />
           }
         />
       </div>
 
-      {/* Edit / Save buttons */}
+      {/* Save / Cancel buttons */}
       <div className="mt-4 flex gap-2">
-        {editing ? (
-          <>
-            <button
-              onClick={handleSave}
-              className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-green-500 text-white rounded-xl hover:bg-green-600 transition-colors text-sm font-medium"
-            >
-              <FiSave size={16} />
-              Save Changes
-            </button>
-            <button
-              onClick={handleCancel}
-              className="flex-1 px-4 py-2 bg-zinc-200 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 rounded-xl hover:bg-zinc-300 dark:hover:bg-zinc-700 transition-colors text-sm font-medium"
-            >
-              Cancel
-            </button>
-          </>
-        ) : (
-          <button
-            onClick={() => setEditing(true)}
-            className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-xl hover:bg-blue-600 transition-colors text-sm font-medium"
-          >
-            <FiEdit3 size={16} />
-            Edit Profile
-          </button>
-        )}
+        <button
+          onClick={handleSave}
+          className="flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-emerald-500 to-lime-400 px-4 py-2.5 text-sm font-bold text-emerald-950 shadow-md shadow-emerald-500/25 transition-all duration-200 hover:from-emerald-400 hover:to-lime-300 active:scale-[0.98]"
+        >
+          <FiSave size={16} />
+          Save Changes
+        </button>
+        <button
+          onClick={handleCancel}
+          className="flex flex-1 items-center justify-center gap-2 rounded-full bg-zinc-100 px-4 py-2.5 text-sm font-semibold text-zinc-700 transition hover:bg-zinc-200 dark:bg-white/8 dark:text-zinc-300 dark:hover:bg-white/12"
+        >
+          Cancel
+        </button>
       </div>
     </Card>
   );

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="currentColor" aria-hidden="true">
+  <!-- Running silhouette -->
+  <g>
+    <circle cx="50" cy="22" r="8" />
+    <rect x="40" y="30" width="20" height="38" rx="10" transform="rotate(14 50 49)" />
+    <!-- trailing arm forward -->
+    <rect x="48" y="36" width="10" height="26" rx="5" transform="rotate(-46 53 49)" />
+    <rect x="30" y="44" width="9" height="18" rx="4.5" transform="rotate(-30 34 53)" />
+    <!-- leading leg -->
+    <rect x="54" y="62" width="11" height="26" rx="5.5" transform="rotate(-26 59 75)" />
+    <rect x="62" y="82" width="16" height="8" rx="4" transform="rotate(-30 70 86)" />
+    <!-- trailing leg -->
+    <rect x="36" y="62" width="11" height="26" rx="5.5" transform="rotate(30 41 75)" />
+    <rect x="24" y="82" width="16" height="8" rx="4" transform="rotate(20 32 86)" />
+    <rect x="20" y="92" width="80" height="4" rx="2" opacity="0.4" />
+  </g>
+</svg>
