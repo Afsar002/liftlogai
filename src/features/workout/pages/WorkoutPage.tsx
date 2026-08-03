@@ -164,18 +164,15 @@ export default function WorkoutPage() {
                   completedAt: finishedAt.toISOString(),
                   durationMinutes: duration,
                   totalVolume: stats.totalVolume,
-                  exercises: session.exercises
-                    .filter((exercise) => exercise.sets.some((set) => set.completed))
-                    .map((exercise) => ({
-                      exerciseId: exercise.id,
-                      exerciseName: exercise.name,
-                      sets: exercise.sets
-                        .filter((set) => set.completed)
-                        .map((set) => ({
-                          reps: set.reps,
-                          weight: set.weight,
-                        })),
+                  exercises: session.exercises.map((exercise) => ({
+                    exerciseId: exercise.id,
+                    exerciseName: exercise.name,
+                    sets: exercise.sets.map((set) => ({
+                      reps: set.reps,
+                      weight: set.weight,
+                      completed: set.completed,
                     })),
+                  })),
                 };
 
                 await db.transaction("rw", [db.workoutSessions, db.history], async () => {
