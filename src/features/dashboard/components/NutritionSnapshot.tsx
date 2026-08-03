@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
 import Card from "../../../shared/components/ui/Card";
 import { cn } from "../../../shared/lib/cn";
 import { motion, useReducedMotion } from "framer-motion";
+import { useMealContext } from "../../meals/context/MealContext";
 import {
   FiZap,
   FiDroplet,
@@ -9,14 +10,6 @@ import {
   FiTarget,
   FiHeart,
 } from "react-icons/fi";
-
-interface MacroData {
-  calories: { current: number; goal: number };
-  protein: { current: number; goal: number };
-  carbs: { current: number; goal: number };
-  fat: { current: number; goal: number };
-  water: { current: number; goal: number };
-}
 
 interface MacroCardProps {
   label: string;
@@ -105,87 +98,30 @@ function MacroCard({ label, current, goal, unit, icon: Icon, color, bgColor, del
  */
 export default function NutritionSnapshot() {
   const reduceMotion = useReducedMotion();
-  const [data, setData] = useState<MacroData | null>(null);
+  const { totals, calorieGoal, isLoading } = useMealContext();
 
-  useEffect(() => {
-    loadData();
-  }, []);
-
-  async function loadData() {
-    const { MealsRepository } = await import("../../meals/repository/MealsRepository");
-    const { SettingsRepository } = await import("../../settings/repository/SettingsRepository");
-
-    const [meals, settings] = await Promise.all([
-      MealsRepository.getTodayMeals(),
-      SettingsRepository.getSettings(),
-    ]);
-
-    // Calculate totals from meal items
-    const totals = meals.reduce(
-      (acc, meal) => {
-        meal.items.forEach((item) => {
-          acc.calories += item.calories;
-          acc.protein += item.protein;
-          acc.carbs += item.carbs;
-          acc.fat += item.fat;
-        });
-        return acc;
-      },
-      { calories: 0, protein: 0, carbs: 0, fat: 0 }
-    );
-
-    // Calculate calorie goal from user settings (Mifflin-St Jeor)
-    let calorieGoal = 2000;
-    if (settings) {
-      const weight = settings.weight;
-      const height = settings.height;
-      const age = settings.age;
-      const gender = settings.gender;
-      const activityLevel = settings.activityLevel;
-      const goal = settings.goal;
-
-      let bmr = 0;
-      if (gender === "male") {
-        bmr = 10 * weight + 6.25 * height - 5 * age + 5;
-      } else {
-        bmr = 10 * weight + 6.25 * height - 5 * age - 161;
-      }
-
-      const activityMultipliers: Record<string, number> = {
-        sedentary: 1.2,
-        light: 1.375,
-        moderate: 1.55,
-        active: 1.725,
-        very_active: 1.9,
-      };
-      const tdee = bmr * (activityMultipliers[activityLevel] || 1.2);
-
-      if (goal === "lose") calorieGoal = Math.round(tdee - 500);
-      else if (goal === "gain") calorieGoal = Math.round(tdee + 500);
-      else calorieGoal = Math.round(tdee);
-    }
-
-    const goals = {
+  // Macro goals derived from the calorie goal (30/40/30 split).
+  const goals = useMemo(
+    () => ({
       calories: calorieGoal,
-      protein: Math.round(calorieGoal * 0.3 / 4), // 30% protein
-      carbs: Math.round(calorieGoal * 0.4 / 4),  // 40% carbs
-      fat: Math.round(calorieGoal * 0.3 / 9),    // 30% fat
+      protein: Math.round((calorieGoal * 0.3) / 4), // 30% protein
+      carbs: Math.round((calorieGoal * 0.4) / 4), // 40% carbs
+      fat: Math.round((calorieGoal * 0.3) / 9), // 30% fat
       water: 3000,
-    };
+    }),
+    [calorieGoal]
+  );
 
-    // Water intake not tracked in meals currently - use default
-    const water = 0;
+  // Water intake not tracked in meals currently - use default
+  const data = {
+    calories: { current: totals.calories, goal: goals.calories },
+    protein: { current: totals.protein, goal: goals.protein },
+    carbs: { current: totals.carbs, goal: goals.carbs },
+    fat: { current: totals.fat, goal: goals.fat },
+    water: { current: 0, goal: goals.water },
+  };
 
-    setData({
-      calories: { current: totals.calories, goal: goals.calories },
-      protein: { current: totals.protein, goal: goals.protein },
-      carbs: { current: totals.carbs, goal: goals.carbs },
-      fat: { current: totals.fat, goal: goals.fat },
-      water: { current: water, goal: goals.water },
-    });
-  }
-
-  if (!data) {
+  if (isLoading) {
     return (
       <Card>
         <div className="flex items-center justify-between">

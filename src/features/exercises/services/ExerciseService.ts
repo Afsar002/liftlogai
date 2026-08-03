@@ -131,6 +131,17 @@ export function invalidateExerciseCache() {
   loadPromise = null;
 }
 
+/**
+ * Preloads exercises in the background (non-blocking).
+ * Call this early (e.g., app mount) to warm the cache before the user searches.
+ */
+export function preloadExercises(): void {
+  // Fire-and-forget; cache will be ready when needed.
+  loadExercises().catch(() => {
+    // Swallow — user will hit it on first search anyway.
+  });
+}
+
 /* ------------------------------------------------------------------ */
 /* Lookup                                                              */
 /* ------------------------------------------------------------------ */
@@ -201,15 +212,28 @@ function matchScore(exercise: Exercise, haystack: string, tokens: string[]): num
 
   let score = 0;
   for (const token of tokens) {
-    if (name.includes(token)) score += 40;
-    else if (exercise.aliases.some((alias) => alias.includes(token))) score += 25;
-    else if (
+    // Check name first — highest priority per-token scores
+    if (name === token) {
+      // Exact single-token match in name
+      score += 80;
+    } else if (name.startsWith(token)) {
+      // Name starts with this token
+      score += 70;
+    } else if (name.includes(` ${token}`) || name.startsWith(`${token} `)) {
+      // Token is a whole word in the name (word boundary match)
+      score += 60;
+    } else if (name.includes(token)) {
+      // Partial substring match in name
+      score += 45;
+    } else if (exercise.aliases.some((alias) => alias.includes(token))) {
+      score += 25;
+    } else if (
       exercise.primaryMuscles.some((m) => m.toLowerCase().includes(token)) ||
       exercise.equipment.toLowerCase().includes(token) ||
       exercise.category.toLowerCase().includes(token) ||
       exercise.bodyRegion.toLowerCase().includes(token)
     ) {
-      score += 10;
+      score += 8;
     }
   }
   return score;

@@ -22,7 +22,7 @@ export default function ProfilePage() {
   return (
     <Layout>
       <AnimatedPage>
-        <div className="mx-auto max-w-2xl space-y-7">
+        <div className="space-y-7">
           <ProfileHero
             settings={settings}
             editing={showEditor}

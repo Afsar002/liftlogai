@@ -65,7 +65,7 @@ export default function HeroCard() {
     }
 
     const template = templates[0];
-    const session = WorkoutSessionFactory.create(template);
+    const session = await WorkoutSessionFactory.create(template);
     setSession(session);
     toast.success(`${template.name} started`);
     navigate("/workout");

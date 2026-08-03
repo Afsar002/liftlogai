@@ -15,9 +15,11 @@ import type {
   GoalTrackingData,
   PeakWeekDay,
 } from '../types/expert';
+import type { MealItem } from '../types';
 import { allFoods } from '../data/foodDatabase';
 import { NutritionEngine } from '../services/NutritionEngine';
 import { AICoachService } from '../services/AICoachService';
+import { MealsRepository } from '../repository/MealsRepository';
 import { v4 as uuidv4 } from 'uuid';
 
 const GOALS_STORAGE_KEY = 'liftlog_expert_goals';
@@ -51,6 +53,47 @@ export function useExpertMode() {
   const [peakWeekData, setPeakWeekData] = useState<PeakWeekDay[]>([]);
   const [favoriteFoods, setFavoriteFoods] = useState<string[]>([]);
   const [recentFoods, setRecentFoods] = useState<string[]>([]);
+
+  // Load expert logs from regular meal system on initialization
+  useEffect(() => {
+    const loadFromMeals = async () => {
+      try {
+        const meals = await MealsRepository.getTodayMeals();
+        const logs: RawFoodLog[] = [];
+
+        for (const meal of meals) {
+          for (const item of meal.items) {
+            // Convert meal item to raw food log format
+            const log: RawFoodLog = {
+              id: item.id,
+              foodId: item.foodId,
+              foodName: item.name,
+              category: 'protein' as any, // Default category, could be enhanced
+              rawWeight: item.quantity,
+              logMode: 'raw',
+              cookedWeight: item.quantity,
+              calories: item.calories,
+              protein: item.protein,
+              carbs: item.carbs,
+              fat: item.fat,
+              fiber: 0,
+              timestamp: new Date().toISOString(),
+              mealId: meal.mealType.toLowerCase(),
+            };
+            logs.push(log);
+          }
+        }
+
+        if (logs.length > 0) {
+          setRawFoodLogs(logs);
+        }
+      } catch (err) {
+        console.error('Failed to load expert logs from meals:', err);
+      }
+    };
+
+    loadFromMeals();
+  }, []);
 
   // Calculate expert nutrition totals from raw food logs
   const expertTotals = useMemo<ExpertNutritionTotals>(() => {
@@ -113,7 +156,7 @@ export function useExpertMode() {
 
 // Log a raw food
   const logRawFood = useCallback(
-    (food: RawFoodEntry, weightGrams: number, mode: LogMode, mealId: string) => {
+    async (food: RawFoodEntry, weightGrams: number, mode: LogMode, mealId: string) => {
       const nutrition = NutritionEngine.calculateNutritionPreview(food, weightGrams, mode);
       const rawWeight = mode === 'cooked'
         ? Math.round((weightGrams / food.cookedConversionFactor) * 10) / 10
@@ -138,13 +181,74 @@ export function useExpertMode() {
         const updated = [food.id, ...prev.filter(f => f !== food.id)];
         return updated.slice(0, 20);
       });
+
+      // Also persist to regular meal system so it shows on Home Dashboard and survives refresh
+      try {
+        const today = MealsRepository.getTodayDate();
+        // Map expert mealId to standard mealType
+        const mealTypeMap: Record<string, 'Breakfast' | 'Lunch' | 'Dinner' | 'Snacks'> = {
+          'breakfast': 'Breakfast',
+          'lunch': 'Lunch',
+          'dinner': 'Dinner',
+          'snacks': 'Snacks',
+          'default': 'Snacks'
+        };
+        const mealType = mealTypeMap[mealId] || 'Snacks';
+
+        // Get or create the meal for today
+        const meal = await MealsRepository.getOrCreateMealForType(mealType);
+
+        // Create meal item from the logged food
+        const mealItem: MealItem = {
+          id: uuidv4(),
+          mealId: meal.id,
+          foodId: food.id,
+          name: food.name,
+          quantity: weightGrams,
+          servingSize: 100,
+          servingUnit: 'g',
+          calories: nutrition.calories,
+          protein: nutrition.protein,
+          carbs: nutrition.carbs,
+          fat: nutrition.fat,
+        };
+
+        await MealsRepository.addFoodToMeal(meal.id, mealItem);
+      } catch (err) {
+        console.error('Failed to sync expert food log to regular meals:', err);
+      }
     },
     []
   );
 
   // Remove a raw food log
-  const removeRawFoodLog = useCallback((logId: string) => {
-    setRawFoodLogs(prev => prev.filter(l => l.id !== logId));
+  const removeRawFoodLog = useCallback(async (logId: string) => {
+    // Find the log to get the mealId for DB cleanup
+    let mealId: string | null = null;
+    setRawFoodLogs(prev => {
+      const log = prev.find(l => l.id === logId);
+      if (log) {
+        mealId = log.mealId;
+      }
+      return prev.filter(l => l.id !== logId);
+    });
+
+    // Also remove from regular meal system
+    if (mealId) {
+      try {
+        const today = MealsRepository.getTodayDate();
+        const meals = await MealsRepository.getMealsForDate(today);
+        const meal = meals.find(m => m.mealType.toLowerCase() === mealId);
+        if (meal) {
+          const item = meal.items.find(i => i.id === logId);
+          if (item) {
+            await MealsRepository.removeMealItem(item.id);
+          }
+        }
+      } catch (err) {
+        console.error('Failed to sync expert food removal to regular meals:', err);
+      }
+    }
   }, []);
 
   // Toggle favorite

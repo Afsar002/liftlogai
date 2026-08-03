@@ -37,7 +37,6 @@ export default function Layout({
           md:px-10
 
           lg:max-w-5xl
-          xl:max-w-7xl
         "
       >
         <AnimatedPage orchestrate staggerChildren>{children}</AnimatedPage>

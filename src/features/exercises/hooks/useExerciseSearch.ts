@@ -5,6 +5,8 @@ import {
   type ExerciseSearchOptions,
 } from "../services/ExerciseService";
 
+const MAX_SEARCH_RESULTS = 100; // Cap results for performance
+
 interface UseExerciseSearchReturn {
   query: string;
   setQuery: (query: string) => void;
@@ -71,7 +73,8 @@ export function useExerciseSearch(
     timerRef.current = setTimeout(() => {
       searchExercises(query, options)
         .then((next) => {
-          setResults(next);
+          // Cap results for performance
+          setResults(next.slice(0, MAX_SEARCH_RESULTS));
           setIsLoading(false);
         })
         .catch((error) => {

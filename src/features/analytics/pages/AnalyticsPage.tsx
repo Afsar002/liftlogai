@@ -50,7 +50,7 @@ export default function AnalyticsPage() {
   if (!summary) {
     return (
       <Layout>
-        <div className="mx-auto max-w-3xl space-y-6">
+        <div className="space-y-6">
           <Skeleton variant="rectangular" className="h-48" />
           <Skeleton variant="card" className="h-48" />
           <Skeleton variant="card" className="h-32" />
@@ -70,7 +70,7 @@ export default function AnalyticsPage() {
 
   return (
     <Layout>
-      <div className="mx-auto max-w-3xl space-y-6">
+      <div className="space-y-6">
         <InsightHero
           workouts={summary.totalWorkouts}
           volume={summary.totalVolume}

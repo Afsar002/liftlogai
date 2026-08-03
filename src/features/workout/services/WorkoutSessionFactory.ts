@@ -1,8 +1,16 @@
 import type { WorkoutTemplateDB } from "../../../database/types";
 import type { WorkoutSession } from "../types/session";
+import { HistoryRepository } from "../../history/repositories/HistoryRepository";
+import type { WorkoutHistory } from "../../history/models/WorkoutHistory";
 
 export class WorkoutSessionFactory {
-  static create(template: WorkoutTemplateDB): WorkoutSession {
+  static async create(template: WorkoutTemplateDB): Promise<WorkoutSession> {
+    // Fetch workout history to compute previous bests
+    const history = await HistoryRepository.getAll();
+
+    // Build a map of exerciseId -> previous best string
+    const previousBests = computePreviousBests(history, template.exercises.map(e => e.id));
+
     return {
       id: crypto.randomUUID(),
 
@@ -17,7 +25,7 @@ export class WorkoutSessionFactory {
 
         name: exercise.name,
 
-        previous: "-",
+        previous: previousBests.get(exercise.id) || "-",
 
         sets: Array.from(
           { length: exercise.targetSets },
@@ -36,4 +44,46 @@ export class WorkoutSessionFactory {
       })),
     };
   }
+}
+
+function computePreviousBests(
+  history: WorkoutHistory[],
+  exerciseIds: string[]
+): Map<string, string> {
+  const bests = new Map<string, { weight: number; reps: number; volume: number }>();
+
+  // Iterate through history in reverse chronological order (most recent first)
+  // to find the most recent completed sets for each exercise
+  for (const workout of history) {
+    for (const exercise of workout.exercises) {
+      if (!exerciseIds.includes(exercise.exerciseId)) continue;
+
+      // Find the heaviest set (by weight, then reps) in this workout
+      let bestSet = { weight: 0, reps: 0, volume: 0 };
+      for (const set of exercise.sets) {
+        const volume = set.weight * set.reps;
+        if (set.weight > bestSet.weight || (set.weight === bestSet.weight && set.reps > bestSet.reps)) {
+          bestSet = { weight: set.weight, reps: set.reps, volume };
+        }
+      }
+
+      // Only update if we found a valid set and it's better than what we have
+      if (bestSet.weight > 0) {
+        const existing = bests.get(exercise.exerciseId);
+        if (!existing || bestSet.weight > existing.weight || (bestSet.weight === existing.weight && bestSet.reps > existing.reps)) {
+          bests.set(exercise.exerciseId, bestSet);
+        }
+      }
+    }
+  }
+
+  // Convert to display strings
+  const result = new Map<string, string>();
+  for (const [exerciseId, best] of bests) {
+    // Calculate 1RM using Epley formula: weight * (1 + reps/30)
+    const oneRM = Math.round(best.weight * (1 + best.reps / 30));
+    result.set(exerciseId, `${best.weight} lbs × ${best.reps} reps (1RM ~${oneRM} lbs)`);
+  }
+
+  return result;
 }

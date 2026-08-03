@@ -123,7 +123,7 @@ export default function WorkoutPage() {
   if (finished) {
     return (
       <Layout>
-        <div className="mx-auto max-w-2xl space-y-6">
+        <div className="space-y-6">
           <WorkoutReviewSheet
             workoutName={session.workoutName}
             duration={finalDuration ?? formatted}
@@ -235,7 +235,7 @@ export default function WorkoutPage() {
           onFinish={endWorkout}
         />
 
-        <div className="mx-auto max-w-2xl space-y-4 pt-5">
+        <div className="space-y-4 pt-5">
           {/* Exercise progress rail — chapter navigation for the session */}
           {session.exercises.length > 1 && (
             <ExerciseProgressRail exercises={railExercises} onSelect={jumpToExercise} />

@@ -36,7 +36,7 @@ export default function TemplatesPage() {
     navigate(`/templates/${id}`);
   }
 
-  function handleStart(template: WorkoutTemplateDB) {
+  async function handleStart(template: WorkoutTemplateDB) {
     if (currentSession) {
       const confirmStart = window.confirm(
         "An active workout session is already in progress. Start a new workout and discard the current session?"
@@ -44,7 +44,7 @@ export default function TemplatesPage() {
       if (!confirmStart) return;
     }
 
-    const workout = WorkoutSessionFactory.create(template);
+    const workout = await WorkoutSessionFactory.create(template);
 
     setSession(workout);
 
@@ -82,7 +82,7 @@ export default function TemplatesPage() {
   if (loading) {
     return (
       <Layout>
-        <div className="mx-auto max-w-5xl space-y-7">
+        <div className="space-y-7">
           <Skeleton variant="rectangular" className="h-44" />
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             <Skeleton variant="card" className="h-72" />
@@ -103,7 +103,7 @@ export default function TemplatesPage() {
   return (
     <Layout>
       <AnimatedPage>
-        <div className="mx-auto max-w-5xl space-y-9">
+        <div className="space-y-9">
           <ProgramsHero
             programCount={templates.length}
             exerciseCount={totalExercises}

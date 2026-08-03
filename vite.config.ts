@@ -9,6 +9,32 @@ export default defineConfig({
     // base64 into the JS bundle. The exercise thumbnails are WebP (~3KB each);
     // inlining ~1,300 of them would balloon the main chunk by several MB.
     assetsInlineLimit: 0,
+    rolldownOptions: {
+      output: {
+        // Split the large shared libraries into stable vendor chunks so the
+        // main entry stays small and each library is cached independently.
+        codeSplitting: {
+          groups: [
+            {
+              name: "vendor-react",
+              test: /node_modules[\\/](react|react-dom|react-router|react-router-dom|react-hot-toast|react-icons|scheduler)[\\/]/,
+            },
+            {
+              name: "vendor-motion",
+              test: /node_modules[\\/](framer-motion|motion|motion-dom)[\\/]/,
+            },
+            {
+              name: "vendor-charts",
+              test: /node_modules[\\/](recharts|d3-[a-z-]+|victory-vendor|decimal|internmap)[\\/]/,
+            },
+            {
+              name: "vendor-data",
+              test: /node_modules[\\/](dexie|dexie-react-hooks|uuid|dayjs)[\\/]/,
+            },
+          ],
+        },
+      },
+    },
   },
   plugins: [
     react(),

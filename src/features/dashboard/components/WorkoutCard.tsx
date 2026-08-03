@@ -41,7 +41,7 @@ export default function WorkoutCard({
     const template = templates[0];
 
     const session =
-      WorkoutSessionFactory.create(template);
+      await WorkoutSessionFactory.create(template);
 
     setSession(session);
 

@@ -37,7 +37,7 @@ export default function MealsPage() {
   if (isLoading) {
     return (
       <Layout>
-        <div className="mx-auto max-w-3xl space-y-6">
+        <div className="space-y-6">
           <Skeleton variant="rectangular" className="h-44" />
           <Skeleton variant="card" className="h-44" />
           <Skeleton variant="card" className="h-28" />

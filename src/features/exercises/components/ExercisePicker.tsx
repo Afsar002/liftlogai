@@ -1,12 +1,12 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { FiChevronRight, FiPlus } from "react-icons/fi";
+import { FiChevronDown, FiChevronRight, FiPlus } from "react-icons/fi";
 import { cn } from "../../../shared/lib/cn";
 import type { BodyRegion, Exercise } from "../../../types/Exercise";
 import * as ExerciseService from "../services/ExerciseService";
 import { ExerciseLibraryRepository } from "../services/ExerciseLibraryRepository";
 import { useExerciseSearch } from "../hooks/useExerciseSearch";
-import ExerciseImage from "./ExerciseImage";
+import { getRegionIllustrationUrl } from "../data/exerciseImages";
 
 interface Props {
   onSelect(id: string): void;
@@ -23,6 +23,8 @@ const REGION_ORDER: BodyRegion[] = [
   "Cardio",
 ];
 
+const ITEMS_PER_GROUP = 15;
+
 /**
  * The single exercise picker used across Workout Builder, Templates, and the
  * active Workout Session. Powered by ExerciseService (bundled dataset + custom
@@ -32,6 +34,7 @@ export default function ExercisePicker({ onSelect, existingNames = [] }: Props) 
   const { query, setQuery, results } = useExerciseSearch();
   const [selectedRegion, setSelectedRegion] = useState<string>("All");
   const [collapsed, setCollapsed] = useState<Record<string, boolean>>({});
+  const [expandedGroups, setExpandedGroups] = useState<Record<string, boolean>>({});
   const [sessionCustoms, setSessionCustoms] = useState<Exercise[]>([]);
 
   const available = useMemo(() => {
@@ -52,11 +55,19 @@ export default function ExercisePicker({ onSelect, existingNames = [] }: Props) 
     const extra = [...map.keys()]
       .filter((region) => !REGION_ORDER.includes(region as BodyRegion))
       .sort();
-    return [...ordered, ...extra].map((region) => ({
-      region,
-      items: map.get(region)!,
-    }));
-  }, [available]);
+    const isSearching = query.trim().length > 0;
+    return [...ordered, ...extra].map((region) => {
+      const allItems = map.get(region)!;
+      const expanded = expandedGroups[region] ?? false;
+      const isCapped = !isSearching && allItems.length > ITEMS_PER_GROUP && !expanded;
+      return {
+        region,
+        items: isCapped ? allItems.slice(0, ITEMS_PER_GROUP) : allItems,
+        totalCount: allItems.length,
+        isCapped,
+      };
+    });
+  }, [available, query, expandedGroups]);
 
   const visibleGroups =
     selectedRegion === "All"
@@ -128,7 +139,7 @@ export default function ExercisePicker({ onSelect, existingNames = [] }: Props) 
                 <div className="text-xs font-black uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
                   {group.region}
                   <span className="ml-1.5 text-[11px] font-semibold normal-case text-zinc-400">
-                    {group.items.length}
+                    {group.totalCount}
                   </span>
                 </div>
                 <button
@@ -154,11 +165,12 @@ export default function ExercisePicker({ onSelect, existingNames = [] }: Props) 
                       onClick={() => onSelect(exercise.id)}
                       className="flex w-full items-center gap-3 rounded-2xl border border-zinc-200/70 bg-white p-3 text-left shadow-sm transition hover:border-emerald-400/40 hover:bg-emerald-500/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 dark:border-white/8 dark:bg-[#141417] dark:hover:border-emerald-500/30"
                     >
-                      <ExerciseImage
-                        exercise={exercise}
-                        className="h-12 w-12 shrink-0 rounded-xl"
-                        imgClassName="rounded-xl"
-                        alt=""
+                      {/* Use muscle region illustration for better performance */}
+                      <div
+                        className="h-12 w-12 shrink-0 rounded-xl bg-zinc-100 dark:bg-white/8"
+                        style={{ backgroundImage: `url(${getRegionIllustrationUrl(exercise.bodyRegion)})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+                        role="img"
+                        aria-label={exercise.name}
                       />
                       <div className="min-w-0 flex-1">
                         <div className="truncate text-sm font-bold text-zinc-900 dark:text-white">
@@ -171,6 +183,21 @@ export default function ExercisePicker({ onSelect, existingNames = [] }: Props) 
                       <FiChevronRight className="shrink-0 text-zinc-300 dark:text-zinc-600" aria-hidden="true" />
                     </button>
                   ))}
+                  {group.isCapped && (
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setExpandedGroups((current) => ({
+                          ...current,
+                          [group.region]: true,
+                        }))
+                      }
+                      className="flex w-full items-center justify-center gap-1.5 rounded-2xl border border-dashed border-zinc-200 py-2.5 text-xs font-semibold text-zinc-500 transition-colors hover:border-emerald-400 hover:text-emerald-600 dark:border-zinc-700 dark:text-zinc-400 dark:hover:text-emerald-400"
+                    >
+                      <FiChevronDown size={14} aria-hidden="true" />
+                      Show all {group.totalCount} exercises
+                    </button>
+                  )}
                 </div>
               )}
             </div>

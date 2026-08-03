@@ -44,7 +44,7 @@ export default function WorkoutDetailPage() {
   if (loading) {
     return (
       <Layout>
-        <div className="mx-auto max-w-2xl space-y-6">
+        <div className="space-y-6">
           <Skeleton variant="rectangular" className="h-56" />
           <Skeleton variant="card" className="h-56" />
           <Skeleton variant="card" className="h-72" />
@@ -56,7 +56,7 @@ export default function WorkoutDetailPage() {
   if (error || !workout) {
     return (
       <Layout>
-        <div className="mx-auto max-w-2xl space-y-6">
+        <div className="space-y-6">
           <Skeleton variant="rectangular" className="h-32" />
           <EmptyState
             icon={<FiActivity size={28} />}
@@ -87,7 +87,7 @@ export default function WorkoutDetailPage() {
 
   return (
     <Layout>
-      <div className="mx-auto max-w-2xl space-y-6">
+      <div className="space-y-6">
         <button
           type="button"
           onClick={() => navigate("/history")}

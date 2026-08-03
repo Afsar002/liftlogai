@@ -111,7 +111,7 @@ export default function HistoryPage() {
   if (loading) {
     return (
       <Layout>
-        <div className="mx-auto max-w-2xl space-y-6">
+        <div className="space-y-6">
           <Skeleton variant="rectangular" className="h-40" />
           <Skeleton variant="card" className="h-48" />
           <Skeleton variant="card" className="h-40" />
@@ -125,7 +125,7 @@ export default function HistoryPage() {
   if (error) {
     return (
       <Layout>
-        <div className="mx-auto max-w-2xl">
+        <div>
           <Skeleton variant="rectangular" className="mb-6 h-40" />
           <EmptyState
             icon={<FiActivity size={28} />}
@@ -140,7 +140,7 @@ export default function HistoryPage() {
   return (
     <Layout>
       <AnimatedPage>
-        <div className="mx-auto max-w-2xl space-y-7">
+        <div className="space-y-7">
           {history.length === 0 ? (
             <EmptyState
               icon={<FiActivity size={28} />}

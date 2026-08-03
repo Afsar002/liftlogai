@@ -1,12 +1,15 @@
 import { useMemo, useState, useEffect } from "react";
 import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
-import { FiChevronRight, FiSearch, FiFilter, FiClock, FiStar, FiX, FiPlus } from "react-icons/fi";
+import { FiChevronRight, FiChevronDown, FiSearch, FiFilter, FiClock, FiStar, FiX, FiPlus } from "react-icons/fi";
 import { cn } from "../../../shared/lib/cn";
 import type { BodyRegion, Exercise } from "../../../types/Exercise";
 import { ExerciseService, mapCustomToExercise } from "../../exercises/services/ExerciseService";
 import { ExerciseLibraryRepository } from "../../exercises/services/ExerciseLibraryRepository";
 import { useExerciseSearch } from "../../exercises/hooks/useExerciseSearch";
-import ExerciseImage from "../../exercises/components/ExerciseImage";
+import { getRegionIllustrationUrl } from "../../exercises/data/exerciseImages";
+
+/** Max exercises rendered per group when no search query is active. */
+const ITEMS_PER_GROUP = 15;
 
 interface Props {
   onSelect: (id: string) => void;
@@ -32,6 +35,7 @@ export default function ExercisePickerSheet({
   const { query, setQuery, results, clear } = useExerciseSearch();
   const [selectedRegion, setSelectedRegion] = useState<string>("All");
   const [collapsed, setCollapsed] = useState<Record<string, boolean>>({});
+  const [expandedGroups, setExpandedGroups] = useState<Record<string, boolean>>({});
   const [sessionCustoms, setSessionCustoms] = useState<Exercise[]>([]);
   const [recentExercises, setRecentExercises] = useState<Exercise[]>([]);
   const [showRecent, setShowRecent] = useState(true);
@@ -72,11 +76,19 @@ export default function ExercisePickerSheet({
     const extra = [...map.keys()]
       .filter((region) => !REGION_ORDER.includes(region as BodyRegion))
       .sort();
-    return [...ordered, ...extra].map((region) => ({
-      region,
-      items: map.get(region)!,
-    }));
-  }, [available]);
+    const isSearching = query.trim().length > 0;
+    return [...ordered, ...extra].map((region) => {
+      const allItems = map.get(region)!;
+      const expanded = expandedGroups[region] ?? false;
+      const isCapped = !isSearching && allItems.length > ITEMS_PER_GROUP && !expanded;
+      return {
+        region,
+        items: isCapped ? allItems.slice(0, ITEMS_PER_GROUP) : allItems,
+        totalCount: allItems.length,
+        isCapped,
+      };
+    });
+  }, [available, query, expandedGroups]);
 
   const visibleGroups =
     selectedRegion === "All"
@@ -241,7 +253,6 @@ export default function ExercisePickerSheet({
                       key={exercise.id}
                       exercise={exercise}
                       onSelect={handleSelect}
-                      reduceMotion={reduceMotion}
                       isRecent={true}
                     />
                   ))}
@@ -260,6 +271,12 @@ export default function ExercisePickerSheet({
                     setCollapsed((current) => ({
                       ...current,
                       [group.region]: !current[group.region],
+                    }))
+                  }
+                  onExpand={() =>
+                    setExpandedGroups((current) => ({
+                      ...current,
+                      [group.region]: true,
                     }))
                   }
                   onSelect={handleSelect}
@@ -354,7 +371,7 @@ function FilterChip({
         <span
           className={cn(
             "flex h-5 min-w-5 items-center justify-center rounded-full px-1.5 text-[10px] font-bold",
-            selected ? "bg-emerald-950/20 text-emerald-950" : "bg-white/50 text-zinc-500"
+            selected ? "bg-white/20 text-white" : "bg-white/50 text-zinc-500"
           )}
         >
           {count}
@@ -368,25 +385,23 @@ function ExerciseGroup({
   group,
   collapsed,
   onToggle,
+  onExpand,
   onSelect,
   reduceMotion,
 }: {
-  group: { region: string; items: Exercise[] };
+  group: { region: string; items: Exercise[]; totalCount: number; isCapped: boolean };
   collapsed: boolean;
   onToggle: () => void;
+  onExpand: () => void;
   onSelect: (id: string) => void;
   reduceMotion: boolean;
 }) {
   return (
-    <motion.div
-      initial={reduceMotion ? false : { opacity: 0, height: 0 }}
-      animate={{ opacity: 1, height: "auto" }}
-      transition={{ type: "spring", stiffness: 380, damping: 32 }}
-    >
+    <div className="space-y-2">
       <div className="mb-2 flex items-center justify-between">
         <h3 className="text-sm font-bold uppercase tracking-wider text-zinc-600 dark:text-zinc-300">
           {group.region}
-          <span className="ml-1.5 text-xs font-normal text-zinc-400">{group.items.length}</span>
+          <span className="ml-1.5 text-xs font-normal text-zinc-400">{group.totalCount}</span>
         </h3>
         <motion.button
           onClick={onToggle}
@@ -412,43 +427,45 @@ function ExerciseGroup({
                 key={exercise.id}
                 exercise={exercise}
                 onSelect={onSelect}
-                reduceMotion={reduceMotion}
               />
             ))}
+            {group.isCapped && (
+              <button
+                onClick={onExpand}
+                className="flex w-full items-center justify-center gap-1.5 rounded-xl border border-dashed border-zinc-200 py-2.5 text-sm font-medium text-zinc-500 transition-colors hover:border-emerald-400 hover:text-emerald-600 dark:border-zinc-700 dark:text-zinc-400 dark:hover:text-emerald-400"
+              >
+                <FiChevronDown size={16} aria-hidden="true" />
+                Show all {group.totalCount} exercises
+              </button>
+            )}
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.div>
+    </div>
   );
 }
 
 function ExerciseItem({
   exercise,
   onSelect,
-  reduceMotion,
   isRecent = false,
 }: {
   exercise: Exercise;
   onSelect: (id: string) => void;
-  reduceMotion: boolean;
   isRecent?: boolean;
 }) {
   return (
-    <motion.button
+    <button
       type="button"
       onClick={() => onSelect(exercise.id)}
-      whileHover={reduceMotion ? undefined : { x: 4 }}
-      whileTap={reduceMotion ? undefined : { scale: 0.98 }}
-      initial={reduceMotion ? false : { opacity: 0, x: -10 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ type: "spring", stiffness: 380, damping: 32 }}
-      className="flex w-full items-center gap-3 rounded-xl bg-white p-3 text-left text-zinc-900 shadow-sm transition hover:bg-zinc-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 dark:bg-zinc-900 dark:text-white dark:hover:bg-zinc-800"
+      className="flex w-full items-center gap-3 rounded-xl bg-white p-3 text-left text-zinc-900 shadow-sm transition-transform duration-150 ease-out hover:translate-x-1 hover:bg-zinc-50 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 dark:bg-zinc-900 dark:text-white dark:hover:bg-zinc-800"
     >
-      <ExerciseImage
-        exercise={exercise}
-        className="h-11 w-11 shrink-0 rounded-lg"
-        imgClassName="rounded-lg"
-        alt=""
+      {/* Use muscle region illustration instead of loading thumbnails for better performance */}
+      <div
+        className="h-11 w-11 shrink-0 rounded-lg bg-zinc-100 dark:bg-white/8"
+        style={{ backgroundImage: `url(${exercise.bodyRegion ? getRegionIllustrationUrl(exercise.bodyRegion as any) : ''})` }}
+        role="img"
+        aria-label={exercise.name}
       />
       <div className="min-w-0 flex-1">
         <div className="flex items-center gap-2 truncate">
@@ -465,7 +482,7 @@ function ExerciseItem({
         </div>
       </div>
       <FiChevronRight className="shrink-0 text-zinc-400" aria-hidden="true" />
-    </motion.button>
+    </button>
   );
 }
 

@@ -44,7 +44,7 @@ export default function EditTemplatePage() {
   if (loading) {
     return (
       <Layout>
-        <div className="mx-auto max-w-3xl space-y-6">
+        <div className="space-y-6">
           <Skeleton variant="rectangular" className="h-56" />
           <Skeleton variant="card" className="h-44" />
           <Skeleton variant="card" className="h-44" />
@@ -58,7 +58,7 @@ export default function EditTemplatePage() {
 
   return (
     <Layout>
-      <div className="mx-auto max-w-3xl space-y-6">
+      <div className="space-y-6">
         <TemplateEditor template={template} />
       </div>
     </Layout>

@@ -19,7 +19,7 @@ export default function RecordPage() {
   if (loading) {
     return (
       <Layout>
-        <div className="mx-auto max-w-2xl space-y-6">
+        <div className="space-y-6">
           <Skeleton variant="rectangular" className="h-44" />
           <Skeleton variant="rectangular" className="h-24" />
           <Skeleton variant="rectangular" className="h-24" />
@@ -32,7 +32,7 @@ export default function RecordPage() {
   return (
     <Layout>
       <AnimatedPage>
-        <div className="mx-auto max-w-2xl space-y-7">
+        <div className="space-y-7">
           {/* Hero */}
           <section className="relative overflow-hidden rounded-3xl bg-zinc-950 px-5 pb-5 pt-6 shadow-sm">
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-emerald-500/25 via-teal-500/10 to-transparent" />
