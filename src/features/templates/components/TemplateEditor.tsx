@@ -107,7 +107,11 @@ export default function TemplateEditor({ template }: Props) {
       exercises: [
         ...edited.exercises,
         {
-          id: crypto.randomUUID(),
+          // Use the stable exercise library ID so that workout sessions
+          // created from this template can match history records by ID.
+          // Previously this used crypto.randomUUID(), which broke
+          // computePreviousBests() lookups in WorkoutSessionFactory.
+          id: id,
           name: exercise.name,
           targetSets: 3,
           targetReps: "8-12",

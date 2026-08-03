@@ -15,7 +15,11 @@ export class WorkoutSessionFactory {
     }
 
     // Build a map of exerciseId -> previous best string
-    const previousBests = computePreviousBests(history, template.exercises.map(e => e.id));
+    const previousBests = computePreviousBests(
+      history,
+      template.exercises.map(e => e.id),
+      template.exercises.map(e => e.name)
+    );
 
     return {
       id: crypto.randomUUID(),
@@ -54,15 +58,43 @@ export class WorkoutSessionFactory {
 
 function computePreviousBests(
   history: WorkoutHistory[],
-  exerciseIds: string[]
+  exerciseIds: string[],
+  exerciseNames: string[]
 ): Map<string, string> {
   const bests = new Map<string, { weight: number; reps: number; volume: number }>();
+
+  // Normalize exercise names for fallback matching of legacy history records.
+  // Legacy records may contain session UUIDs instead of stable exercise library IDs.
+  const normalizeName = (name: string) =>
+    name
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, " ");
+
+  // Build a lookup: normalized template name -> stable exercise ID
+  // This allows fallback matching for legacy history records by name.
+  const templateNameToId = new Map<string, string>();
+  for (let i = 0; i < exerciseIds.length; i++) {
+    templateNameToId.set(normalizeName(exerciseNames[i]), exerciseIds[i]);
+  }
 
   // Iterate through history to find the heaviest completed set for each exercise
   // (not just most recent - we want the all-time best)
   for (const workout of history) {
     for (const exercise of workout.exercises) {
-      if (!exerciseIds.includes(exercise.exerciseId)) continue;
+      // Step 1: Try matching by stable exercise library ID (primary lookup)
+      let targetId = exerciseIds.includes(exercise.exerciseId)
+        ? exercise.exerciseId
+        : null;
+
+      // Step 2: If ID match fails, try matching by normalized exercise name (legacy fallback)
+      // This handles old history records that stored session UUIDs instead of library IDs
+      if (!targetId) {
+        const normalizedHistoryName = normalizeName(exercise.exerciseName);
+        targetId = templateNameToId.get(normalizedHistoryName) || null;
+      }
+
+      if (!targetId) continue;
 
       // Find the heaviest set (by weight, then reps) in this workout
       // All sets in history are from completed workouts, so no need to check 'completed' flag
@@ -76,9 +108,9 @@ function computePreviousBests(
 
       // Only update if we found a valid set and it's better than what we have
       if (bestSet.weight > 0) {
-        const existing = bests.get(exercise.exerciseId);
+        const existing = bests.get(targetId);
         if (!existing || bestSet.weight > existing.weight || (bestSet.weight === existing.weight && bestSet.reps > existing.reps)) {
-          bests.set(exercise.exerciseId, bestSet);
+          bests.set(targetId, bestSet);
         }
       }
     }

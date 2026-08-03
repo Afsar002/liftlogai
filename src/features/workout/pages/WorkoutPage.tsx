@@ -165,7 +165,9 @@ export default function WorkoutPage() {
                   durationMinutes: duration,
                   totalVolume: stats.totalVolume,
                   exercises: session.exercises.map((exercise) => ({
-                    exerciseId: exercise.id,
+                    // Use the stable exercise library ID for history lookup.
+                    // Fall back to session UUID only if exerciseId is missing.
+                    exerciseId: exercise.exerciseId ?? exercise.id,
                     exerciseName: exercise.name,
                     sets: exercise.sets.map((set) => ({
                       reps: set.reps,
