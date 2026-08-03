@@ -67,14 +67,17 @@ export function useExpertMode() {
             // Convert meal item to raw food log format
             // Preserve the logMode if it was stored, otherwise default to 'raw'
             const logMode = item.logMode || 'raw';
+            // Use stored weights if available, otherwise fall back to quantity
+            const rawWeight = item.rawWeight ?? item.quantity;
+            const cookedWeight = item.cookedWeight ?? item.quantity;
             const log: RawFoodLog = {
               id: item.id,
               foodId: item.foodId,
               foodName: item.name,
               category: 'protein' as any, // Default category, could be enhanced
-              rawWeight: item.quantity,
+              rawWeight: rawWeight,
               logMode: logMode,
-              cookedWeight: item.quantity,
+              cookedWeight: cookedWeight,
               calories: item.calories,
               protein: item.protein,
               carbs: item.carbs,
@@ -224,6 +227,8 @@ export function useExpertMode() {
           carbs: per100g.carbs,
           fat: per100g.fat,
           logMode: mode,
+          rawWeight: rawWeight,
+          cookedWeight: cookedWeight,
         };
 
         await MealsRepository.addFoodToMeal(meal.id, mealItem);

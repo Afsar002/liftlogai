@@ -27,6 +27,10 @@ export interface MealItem {
   fat: number;
   /** Whether the quantity is in raw or cooked weight */
   logMode?: 'raw' | 'cooked';
+  /** Raw weight in grams (for cooked entries, this is the pre-cooking weight) */
+  rawWeight?: number;
+  /** Cooked weight in grams (for raw entries, this equals the raw weight) */
+  cookedWeight?: number;
 }
 
 export interface Meal {
