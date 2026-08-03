@@ -48,6 +48,8 @@ export default function HeroCard() {
       if (!confirmStart) return;
     }
 
+    const toast = (await import("react-hot-toast")).default;
+
     try {
       const { TemplateRepository } = await import(
         "../../templates/services/TemplateRepository"
@@ -55,7 +57,6 @@ export default function HeroCard() {
       const { WorkoutSessionFactory } = await import(
         "../../workout/services/WorkoutSessionFactory"
       );
-      const toast = (await import("react-hot-toast")).default;
       const templates = await TemplateRepository.getAll();
 
       if (templates.length === 0) {
