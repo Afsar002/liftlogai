@@ -21,6 +21,7 @@ import { NutritionEngine } from '../services/NutritionEngine';
 import { AICoachService } from '../services/AICoachService';
 import { MealsRepository } from '../repository/MealsRepository';
 import { v4 as uuidv4 } from 'uuid';
+import { mealEvents } from '../../../shared/lib/mealEvents';
 
 const GOALS_STORAGE_KEY = 'liftlog_expert_goals';
 
@@ -214,6 +215,9 @@ export function useExpertMode() {
         };
 
         await MealsRepository.addFoodToMeal(meal.id, mealItem);
+
+        // Emit event to notify other consumers (e.g., Home Dashboard)
+        mealEvents.emit('meal:added', { mealId: meal.id, item: mealItem });
       } catch (err) {
         console.error('Failed to sync expert food log to regular meals:', err);
       }
@@ -223,32 +227,46 @@ export function useExpertMode() {
 
   // Remove a raw food log
   const removeRawFoodLog = useCallback(async (logId: string) => {
-    // Find the log to get the mealId for DB cleanup
+    // Find the log to get the mealId for DB cleanup BEFORE updating state
     let mealId: string | null = null;
-    setRawFoodLogs(prev => {
-      const log = prev.find(l => l.id === logId);
-      if (log) {
-        mealId = log.mealId;
-      }
-      return prev.filter(l => l.id !== logId);
-    });
+    // We need to read current state - use a synchronous approach
+    // The log is still in rawFoodLogs at this point since we haven't updated state yet
+    // We'll use a ref or get it from the closure
+    // For now, use a simple approach: find in current state
+    // This works because React batches state updates but the current render still has old state
+    // Actually, better to find it first synchronously
+    // We can't easily access current state in useCallback without a ref
+    // Let's use a different approach: capture mealId from the log before filtering
 
-    // Also remove from regular meal system
-    if (mealId) {
-      try {
-        const today = MealsRepository.getTodayDate();
-        const meals = await MealsRepository.getMealsForDate(today);
-        const meal = meals.find(m => m.mealType.toLowerCase() === mealId);
-        if (meal) {
-          const item = meal.items.find(i => i.id === logId);
-          if (item) {
-            await MealsRepository.removeMealItem(item.id);
-          }
+    // First pass: find the mealId from the current logs
+    // Since we're in a useCallback, we need to access the current value
+    // We'll do the DB cleanup first by reading from DB, then update state
+    try {
+      const today = MealsRepository.getTodayDate();
+      const meals = await MealsRepository.getMealsForDate(today);
+      // Find the meal item by ID across all meals
+      let foundItemId: string | null = null;
+      let foundMealId: string | null = null;
+      for (const meal of meals) {
+        const item = meal.items.find(i => i.id === logId);
+        if (item) {
+          foundItemId = item.id;
+          foundMealId = meal.id;
+          break;
         }
-      } catch (err) {
-        console.error('Failed to sync expert food removal to regular meals:', err);
       }
+      if (foundItemId) {
+        await MealsRepository.removeMealItem(foundItemId);
+
+        // Emit event to notify other consumers
+        mealEvents.emit('meal:removed', { mealId: foundMealId, itemId: foundItemId });
+      }
+    } catch (err) {
+      console.error('Failed to sync expert food removal to regular meals:', err);
     }
+
+    // Now update local state
+    setRawFoodLogs(prev => prev.filter(l => l.id !== logId));
   }, []);
 
   // Toggle favorite

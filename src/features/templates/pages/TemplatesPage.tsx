@@ -44,13 +44,18 @@ export default function TemplatesPage() {
       if (!confirmStart) return;
     }
 
-    const workout = await WorkoutSessionFactory.create(template);
+    try {
+      const workout = await WorkoutSessionFactory.create(template);
 
-    setSession(workout);
+      setSession(workout);
 
-    toast.success(`${template.name} started`);
+      toast.success(`${template.name} started`);
 
-    navigate("/workout");
+      navigate("/workout");
+    } catch (err) {
+      console.error('Failed to start workout:', err);
+      toast.error('Failed to start workout. Please try again.');
+    }
   }
 
   async function handleEdit(template: WorkoutTemplateDB) {

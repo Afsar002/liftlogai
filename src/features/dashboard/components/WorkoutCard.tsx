@@ -30,24 +30,29 @@ export default function WorkoutCard({
       if (!confirmStart) return;
     }
 
-    const templates = await TemplateRepository.getAll();
+    try {
+      const templates = await TemplateRepository.getAll();
 
-    if (templates.length === 0) {
-      toast.error("No workout templates found.");
-      navigate("/templates");
-      return;
+      if (templates.length === 0) {
+        toast.error("No workout templates found.");
+        navigate("/templates");
+        return;
+      }
+
+      const template = templates[0];
+
+      const session =
+        await WorkoutSessionFactory.create(template);
+
+      setSession(session);
+
+      toast.success(`${template.name} started`);
+
+      navigate("/workout");
+    } catch (err) {
+      console.error('Failed to start workout:', err);
+      toast.error('Failed to start workout. Please try again.');
     }
-
-    const template = templates[0];
-
-    const session =
-      await WorkoutSessionFactory.create(template);
-
-    setSession(session);
-
-    toast.success(`${template.name} started`);
-
-    navigate("/workout");
   }
 
   return (

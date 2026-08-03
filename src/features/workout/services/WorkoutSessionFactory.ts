@@ -6,7 +6,13 @@ import type { WorkoutHistory } from "../../history/models/WorkoutHistory";
 export class WorkoutSessionFactory {
   static async create(template: WorkoutTemplateDB): Promise<WorkoutSession> {
     // Fetch workout history to compute previous bests
-    const history = await HistoryRepository.getAll();
+    let history: WorkoutHistory[] = [];
+    try {
+      history = await HistoryRepository.getAll();
+    } catch (err) {
+      console.error('Failed to fetch workout history:', err);
+      // Continue with empty history - will show "-" for previous bests
+    }
 
     // Build a map of exerciseId -> previous best string
     const previousBests = computePreviousBests(history, template.exercises.map(e => e.id));
@@ -52,13 +58,14 @@ function computePreviousBests(
 ): Map<string, string> {
   const bests = new Map<string, { weight: number; reps: number; volume: number }>();
 
-  // Iterate through history in reverse chronological order (most recent first)
-  // to find the most recent completed sets for each exercise
+  // Iterate through history to find the heaviest completed set for each exercise
+  // (not just most recent - we want the all-time best)
   for (const workout of history) {
     for (const exercise of workout.exercises) {
       if (!exerciseIds.includes(exercise.exerciseId)) continue;
 
       // Find the heaviest set (by weight, then reps) in this workout
+      // All sets in history are from completed workouts, so no need to check 'completed' flag
       let bestSet = { weight: 0, reps: 0, volume: 0 };
       for (const set of exercise.sets) {
         const volume = set.weight * set.reps;

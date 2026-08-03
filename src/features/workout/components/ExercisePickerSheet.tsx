@@ -213,7 +213,7 @@ export default function ExercisePickerSheet({
                 <FilterChip
                   key={group.region}
                   label={group.region}
-                  count={group.items.length}
+                  count={group.totalCount}
                   selected={selectedRegion === group.region}
                   onClick={() => setSelectedRegion(group.region)}
                   reduceMotion={reduceMotion}

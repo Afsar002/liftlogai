@@ -4,6 +4,7 @@ import { MealsRepository } from '../repository/MealsRepository';
 import { NutritionService } from '../services/NutritionService';
 import { useSettings } from '../../settings/hooks/SettingsProvider';
 import { v4 as uuidv4 } from 'uuid';
+import { mealEvents } from '../../../shared/lib/mealEvents';
 
 export function useMeals() {
   const [meals, setMeals] = useState<Meal[]>([]);
@@ -45,8 +46,18 @@ export function useMeals() {
         console.error('Error initializing meals:', err);
       }
     };
-    
+
     initialize();
+  }, [loadMeals]);
+
+  // Subscribe to meal events from expert mode to keep Home Dashboard in sync
+  useEffect(() => {
+    return mealEvents.subscribe((event, data) => {
+      // When food is added/removed from expert mode, reload meals to refresh the dashboard
+      if (event === 'meal:added' || event === 'meal:removed' || event === 'meal:updated') {
+        loadMeals();
+      }
+    });
   }, [loadMeals]);
 
   // Record daily progress without reloading meals

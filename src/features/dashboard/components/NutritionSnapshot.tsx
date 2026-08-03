@@ -24,7 +24,9 @@ interface MacroCardProps {
 }
 
 function MacroCard({ label, current, goal, unit, icon: Icon, color, bgColor, delay, reduceMotion }: MacroCardProps) {
-  const percent = Math.min(current / goal, 1);
+  // Guard against zero goal to prevent division by zero
+  const safeGoal = goal > 0 ? goal : 1;
+  const percent = Math.min(current / safeGoal, 1);
   const remaining = goal - current;
 
   return (
@@ -143,7 +145,8 @@ export default function NutritionSnapshot() {
     );
   }
 
-  const caloriePercent = Math.min(data.calories.current / data.calories.goal, 1);
+  const safeCalorieGoal = data.calories.goal > 0 ? data.calories.goal : 1;
+  const caloriePercent = Math.min(data.calories.current / safeCalorieGoal, 1);
   const remainingCalories = data.calories.goal - data.calories.current;
 
   return (
