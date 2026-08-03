@@ -165,8 +165,13 @@ export function useExpertMode() {
       const cookedWeight = mode === 'cooked'
         ? weightGrams
         : Math.round(weightGrams * food.cookedConversionFactor * 10) / 10;
+
+      // Generate a single UUID to use for both the raw food log and the meal item
+      // This ensures removeRawFoodLog can find the meal item by the same logId
+      const logId = uuidv4();
+
       const log: RawFoodLog = {
-        id: uuidv4(),
+        id: logId,
         foodId: food.id,
         foodName: food.name,
         category: food.category,
@@ -199,19 +204,23 @@ export function useExpertMode() {
         // Get or create the meal for today
         const meal = await MealsRepository.getOrCreateMealForType(mealType);
 
-        // Create meal item from the logged food
+        // Create meal item from the logged food using the SAME ID as the log
+        // IMPORTANT: Store nutrition PER 100g (food.nutritionPer100g) not for the full weight.
+        // The meal system calculates totals as: item.protein * (quantity / servingSize)
+        // So if we store full-weight nutrition with servingSize=100, it double-counts.
+        const per100g = food.nutritionPer100g;
         const mealItem: MealItem = {
-          id: uuidv4(),
+          id: logId,
           mealId: meal.id,
           foodId: food.id,
           name: food.name,
           quantity: weightGrams,
           servingSize: 100,
           servingUnit: 'g',
-          calories: nutrition.calories,
-          protein: nutrition.protein,
-          carbs: nutrition.carbs,
-          fat: nutrition.fat,
+          calories: per100g.calories,
+          protein: per100g.protein,
+          carbs: per100g.carbs,
+          fat: per100g.fat,
         };
 
         await MealsRepository.addFoodToMeal(meal.id, mealItem);
