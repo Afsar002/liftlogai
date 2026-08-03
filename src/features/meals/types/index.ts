@@ -25,6 +25,8 @@ export interface MealItem {
   protein: number;
   carbs: number;
   fat: number;
+  /** Whether the quantity is in raw or cooked weight */
+  logMode?: 'raw' | 'cooked';
 }
 
 export interface Meal {
