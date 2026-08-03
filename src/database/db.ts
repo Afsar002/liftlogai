@@ -39,7 +39,7 @@ export class LiftLogDatabase extends Dexie {
   constructor() {
     super("LiftLogAI");
 
-    this.version(7).stores({
+    this.version(8).stores({
   workoutSessions:
     "++id, workoutName, startedAt, finishedAt",
 
@@ -50,7 +50,7 @@ export class LiftLogDatabase extends Dexie {
     "++id, name",
   exercises: "id, name",
   history:
-    "++id, completedAt, templateId",
+    "++id, completedAt, templateId, durationMinutes",
 
   settings :
         "id",
