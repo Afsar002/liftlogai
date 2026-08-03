@@ -454,16 +454,21 @@ function ExerciseItem({
   onSelect: (id: string) => void;
   isRecent?: boolean;
 }) {
+  // Use actual exercise thumbnail if available, otherwise fall back to region illustration
+  const thumbnailUrl = exercise.thumbnail 
+    ? `/src/assets/exercises/thumbnails/${exercise.thumbnail}`
+    : exercise.bodyRegion ? getRegionIllustrationUrl(exercise.bodyRegion as any) : '';
+
   return (
     <button
       type="button"
       onClick={() => onSelect(exercise.id)}
       className="flex w-full items-center gap-3 rounded-xl bg-white p-3 text-left text-zinc-900 shadow-sm transition-transform duration-150 ease-out hover:translate-x-1 hover:bg-zinc-50 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 dark:bg-zinc-900 dark:text-white dark:hover:bg-zinc-800"
     >
-      {/* Use muscle region illustration instead of loading thumbnails for better performance */}
+      {/* Exercise thumbnail or region illustration */}
       <div
-        className="h-11 w-11 shrink-0 rounded-lg bg-zinc-100 dark:bg-white/8"
-        style={{ backgroundImage: `url(${exercise.bodyRegion ? getRegionIllustrationUrl(exercise.bodyRegion as any) : ''})` }}
+        className="h-11 w-11 shrink-0 rounded-lg bg-zinc-100 dark:bg-white/8 bg-cover bg-center"
+        style={{ backgroundImage: `url(${thumbnailUrl})` }}
         role="img"
         aria-label={exercise.name}
       />
