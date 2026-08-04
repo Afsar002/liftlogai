@@ -102,18 +102,23 @@ export default function UserProfileCard({ onClose }: UserProfileCardProps) {
 
     // Handle height conversion
     if (settings.heightUnit === "ft" && (heightFeet || heightInches)) {
-      const feet = parseFloat(heightFeet) || 0;
-      const inches = parseFloat(heightInches) || 0;
+      const feet = heightFeet ? parseFloat(heightFeet) : heightFeetValue;
+      const inches = heightInches ? parseFloat(heightInches) : heightInchesValue;
       const totalInches = feet * 12 + inches;
       updates.height = Math.round(totalInches * 2.54); // inches to cm
     } else if (heightInput) {
       updates.height = parseFloat(heightInput);
     }
-
     if (weightInput) updates.weight = parseFloat(weightInput);
     if (targetWeightInput) updates.targetWeight = parseFloat(targetWeightInput);
-    if (usernameInput) updates.username = usernameInput;
-    await updateProfile(updates);
+    const trimmedUsername = usernameInput.trim();
+    if (trimmedUsername) updates.username = trimmedUsername;
+    try {
+      await updateProfile(updates);
+    } catch (error) {
+      console.error("Failed to save profile", error);
+      return;
+    }
     onClose?.();
     setAgeInput("");
     setHeightInput("");
@@ -121,8 +126,7 @@ export default function UserProfileCard({ onClose }: UserProfileCardProps) {
     setHeightInches("");
     setWeightInput("");
     setTargetWeightInput("");
-    setUsernameInput("");
-  };
+    setUsernameInput("");  };
 
   const handleProfilePictureChange = async (
     e: React.ChangeEvent<HTMLInputElement>
@@ -144,21 +148,20 @@ export default function UserProfileCard({ onClose }: UserProfileCardProps) {
     setHeightInput("");
     setHeightFeet("");
     setHeightInches("");
-    setWeightInput("");
-    setTargetWeightInput("");
-    setUsernameInput("");
-  };
-
   // Display values for select fields
   const genderLabel =
-    settings.gender.charAt(0).toUpperCase() + settings.gender.slice(1);
+    GENDER_OPTIONS.find((o) => o.value === settings.gender)?.label ??
+    settings.gender;
   const activityLabel = settings.activityLevel
     .replace("_", " ")
     .replace(/\b\w/g, (c) => c.toUpperCase());
   const goalLabel =
-    settings.goal.charAt(0).toUpperCase() + settings.goal.slice(1);
+    GOAL_OPTIONS.find((o) => o.value === settings.goal)?.label ?? settings.goal;
 
   // Height display values for ft mode placeholders
+  const totalHeightInches = Math.round(settings.height / 2.54);
+  const heightFeetValue = Math.floor(totalHeightInches / 12);
+  const heightInchesValue = totalHeightInches % 12;  // Height display values for ft mode placeholders
   const heightFeetValue = Math.floor(settings.height / 30.48);
   const heightInchesValue = Math.round(
     ((settings.height % 30.48) / 2.54) % 12
@@ -172,17 +175,17 @@ export default function UserProfileCard({ onClose }: UserProfileCardProps) {
         <Card padding="none">
           <div className="space-y-4 p-4">
             {/* Change Photo — subtle upload trigger, no duplicate avatar */}
-            <label className="flex cursor-pointer items-center justify-center gap-2 rounded-xl border-2 border-dashed border-zinc-200 py-3 text-sm font-semibold text-zinc-500 transition hover:border-emerald-400 hover:text-emerald-600 dark:border-white/10 dark:text-zinc-400 dark:hover:border-emerald-400 dark:hover:text-emerald-400">
+            <label className="flex cursor-pointer items-center justify-center gap-2 rounded-xl border-2 border-dashed border-zinc-200 py-3 text-sm font-semibold text-zinc-500 transition hover:border-emerald-400 hover:text-emerald-600 focus-within:ring-2 focus-within:ring-emerald-500/40 dark:border-white/10 dark:text-zinc-400 dark:hover:border-emerald-400 dark:hover:text-emerald-400">
               <FiCamera size={16} aria-hidden="true" />
               Change Photo
               <input
                 type="file"
                 accept="image/*"
+                aria-label="Change photo"
                 onChange={handleProfilePictureChange}
-                className="hidden"
+                className="sr-only"
               />
             </label>
-
             {/* Name */}
             <Field label="Name">
               <input
