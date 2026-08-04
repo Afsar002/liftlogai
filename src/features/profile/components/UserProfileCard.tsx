@@ -126,7 +126,8 @@ export default function UserProfileCard({ onClose }: UserProfileCardProps) {
     setHeightInches("");
     setWeightInput("");
     setTargetWeightInput("");
-    setUsernameInput("");  };
+    setUsernameInput("");
+  };
 
   const handleProfilePictureChange = async (
     e: React.ChangeEvent<HTMLInputElement>
@@ -148,6 +149,8 @@ export default function UserProfileCard({ onClose }: UserProfileCardProps) {
     setHeightInput("");
     setHeightFeet("");
     setHeightInches("");
+  };
+
   // Display values for select fields
   const genderLabel =
     GENDER_OPTIONS.find((o) => o.value === settings.gender)?.label ??
@@ -161,11 +164,7 @@ export default function UserProfileCard({ onClose }: UserProfileCardProps) {
   // Height display values for ft mode placeholders
   const totalHeightInches = Math.round(settings.height / 2.54);
   const heightFeetValue = Math.floor(totalHeightInches / 12);
-  const heightInchesValue = totalHeightInches % 12;  // Height display values for ft mode placeholders
-  const heightFeetValue = Math.floor(settings.height / 30.48);
-  const heightInchesValue = Math.round(
-    ((settings.height % 30.48) / 2.54) % 12
-  );
+  const heightInchesValue = totalHeightInches % 12;
 
   return (
     <div className="space-y-6">
