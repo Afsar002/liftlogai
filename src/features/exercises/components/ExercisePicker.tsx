@@ -6,7 +6,7 @@ import type { BodyRegion, Exercise } from "../../../types/Exercise";
 import * as ExerciseService from "../services/ExerciseService";
 import { ExerciseLibraryRepository } from "../services/ExerciseLibraryRepository";
 import { useExerciseSearch } from "../hooks/useExerciseSearch";
-import { getRegionIllustrationUrl } from "../data/exerciseImages";
+import { getExerciseImageSources } from "../data/exerciseImages";
 
 interface Props {
   onSelect(id: string): void;
@@ -165,10 +165,10 @@ export default function ExercisePicker({ onSelect, existingNames = [] }: Props) 
                       onClick={() => onSelect(exercise.id)}
                       className="flex w-full items-center gap-3 rounded-2xl border border-zinc-200/70 bg-white p-3 text-left shadow-sm transition hover:border-emerald-400/40 hover:bg-emerald-500/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 dark:border-white/8 dark:bg-[#141417] dark:hover:border-emerald-500/30"
                     >
-                      {/* Use muscle region illustration for better performance */}
+                      {/* Exercise thumbnail or region illustration */}
                       <div
                         className="h-12 w-12 shrink-0 rounded-xl bg-zinc-100 dark:bg-white/8"
-                        style={{ backgroundImage: `url(${getRegionIllustrationUrl(exercise.bodyRegion)})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+                        style={{ backgroundImage: `url(${getExerciseImageSources(exercise).primary ?? ''})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
                         role="img"
                         aria-label={exercise.name}
                       />

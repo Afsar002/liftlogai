@@ -6,7 +6,7 @@ import type { BodyRegion, Exercise } from "../../../types/Exercise";
 import { ExerciseService, mapCustomToExercise } from "../../exercises/services/ExerciseService";
 import { ExerciseLibraryRepository } from "../../exercises/services/ExerciseLibraryRepository";
 import { useExerciseSearch } from "../../exercises/hooks/useExerciseSearch";
-import { getRegionIllustrationUrl } from "../../exercises/data/exerciseImages";
+import { getExerciseImageSources } from "../../exercises/data/exerciseImages";
 
 /** Max exercises rendered per group when no search query is active. */
 const ITEMS_PER_GROUP = 15;
@@ -454,10 +454,8 @@ function ExerciseItem({
   onSelect: (id: string) => void;
   isRecent?: boolean;
 }) {
-  // Use actual exercise thumbnail if available, otherwise fall back to region illustration
-  const thumbnailUrl = exercise.thumbnail 
-    ? `/src/assets/exercises/thumbnails/${exercise.thumbnail}`
-    : exercise.bodyRegion ? getRegionIllustrationUrl(exercise.bodyRegion as any) : '';
+  // Use the same image resolution as the Exercise Library grid
+  const thumbnailUrl = getExerciseImageSources(exercise).primary ?? '';
 
   return (
     <button
