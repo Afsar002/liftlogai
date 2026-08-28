@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import {
-  DashboardRepository,
+  getDashboardStats,
   type DashboardStats,
 } from "../services/DashboardRepository";
 
@@ -15,7 +15,7 @@ export function useDashboard() {
   useEffect(() => {
     async function load() {
       const data =
-        await DashboardRepository.getDashboardStats();
+        await getDashboardStats();
 
       setStats(data);
 

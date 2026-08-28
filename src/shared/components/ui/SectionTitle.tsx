@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { cn } from "../../lib/cn";
+import { cn } from '../../../shared/lib/cn';
 import { motion } from "framer-motion";
 import { entrance } from "../motion/variants";
 

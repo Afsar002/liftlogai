@@ -4,7 +4,7 @@ import Card from "../../../shared/components/ui/Card";
 import SelectDialog from "../../../shared/components/ui/SelectDialog";
 import { useSettings } from "../../settings/hooks/SettingsProvider";
 import type { Gender, ActivityLevel, FitnessGoal } from "../../settings/types";
-import { cn } from "../../../shared/lib/cn";
+import { cn } from '../../../shared/lib/cn';
 
 const GENDER_OPTIONS: { label: string; value: Gender }[] = [
   { label: "Male", value: "male" },

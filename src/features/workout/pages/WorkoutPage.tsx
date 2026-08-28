@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { FiPlus } from "react-icons/fi";
 import { motion } from "framer-motion";
 
-import { WorkoutRepository } from "../services/WorkoutRepository";
+import { saveWorkout } from "../services/WorkoutRepository";
 import type { WorkoutSessionDB } from "../../../database/types";
 
 import Layout from "../../../shared/components/layout/Layout";
@@ -29,7 +29,7 @@ import { HistoryRepository } from "../../history/repositories/HistoryRepository"
 import { detectPRs } from "../../records/services/PRDetector";
 import type { PersonalRecord } from "../../records/types";
 
-import { ExerciseService } from "../../exercises/services/ExerciseService";
+import * as UnifiedExerciseService from "../../exercises/services/UnifiedExerciseService";
 
 import { db } from "../../../database/db";
 
@@ -178,7 +178,7 @@ export default function WorkoutPage() {
                 };
 
                 await db.transaction("rw", [db.workoutSessions, db.history], async () => {
-                  await WorkoutRepository.saveWorkout(workout);
+                  await saveWorkout(workout);
                   await HistoryRepository.save(historyWorkout);
                 });
 
@@ -291,7 +291,7 @@ export default function WorkoutPage() {
             onClose={() => setShowExercisePicker(false)}
             existingNames={session.exercises.map((e) => e.name)}
             onSelect={(exerciseId) => {
-              ExerciseService.getExerciseById(exerciseId).then((exercise) => {
+              UnifiedExerciseService.getExerciseById(exerciseId).then((exercise) => {
                 if (exercise) {
                   addExercise({
                     id: crypto.randomUUID(),

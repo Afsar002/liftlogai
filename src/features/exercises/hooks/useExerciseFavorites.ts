@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type { Exercise } from "../../../types/Exercise";
-import { getFavorites, getFavoriteIds, toggleFavorite as serviceToggle } from "../services/ExerciseService";
+import { getFavorites, getFavoriteIds, toggleFavorite as serviceToggle } from "../services/UnifiedExerciseService";
 
 interface UseExerciseFavoritesReturn {
   favorites: Exercise[];

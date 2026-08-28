@@ -1,7 +1,7 @@
 import EditableCell from "./EditableCell";
 import { useWorkout } from "../context/WorkoutContext";
 import { useRestTimer } from "../context/RestTimerContext";
-import { cn } from "../../../shared/lib/cn";
+import { cn } from '../../../shared/lib/cn';
 
 interface Props {
   exerciseId: string;

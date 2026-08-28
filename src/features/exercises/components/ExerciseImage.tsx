@@ -1,6 +1,6 @@
 import { memo, useState } from "react";
 import type { Exercise } from "../../../types/Exercise";
-import { cn } from "../../../shared/lib/cn";
+import { cn } from '../../../shared/lib/cn';
 import {
   getExerciseGifUrl,
   getExerciseImageSources,

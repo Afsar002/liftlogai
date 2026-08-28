@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
 import Layout from "../../../shared/components/layout/Layout";
 import EmptyState from "../../../shared/components/ui/EmptyState";
-import { cn } from "../../../shared/lib/cn";
+import { cn } from '../../../shared/lib/cn';
 import { AnimatedSearch, AnimatedTabIndicator } from "../../../shared/components/motion";
-import { FiClock, FiHeart, FiGrid, FiWifiOff } from "react-icons/fi";
+import { FiClock, FiHeart, FiGrid, FiWifiOff, FiDownload } from "react-icons/fi";
 import type { Exercise } from "../../../types/Exercise";
-import * as ExerciseService from "../services/ExerciseService";
+import * as ExerciseService from "../services/UnifiedExerciseService";
 import { useExerciseSearch } from "../hooks/useExerciseSearch";
 import { useExerciseFilters } from "../hooks/useExerciseFilters";
 import { useExerciseFavorites } from "../hooks/useExerciseFavorites";
@@ -28,6 +28,7 @@ export default function ExerciseLibraryPage() {
   const [tab, setTab] = useState<LibraryTab>("all");
   const [recent, setRecent] = useState<Exercise[]>([]);
   const [exerciseCount, setExerciseCount] = useState<number | null>(null);
+  const [isRefreshingWger, setIsRefreshingWger] = useState(false);
 
   useEffect(() => {
     let mounted = true;
@@ -41,6 +42,21 @@ export default function ExerciseLibraryPage() {
       mounted = false;
     };
   }, []);
+
+  const handleRefreshWger = async () => {
+    setIsRefreshingWger(true);
+    try {
+      await ExerciseService.loadUnifiedExercises(true); // force refresh
+      const all = await ExerciseService.getAllExercises();
+      setExerciseCount(all.length);
+      // Trigger re-search to update results
+      // The search hook will re-fire on next render because cache is invalidated
+    } catch (error) {
+      console.error("[ExerciseLibraryPage] Failed to refresh wger exercises:", error);
+    } finally {
+      setIsRefreshingWger(false);
+    }
+  };
 
   const visible = useMemo(() => {
     if (tab === "favorites") return favorites.favorites;
@@ -90,6 +106,16 @@ export default function ExerciseLibraryPage() {
                 <FiGrid size={11} aria-hidden="true" />
                 {exerciseCount === null ? "…" : exerciseCount.toLocaleString()} movements
               </span>
+              {/* Refresh from wger button */}
+              <button
+                type="button"
+                onClick={handleRefreshWger}
+                disabled={isRefreshingWger}
+                className="flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1.5 text-[11px] font-bold text-white hover:bg-white/20 disabled:opacity-50 transition-colors"
+              >
+                <FiDownload size={11} aria-hidden="true" />
+                {isRefreshingWger ? "Updating…" : "Add wger exercises"}
+              </button>
             </div>
 
             {tab === "all" && (

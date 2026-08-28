@@ -37,5 +37,15 @@ export interface WorkoutSession {
 
   startedAt: Date;
 
+  finishedAt?: Date;
+
+  duration?: number;
+
+  totalVolume?: number;
+
+  totalSets?: number;
+
+  completedSets?: number;
+
   exercises: LoggedExercise[];
 }

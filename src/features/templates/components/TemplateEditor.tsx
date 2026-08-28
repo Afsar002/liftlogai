@@ -6,9 +6,9 @@ import { motion, useReducedMotion } from "framer-motion";
 
 import type { WorkoutTemplateDB, TemplateExercise } from "../../../database/types";
 import { TemplateRepository } from "../services/TemplateRepository";
-import { ExerciseService } from "../../exercises/services/ExerciseService";
+import * as UnifiedExerciseService from "../../exercises/services/UnifiedExerciseService";
 import ExercisePickerModal from "../../exercises/components/ExercisePickerModal";
-import { cn } from "../../../shared/lib/cn";
+import { cn } from '../../../shared/lib/cn';
 import { estimateDuration, difficultyFor, totalSets, type Difficulty } from "../lib/templateMeta";
 
 interface Props {
@@ -99,7 +99,7 @@ export default function TemplateEditor({ template }: Props) {
   }
 
   async function addExercise(id: string) {
-    const exercise = await ExerciseService.getExerciseById(id);
+    const exercise = await UnifiedExerciseService.getExerciseById(id);
     if (!exercise) return;
 
     setEdited({

@@ -3,7 +3,7 @@ import type { Exercise } from "../../../types/Exercise";
 import {
   searchExercises,
   type ExerciseSearchOptions,
-} from "../services/ExerciseService";
+} from "../services/UnifiedExerciseService";
 
 const MAX_SEARCH_RESULTS = 100; // Cap results for performance
 

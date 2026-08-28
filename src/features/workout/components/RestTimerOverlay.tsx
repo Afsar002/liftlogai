@@ -8,7 +8,7 @@ import {
   FiVolumeX,
 } from "react-icons/fi";
 import { useRestTimer } from "../context/RestTimerContext";
-import { cn } from "../../../shared/lib/cn";
+import { cn } from '../../../shared/lib/cn';
 import { useEffect } from "react";
 
 interface Props {

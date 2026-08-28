@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { FiChevronRight } from "react-icons/fi";
-import { cn } from "../../lib/cn";
+import { cn } from '../../../shared/lib/cn';
 
 interface Props {
   icon?: ReactNode;

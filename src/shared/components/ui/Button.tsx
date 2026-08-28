@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { cn } from "../../lib/cn";
+import { cn } from '../../../shared/lib/cn';
 import { spring } from "../motion/variants";
 
 // Exclude motion-specific props that conflict with HTML button attributes

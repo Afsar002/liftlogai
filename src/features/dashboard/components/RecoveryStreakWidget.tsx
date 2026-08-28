@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { FiActivity, FiTrendingUp, FiZap, FiMoon, FiSun, FiStar, FiClock } from "react-icons/fi";
 import Card from "../../../shared/components/ui/Card";
-import { cn } from "../../../shared/lib/cn";
+import { cn } from '../../../shared/lib/cn';
 import { spring, listContainer, listItem } from "../../../shared/components/motion/variants";
 import { HistoryRepository } from "../../history/repositories/HistoryRepository";
 import type { WorkoutHistory } from "../../history/models/WorkoutHistory";

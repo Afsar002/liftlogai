@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
-import { WorkoutRepository } from "../../workout/services/WorkoutRepository";
-import type { WorkoutSessionDB } from "../../../database/types";
+import { getWorkoutHistory } from "../../../shared/lib/StatisticsEngine";
+import type { WorkoutSession } from "../../workout/types/session";
 
 export function useWorkoutHistory() {
-  const [workouts, setWorkouts] = useState<WorkoutSessionDB[]>([]);
+  const [workouts, setWorkouts] = useState<WorkoutSession[]>([]);
   const [loading, setLoading] = useState(true);
 
   async function loadHistory() {
     setLoading(true);
 
-    const data =
-      await WorkoutRepository.getWorkoutHistory();
+    const data = await getWorkoutHistory();
 
     setWorkouts(data);
 

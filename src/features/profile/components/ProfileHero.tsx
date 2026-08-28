@@ -2,7 +2,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { FiEdit3 } from "react-icons/fi";
 import type { UserSettings, FitnessGoal } from "../../settings/types";
 import { calculateRequiredCalories } from "../../../shared/lib/calorieCalculator";
-import { cn } from "../../../shared/lib/cn";
+import { cn } from '../../../shared/lib/cn';
 import { spring } from "../../../shared/components/motion/variants";
 
 const GOAL_LABELS: Record<FitnessGoal, string> = {

@@ -3,7 +3,7 @@ import { useWorkout } from "../../workout/context/WorkoutContext";
 import { useNavigate } from "react-router-dom";
 import { FiActivity, FiPlay } from "react-icons/fi";
 import { motion, useReducedMotion } from "framer-motion";
-import { cn } from "../../../shared/lib/cn";
+import { cn } from '../../../shared/lib/cn';
 import { spring } from "../../../shared/components/motion/variants";
 
 /**

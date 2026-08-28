@@ -4,7 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { FiActivity, FiCheck, FiClock, FiZap } from "react-icons/fi";
 import Card from "../../../shared/components/ui/Card";
 import Button from "../../../shared/components/ui/Button";
-import { cn } from "../../../shared/lib/cn";
+import { cn } from '../../../shared/lib/cn';
 import { spring, listContainer, listItem } from "../../../shared/components/motion/variants";
 
 interface WorkoutSession {

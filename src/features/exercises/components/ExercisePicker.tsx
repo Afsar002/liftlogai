@@ -1,10 +1,9 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { FiChevronDown, FiChevronRight, FiPlus } from "react-icons/fi";
-import { cn } from "../../../shared/lib/cn";
+import { cn } from '../../../shared/lib/cn';
 import type { BodyRegion, Exercise } from "../../../types/Exercise";
-import * as ExerciseService from "../services/ExerciseService";
-import { ExerciseLibraryRepository } from "../services/ExerciseLibraryRepository";
+import * as ExerciseService from "../services/UnifiedExerciseService";
 import { useExerciseSearch } from "../hooks/useExerciseSearch";
 import { getExerciseImageSources } from "../data/exerciseImages";
 
@@ -79,12 +78,9 @@ export default function ExercisePicker({ onSelect, existingNames = [] }: Props) 
     muscle?: string;
     equipment?: string;
   }) {
-    const created = await ExerciseLibraryRepository.create(ex);
-    // Invalidate the cache so persisted custom exercises show up everywhere.
-    ExerciseService.invalidateExerciseCache();
-    const mapped = ExerciseService.mapCustomToExercise(created);
+    const mapped = await ExerciseService.createCustomExercise(ex);
     setSessionCustoms((current) => [mapped, ...current]);
-    onSelect(created.id);
+    onSelect(mapped.id);
   }
 
   return (

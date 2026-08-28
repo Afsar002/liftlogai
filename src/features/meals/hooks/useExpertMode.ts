@@ -21,7 +21,7 @@ import { NutritionEngine } from '../services/NutritionEngine';
 import { AICoachService } from '../services/AICoachService';
 import { MealsRepository } from '../repository/MealsRepository';
 import { v4 as uuidv4 } from 'uuid';
-import { mealEvents } from '../../../shared/lib/mealEvents';
+import { mealEvents, emitMealEvent, type MealEventType } from '../../../shared/lib/mealEvents';
 
 const GOALS_STORAGE_KEY = 'liftlog_expert_goals';
 
@@ -234,7 +234,7 @@ export function useExpertMode() {
         await MealsRepository.addFoodToMeal(meal.id, mealItem);
 
         // Emit event to notify other consumers (e.g., Home Dashboard)
-        mealEvents.emit('meal:added', { mealId: meal.id, item: mealItem });
+        emitMealEvent('meal:added', { mealId: meal.id, item: mealItem });
       } catch (err) {
         console.error('Failed to sync expert food log to regular meals:', err);
       }
@@ -276,7 +276,7 @@ export function useExpertMode() {
         await MealsRepository.removeMealItem(foundItemId);
 
         // Emit event to notify other consumers
-        mealEvents.emit('meal:removed', { mealId: foundMealId, itemId: foundItemId });
+        emitMealEvent('meal:removed', { mealId: foundMealId ?? undefined, itemId: foundItemId });
       }
     } catch (err) {
       console.error('Failed to sync expert food removal to regular meals:', err);

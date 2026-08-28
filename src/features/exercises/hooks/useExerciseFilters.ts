@@ -11,7 +11,7 @@ import type {
 import {
   getFilterOptions,
   type ExerciseSearchOptions,
-} from "../services/ExerciseService";
+} from "../services/UnifiedExerciseService";
 
 /** Filter dimensions and their selected values (empty array = no filter). */
 export interface ExerciseFiltersState {

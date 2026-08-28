@@ -1,6 +1,6 @@
 import { memo, useState } from "react";
 import { FiFilter, FiChevronDown, FiX } from "react-icons/fi";
-import { cn } from "../../../shared/lib/cn";
+import { cn } from '../../../shared/lib/cn';
 import Button from "../../../shared/components/ui/Button";
 import type {
   ExerciseFilterKey,

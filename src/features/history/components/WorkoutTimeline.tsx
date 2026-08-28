@@ -2,7 +2,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { FiActivity, FiChevronRight, FiClock, FiTrash2, FiZap } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import type { WorkoutHistory } from "../models/WorkoutHistory";
-import { cn } from "../../../shared/lib/cn";
+import { cn } from '../../../shared/lib/cn';
 
 function durationText(minutes: number): string {
   if (minutes < 60) return `${minutes} min`;

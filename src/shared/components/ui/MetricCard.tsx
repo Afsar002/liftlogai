@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 
 import Card from "./Card";
-import { cn } from "../../lib/cn";
+import { cn } from '../../../shared/lib/cn';
 import { spring, listItem } from "../motion/variants";
 
 interface MetricCardProps {

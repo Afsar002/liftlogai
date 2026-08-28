@@ -1,6 +1,6 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { FiCheck, FiPlus } from "react-icons/fi";
-import { cn } from "../../../shared/lib/cn";
+import { cn } from '../../../shared/lib/cn';
 import { spring } from "../../../shared/components/motion/variants";
 
 interface Props {

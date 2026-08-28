@@ -1,5 +1,5 @@
 import { FiSearch, FiX } from "react-icons/fi";
-import { cn } from "../../../shared/lib/cn";
+import { cn } from '../../../shared/lib/cn';
 
 interface Props {
   value: string;

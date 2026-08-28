@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { spring } from "./variants";
-import { cn } from "../../lib/cn";
+import { cn } from '../../../shared/lib/cn';
 
 interface AnimatedTabIndicatorProps {
   /** Shared layoutId across the tab group so the pill glides between tabs. */

@@ -1,5 +1,5 @@
 import Card from "../../../shared/components/ui/Card";
-import { cn } from "../../../shared/lib/cn";
+import { cn } from '../../../shared/lib/cn';
 import type { ReactNode } from "react";
 
 interface StatCardProps {

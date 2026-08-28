@@ -1,7 +1,7 @@
 import type { ComponentType } from "react";
 import { useNavigate } from "react-router-dom";
 import Card from "../../../shared/components/ui/Card";
-import { cn } from "../../../shared/lib/cn";
+import { cn } from '../../../shared/lib/cn';
 import {
   FiActivity,
   FiBarChart2,

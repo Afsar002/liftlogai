@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from "framer-motion";
-import { cn } from "../../../shared/lib/cn";
+import { cn } from '../../../shared/lib/cn';
 
 interface ProgressRingStackProps {
   /** Array of ring data: label, value (0-1), color, icon? */

@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import BottomNav from "./BottomNav";
 import AnimatedPage from "../motion/AnimatedPage";
-import { cn } from "../../lib/cn";
+import { cn } from '../../../shared/lib/cn';
 
 interface LayoutProps {
   children: ReactNode;

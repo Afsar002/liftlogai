@@ -1,7 +1,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { FiClock, FiPlay, FiRepeat } from "react-icons/fi";
 import type { WorkoutTemplateDB } from "../../../database/types";
-import { cn } from "../../../shared/lib/cn";
+import { cn } from '../../../shared/lib/cn';
 import { estimateDuration, difficultyFor, type Difficulty } from "../lib/templateMeta";
 
 interface Props {

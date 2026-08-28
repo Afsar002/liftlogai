@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { cn } from "../../lib/cn";
+import { cn } from '../../../shared/lib/cn';
 
 interface BadgeProps {
   variant?: "default" | "success" | "warning" | "danger" | "info";

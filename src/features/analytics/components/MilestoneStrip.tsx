@@ -1,7 +1,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { FiAward, FiClock, FiStar, FiZap } from "react-icons/fi";
 import Card from "../../../shared/components/ui/Card";
-import { cn } from "../../../shared/lib/cn";
+import { cn } from '../../../shared/lib/cn';
 
 interface Props {
   workouts: number;

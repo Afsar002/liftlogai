@@ -1,7 +1,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { FiActivity } from "react-icons/fi";
 import Card from "../../../shared/components/ui/Card";
-import { cn } from "../../../shared/lib/cn";
+import { cn } from '../../../shared/lib/cn';
 
 interface Props {
   data: { name: string; value: number }[];
@@ -59,7 +59,8 @@ export default function MuscleBalance({ data }: Props) {
               />
             </div>
           </div>
-        ))}
+        ),
+      )}
 
         {data.length === 0 && (
           <p className="py-8 text-center text-sm text-zinc-500 dark:text-zinc-400">

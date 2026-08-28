@@ -1,6 +1,6 @@
 import { FiArrowLeft } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
-import { cn } from "../../lib/cn";
+import { cn } from '../../../shared/lib/cn';
 
 interface Props {
   /** Explicit destination; defaults to navigate(-1). */

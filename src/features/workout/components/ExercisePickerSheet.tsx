@@ -1,9 +1,9 @@
 import { useMemo, useState, useEffect } from "react";
 import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
 import { FiChevronRight, FiChevronDown, FiSearch, FiFilter, FiClock, FiStar, FiX, FiPlus } from "react-icons/fi";
-import { cn } from "../../../shared/lib/cn";
+import { cn } from '../../../shared/lib/cn';
 import type { BodyRegion, Exercise } from "../../../types/Exercise";
-import { ExerciseService, mapCustomToExercise } from "../../exercises/services/ExerciseService";
+import * as UnifiedExerciseService from "../../exercises/services/UnifiedExerciseService";
 import { ExerciseLibraryRepository } from "../../exercises/services/ExerciseLibraryRepository";
 import { useExerciseSearch } from "../../exercises/hooks/useExerciseSearch";
 import { getExerciseImageSources } from "../../exercises/data/exerciseImages";
@@ -100,11 +100,9 @@ export default function ExercisePickerSheet({
     muscle?: string;
     equipment?: string;
   }) {
-    const created = await ExerciseLibraryRepository.create(ex);
-    ExerciseService.invalidateExerciseCache();
-    const mapped = mapCustomToExercise(created);
+    const mapped = await UnifiedExerciseService.createCustomExercise(ex);
     setSessionCustoms((current) => [mapped, ...current]);
-    onSelect(created.id);
+    onSelect(mapped.id);
     onClose();
   }
 

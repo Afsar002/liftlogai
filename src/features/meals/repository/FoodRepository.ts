@@ -2,6 +2,7 @@ import type { FoodSearchResult } from '../types';
 import { unifiedFoods } from '../data/foodDatabase';
 import { MealsRepository } from './MealsRepository';
 import { createOnlineFoodProvider, type OnlineFoodProvider } from '../services/OnlineFoodProvider';
+import * as UnifiedFoodService from '../services/UnifiedFoodService';
 
 export class FoodRepository {
   private static onlineProvider: OnlineFoodProvider | null = null;
@@ -14,78 +15,13 @@ export class FoodRepository {
   }
 
   /**
-   * Search flow:
-   * 1. Search local Indian food database
-   * 2. Search cached foods from previous API calls
-   * 3. Search online API
-   * 4. Cache any new results from the API
+   * Search flow (via UnifiedFoodService):
+   * 1. Search local Indian food database + cached foods
+   * 2. Search wger API (3M+ foods)
+   * 3. Merge and deduplicate (local takes priority)
    */
   static async searchFoods(query: string): Promise<FoodSearchResult[]> {
-    const trimmed = query.trim().toLowerCase();
-    if (!trimmed) return [];
-
-    const results: FoodSearchResult[] = [];
-
-    // Step 1: Search local database
-    const localResults = this.searchLocal(trimmed);
-    results.push(...localResults);
-
-    // If we have good local results, return them immediately
-    if (localResults.length >= 5) {
-      return results;
-    }
-
-    // Step 2: Search cached foods
-    try {
-      const cachedResults = await this.searchCache(trimmed);
-      // Deduplicate by name
-      const existingNames = new Set(results.map((r) => r.name.toLowerCase()));
-      for (const cached of cachedResults) {
-        if (!existingNames.has(cached.name.toLowerCase())) {
-          results.push(cached);
-          existingNames.add(cached.name.toLowerCase());
-        }
-      }
-    } catch {
-      // Cache search failed, continue silently
-    }
-
-    // Step 3: Search online API
-    if (results.length < 10) {
-      try {
-        const apiResults = await this.searchOnline(trimmed);
-        const existingNames = new Set(results.map((r) => r.name.toLowerCase()));
-
-        for (const apiFood of apiResults) {
-          if (!existingNames.has(apiFood.name.toLowerCase())) {
-            results.push(apiFood);
-            existingNames.add(apiFood.name.toLowerCase());
-
-            // Cache the API result for future offline use
-            try {
-              await MealsRepository.cacheFood({
-                id: apiFood.id,
-                name: apiFood.name,
-                calories: apiFood.calories,
-                protein: apiFood.protein,
-                carbs: apiFood.carbs,
-                fat: apiFood.fat,
-                servingSize: apiFood.servingSize,
-                servingUnit: apiFood.servingUnit,
-                source: 'api',
-                lastUsed: new Date().toISOString(),
-              });
-            } catch {
-              // Cache failure is non-critical
-            }
-          }
-        }
-      } catch {
-        // Online search failed, continue with local + cached results
-      }
-    }
-
-    return results;
+    return UnifiedFoodService.searchUnifiedFoods(query);
   }
 
   /**
@@ -180,7 +116,13 @@ export class FoodRepository {
       // Fall through
     }
 
-    // Check online
+    // Check wger
+    if (id.startsWith('wger-')) {
+      const wgerFood = UnifiedFoodService.readCacheForId(id);
+      if (wgerFood) return wgerFood;
+    }
+
+    // Check online (OpenFoodFacts)
     try {
       const provider = this.getProvider();
       return provider.getFoodById(id);

@@ -3,7 +3,7 @@ import { FiClock, FiActivity, FiTrendingUp, FiX } from "react-icons/fi";
 import { useWorkout } from "../context/WorkoutContext";
 import { useWorkoutTimer } from "../hooks/useWorkoutTimer";
 import { useWorkoutStats } from "../hooks/useWorkoutStats";
-import { cn } from "../../../shared/lib/cn";
+import { cn } from '../../../shared/lib/cn';
 import { spring } from "../../../shared/components/motion/variants";
 
 interface Props {

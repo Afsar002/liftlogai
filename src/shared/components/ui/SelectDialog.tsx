@@ -6,7 +6,7 @@ import {
 import { FiCheck } from "react-icons/fi";
 import { AnimatedOverlay, AnimatedPanel } from "../motion/AnimatedDialog";
 
-import { cn } from "../../lib/cn";
+import { cn } from '../../../shared/lib/cn';
 
 interface Option<T extends string | number> {
   label: string;

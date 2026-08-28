@@ -1,6 +1,6 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { FiAward, FiTrendingUp, FiActivity } from "react-icons/fi";
-import { cn } from "../../../shared/lib/cn";
+import { cn } from '../../../shared/lib/cn';
 
 interface Props {
   previousBest?: string;

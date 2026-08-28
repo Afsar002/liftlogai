@@ -10,6 +10,7 @@ import SettingsGroups from "../components/SettingsGroups";
 import UserProfileCard from "../components/UserProfileCard";
 import DataCard from "../components/DataCard";
 import AboutCard from "../components/AboutCard";
+import AuthSettings from "../../auth/components/AuthSettings";
 
 import { useProfile } from "../hooks/useProfile";
 import { useSettings } from "../../settings/hooks/SettingsProvider";
@@ -45,6 +46,8 @@ export default function ProfilePage() {
           )}
 
           <SettingsGroups />
+
+          <AuthSettings />
 
           <DataCard />
 

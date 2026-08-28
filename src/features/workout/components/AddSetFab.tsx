@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { FiPlus } from "react-icons/fi";
 import { useWorkout } from "../context/WorkoutContext";
@@ -48,5 +49,3 @@ export default function AddSetFab({ exerciseId }: Props) {
     </motion.button>
   );
 }
-
-import { useState } from "react";

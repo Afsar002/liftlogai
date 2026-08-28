@@ -26,6 +26,8 @@ const ExerciseLibraryPage = lazy(
 const ExerciseDetailsPage = lazy(
   () => import("../features/exercises/pages/ExerciseDetailsPage")
 );
+const LoginPage = lazy(() => import("../features/auth/pages/LoginPage"));
+const RegisterPage = lazy(() => import("../features/auth/pages/RegisterPage"));
 
 /** Wraps a lazy route element in a Suspense boundary with a shared skeleton. */
 function page(element: ReactElement) {
@@ -52,6 +54,8 @@ export default function App() {
       <Route path="/meals/search/:mealId" element={page(<MealFoodSearchPage />)} />
       <Route path="/meals/progress" element={page(<ProgressHistoryPage />)} />
       <Route path="/progress/:date" element={page(<ProgressDetailPage />)} />
+      <Route path="/login" element={page(<LoginPage />)} />
+      <Route path="/register" element={page(<RegisterPage />)} />
     </Routes>
   );
 }

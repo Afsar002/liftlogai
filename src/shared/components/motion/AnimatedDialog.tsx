@@ -6,9 +6,11 @@ import { dialogOverlay, dialogPanel } from "./variants";
 export function AnimatedOverlay({
   children,
   className,
+  onClick,
 }: {
   children?: ReactNode;
   className?: string;
+  onClick?: () => void;
 }) {
   return (
     <motion.div
@@ -16,6 +18,7 @@ export function AnimatedOverlay({
       initial="hidden"
       animate="show"
       className={className}
+      onClick={onClick}
     >
       {children}
     </motion.div>

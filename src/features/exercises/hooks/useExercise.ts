@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
-import { ExerciseRepository } from "../services/ExerciseRepository";
+import {
+  getExerciseHistory,
+  getPersonalRecord,
+  getExerciseProgress,
+} from "../services/ExerciseRepository";
 
 export function useExercise(name: string) {
   const [history, setHistory] = useState<any[]>([]);
@@ -13,14 +17,13 @@ export function useExercise(name: string) {
       setLoading(true);
 
       const history =
-        await ExerciseRepository.getExerciseHistory(name);
+        await getExerciseHistory(name);
 
       const pr =
-        await ExerciseRepository.getPersonalRecord(name);
+        await getPersonalRecord(name);
 
-
-        const progress =
-            await ExerciseRepository.getProgress(name);
+      const progress =
+        await getExerciseProgress(name);
 
 
       setHistory(history);

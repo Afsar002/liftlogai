@@ -1,27 +1,15 @@
-// Simple event emitter for meal-related updates
-// Allows useExpertMode to notify useMeals when food is logged/removed
+// Native EventTarget for meal events - no custom emitter needed
+export const mealEvents = new EventTarget();
 
-type MealEventType = 'meal:added' | 'meal:removed' | 'meal:updated';
+export type MealEventType = 'meal:added' | 'meal:removed' | 'meal:updated';
 
-type MealEventListener = (event: MealEventType, data?: any) => void;
-
-class MealEventEmitter {
-  private listeners: Set<MealEventListener> = new Set();
-
-  subscribe(listener: MealEventListener): () => void {
-    this.listeners.add(listener);
-    return () => this.listeners.delete(listener);
-  }
-
-  emit(event: MealEventType, data?: any): void {
-    this.listeners.forEach(listener => {
-      try {
-        listener(event, data);
-      } catch (err) {
-        console.error('Meal event listener error:', err);
-      }
-    });
-  }
+export interface MealEventDetail {
+  mealId?: string;
+  item?: any;
+  itemId?: string;
 }
 
-export const mealEvents = new MealEventEmitter();
+// Helper to emit typed events
+export function emitMealEvent(type: MealEventType, detail: MealEventDetail = {}) {
+  mealEvents.dispatchEvent(new CustomEvent(type, { detail }));
+}
