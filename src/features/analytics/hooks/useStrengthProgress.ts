@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { AnalyticsService } from "../services/AnalyticsService";
+import { getStrengthProgress } from "../lib/analytics";
 import type { StrengthProgressPoint } from "../types";
 
 export function useStrengthProgress(
@@ -14,11 +14,7 @@ export function useStrengthProgress(
     if (!exerciseId) return;
 
     async function load() {
-      const result =
-        await AnalyticsService.getStrengthProgress(
-          exerciseId
-        );
-
+      const result = await getStrengthProgress(exerciseId);
       setData(result);
     }
 

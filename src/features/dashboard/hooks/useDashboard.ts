@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import {
   getDashboardStats,
   type DashboardStats,
-} from "../services/DashboardRepository";
+} from "../../../shared/lib/StatisticsEngine";
 
 export function useDashboard() {
   const [stats, setStats] =
@@ -14,19 +14,12 @@ export function useDashboard() {
 
   useEffect(() => {
     async function load() {
-      const data =
-        await getDashboardStats();
-
+      const data = await getDashboardStats();
       setStats(data);
-
       setLoading(false);
     }
-
     load();
   }, []);
 
-  return {
-    stats,
-    loading,
-  };
+  return { stats, loading };
 }

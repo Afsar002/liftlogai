@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { AnalyticsService } from "../services/AnalyticsService";
-
+import { getWorkoutHeatmap } from "../lib/analytics";
 import type { HeatmapDay } from "../types";
 
 export function useWorkoutHeatmap() {
@@ -9,12 +8,8 @@ export function useWorkoutHeatmap() {
 
   useEffect(() => {
     async function load() {
-      const result =
-        await AnalyticsService.getWorkoutHeatmap();
-
-      setData(result);
+      setData(await getWorkoutHeatmap());
     }
-
     load();
   }, []);
 

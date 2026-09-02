@@ -1,5 +1,4 @@
 import type { Recipe } from './RecipeBuilder';
-import { v4 as uuidv4 } from 'uuid';
 
 export type TemplateType = 'push' | 'pull' | 'legs' | 'upper' | 'lower' | 'cardio' | 'hiit' | 'powerlifting' | 'bodybuilding' | 'full_body' | 'contest_prep' | 'lean_bulk' | 'cutting' | 'maintenance' | 'rest';
 
@@ -41,7 +40,7 @@ export class MealTemplateService {
       return acc;
     }, { calories: 0, protein: 0, carbs: 0, fat: 0, fiber: 0 });
 
-    return { id: uuidv4(), name, type, description: options?.description, meals, dailyNutrition, tags: options?.tags, favorite: false, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() };
+    return { id: crypto.randomUUID(), name, type, description: options?.description, meals, dailyNutrition, tags: options?.tags, favorite: false, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() };
   }
 
   static getTemplatesByType(templates: MealTemplate[], type: TemplateType): MealTemplate[] {
@@ -57,11 +56,11 @@ export class MealTemplateService {
   }
 
   static duplicateTemplate(template: MealTemplate, newName?: string): MealTemplate {
-    return { ...template, id: uuidv4(), name: newName || `${template.name} (Copy)`, favorite: false, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() };
+    return { ...template, id: crypto.randomUUID(), name: newName || `${template.name} (Copy)`, favorite: false, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() };
   }
 
   static applyTemplate(template: MealTemplate, date: string): TemplateMeal[] {
-    return template.meals.map(meal => ({ ...meal, id: uuidv4() }));
+    return template.meals.map(meal => ({ ...meal, id: crypto.randomUUID() }));
   }
 
   static getDefaultTemplates(): MealTemplate[] {

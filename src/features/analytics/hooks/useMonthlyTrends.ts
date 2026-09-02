@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { AnalyticsService } from "../services/AnalyticsService";
-
+import { getMonthlyTrends } from "../lib/analytics";
 import type { MonthlyTrend } from "../types";
 
 export function useMonthlyTrends() {
@@ -9,11 +8,8 @@ export function useMonthlyTrends() {
 
   useEffect(() => {
     async function load() {
-      setData(
-        await AnalyticsService.getMonthlyTrends()
-      );
+      setData(await getMonthlyTrends());
     }
-
     load();
   }, []);
 

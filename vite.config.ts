@@ -29,7 +29,7 @@ export default defineConfig({
             },
             {
               name: "vendor-data",
-              test: /node_modules[\\/](dexie|dexie-react-hooks|uuid|dayjs)[\\/]/,
+              test: /node_modules[\\/](dexie|dexie-react-hooks)[\\/]/,
             },
           ],
         },

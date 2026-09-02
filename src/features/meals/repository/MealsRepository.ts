@@ -1,6 +1,5 @@
 import { db } from '../../../database/db';
 import type { Meal, MealItem, FoodCacheEntry, FavoriteFood, NutritionProgress } from '../types';
-import { v4 as uuidv4 } from 'uuid';
 
 type MealWithoutItems = Omit<Meal, 'items'>;
 
@@ -30,7 +29,7 @@ export class MealsRepository {
   }
 
   static async saveMeal(meal: Meal): Promise<string> {
-    const id = meal.id || uuidv4();
+    const id = meal.id || crypto.randomUUID();
 
     const mealData: MealWithoutItems = {
       id,
@@ -44,7 +43,7 @@ export class MealsRepository {
     if (meal.items && meal.items.length > 0) {
       const itemsWithMealId = meal.items.map((item) => ({
         ...item,
-        id: item.id || uuidv4(),
+        id: item.id || crypto.randomUUID(),
         mealId: id,
       }));
       await db.mealItems.bulkAdd(itemsWithMealId);
@@ -56,7 +55,7 @@ export class MealsRepository {
   static async addFoodToMeal(mealId: string, item: MealItem): Promise<void> {
     await db.mealItems.add({
       ...item,
-      id: item.id || uuidv4(),
+      id: item.id || crypto.randomUUID(),
       mealId,
     });
   }
@@ -75,7 +74,7 @@ export class MealsRepository {
       const { id, ...rest } = item;
       const newItem = {
         ...rest,
-        id: uuidv4(),
+        id: crypto.randomUUID(),
         quantity: rest.quantity, // Ensure quantity is explicitly copied
       };
       await db.mealItems.add(newItem);
@@ -100,7 +99,7 @@ export class MealsRepository {
     if (existing) {
       await db.foodCache.update(food.id, { ...food, lastUsed: new Date().toISOString() });
     } else {
-      await db.foodCache.add({ ...food, id: food.id || uuidv4() });
+      await db.foodCache.add({ ...food, id: food.id || crypto.randomUUID() });
     }
   }
 
@@ -177,7 +176,7 @@ export class MealsRepository {
       const exists = uniqueMeals.some(m => m.mealType === mealType);
       if (!exists) {
         const newMeal: Meal = {
-          id: uuidv4(),
+          id: crypto.randomUUID(),
           date: today,
           mealType,
           items: [],
@@ -201,7 +200,7 @@ export class MealsRepository {
     
     // Create new meal of this type
     const newMeal: Meal = {
-      id: uuidv4(),
+      id: crypto.randomUUID(),
       date: today,
       mealType,
       items: [],

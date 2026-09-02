@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 
-import { AnalyticsService } from "../services/AnalyticsService";
+import {
+  getSummary,
+  getWeeklyVolume,
+} from "../lib/analytics";
 import type { AnalyticsSummary } from "../types";
 
 interface WeeklyVolumeData {
@@ -17,14 +20,12 @@ export function useAnalytics() {
 
   useEffect(() => {
     async function load() {
-      const summaryData =
-        await AnalyticsService.getSummary();
+      const [summaryData, chartData] = await Promise.all([
+        getSummary(),
+        getWeeklyVolume(),
+      ]);
 
       setSummary(summaryData);
-
-      const chartData =
-        await AnalyticsService.getWeeklyVolume();
-
       setWeeklyVolume(chartData);
     }
 

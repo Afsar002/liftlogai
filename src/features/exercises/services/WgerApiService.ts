@@ -9,7 +9,6 @@ import type {
   Muscle,
 } from "../../../types/Exercise";
 import { createIdMap } from "../../../shared/lib/IdMap";
-import { WgerApiClient } from "../../../shared/lib/WgerApiClient";
 import { mapCategory, mapEquipment, mapMuscle, determineBodyRegion } from "../../../shared/lib/loadWgerMaps";
 
 const exerciseIdMap = createIdMap<number>("exercise");
@@ -68,13 +67,43 @@ const CACHE_KEY = "liftlog_wger_exercises";
 const CACHE_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours
 
 /* ------------------------------------------------------------------ */
-/* Wger API Client                                                    */
+/* Wger API access (only what this service needs)                     */
 /* ------------------------------------------------------------------ */
 
-const wgerClient = new WgerApiClient<WgerExerciseInfo, WgerExerciseInfo[]>({
-  cacheKey: CACHE_KEY,
-  cacheTtlMs: CACHE_TTL_MS,
-});
+const WGER_BASE_URL = "https://wger.de/api/v2";
+
+interface WgerPaginatedResponse<T> {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: T[];
+}
+
+async function fetchJson<T>(url: string, options?: RequestInit): Promise<T> {
+  const response = await fetch(url, {
+    headers: {
+      Accept: "application/json",
+      "Accept-Language": "en",
+      ...options?.headers,
+    },
+    ...options,
+  });
+  if (!response.ok) {
+    throw new Error(`wger API error: ${response.status} ${response.statusText}`);
+  }
+  return response.json() as Promise<T>;
+}
+
+async function fetchAllPages<T>(initialUrl: string, options?: RequestInit): Promise<T[]> {
+  const results: T[] = [];
+  let url: string | null = initialUrl;
+  while (url) {
+    const page: WgerPaginatedResponse<T> = await fetchJson<WgerPaginatedResponse<T>>(url, options);
+    results.push(...page.results);
+    url = page.next;
+  }
+  return results;
+}
 
 /* ------------------------------------------------------------------ */
 /* Cache helpers (delegated to client)                                */
@@ -123,11 +152,11 @@ export async function fetchWgerExercises(forceRefresh = false): Promise<Exercise
   }
 
   try {
-    // Fetch reference data in parallel using client
+    // Fetch reference data in parallel
     const [muscles, equipment, categories] = await Promise.all([
-      wgerClient.fetchAllPages<WgerMuscle>(`${wgerClient.config.baseUrl}/muscle/?limit=100`),
-      wgerClient.fetchAllPages<WgerEquipment>(`${wgerClient.config.baseUrl}/equipment/?limit=100`),
-      wgerClient.fetchAllPages<WgerExerciseCategory>(`${wgerClient.config.baseUrl}/exercisecategory/?limit=50`),
+      fetchAllPages<WgerMuscle>(`${WGER_BASE_URL}/muscle/?limit=100`),
+      fetchAllPages<WgerEquipment>(`${WGER_BASE_URL}/equipment/?limit=100`),
+      fetchAllPages<WgerExerciseCategory>(`${WGER_BASE_URL}/exercisecategory/?limit=50`),
     ]);
 
     // Build lookup maps - use name_en when available, fall back to name for muscles without name_en
@@ -136,8 +165,8 @@ export async function fetchWgerExercises(forceRefresh = false): Promise<Exercise
     const categoryMap = new Map(categories.map(c => [c.id, c.name]));
 
     // Fetch exercise info (detailed data with translations, images, videos)
-    const exerciseInfos = await wgerClient.fetchAllPages<WgerExerciseInfo>(
-      `${wgerClient.config.baseUrl}/exerciseinfo/?limit=100&language=${DEFAULT_LANGUAGE}`
+    const exerciseInfos = await fetchAllPages<WgerExerciseInfo>(
+      `${WGER_BASE_URL}/exerciseinfo/?limit=100&language=${DEFAULT_LANGUAGE}`
     );
 
     // Transform to our Exercise type

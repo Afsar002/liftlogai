@@ -19,8 +19,8 @@ export default function Dashboard() {
           <Skeleton variant="card" className="h-56" />
           <Skeleton variant="card" className="h-40" />
           <Skeleton variant="card" className="h-48" />
-          <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-            <Skeleton variant="card" className="h-48" />
+          {/* Mirrors QuickActionGrid's grid: grid-cols-2 gap-3, 3 columns on sm+ */}
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
             <Skeleton variant="card" className="h-48" />
             <Skeleton variant="card" className="h-48" />
             <Skeleton variant="card" className="h-48" />

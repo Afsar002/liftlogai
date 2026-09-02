@@ -390,7 +390,9 @@ export async function syncWithWger(): Promise<BodySyncResult> {
       if (localWeightUuids.has(wgerEntry.uuid)) continue;
 
       const localEntry = WgerBodyService.convertWeightEntriesToLocal([wgerEntry], preferredUnit)[0];
-      if (localEntry && !localWeightDates.has(localEntry.date)) {
+      if (!localEntry) continue;
+
+      if (!localWeightDates.has(localEntry.date)) {
         addLocalWeightEntry({
           ...localEntry,
           unit: preferredUnit, // Ensure unit is the correct literal type
@@ -398,6 +400,21 @@ export async function syncWithWger(): Promise<BodySyncResult> {
           wgerUuid: wgerEntry.uuid,
         });
         result.weight.pulled++;
+      } else {
+        // The date already exists locally. Record the wger UUID on the
+        // colliding local entry so the pair is linked and this collision is
+        // resolved once instead of being re-detected on every sync. Only link
+        // purely local entries — never overwrite the UUID of an entry that
+        // was already synced from (a possibly different) wger record.
+        const colliding = getLocalWeightEntries().find(
+          (e) => e.date === localEntry.date && !e.wgerUuid
+        );
+        if (colliding) {
+          updateLocalWeightEntry(colliding.id, {
+            wgerUuid: wgerEntry.uuid,
+            updatedAt: new Date().toISOString(),
+          });
+        }
       }
     }
 

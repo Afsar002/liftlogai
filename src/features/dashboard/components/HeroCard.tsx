@@ -48,31 +48,37 @@ export default function HeroCard() {
       if (!confirmStart) return;
     }
 
-    const toast = (await import("react-hot-toast")).default;
+    // Resolve the toast module before entering the try so the catch handler
+    // below can always reference it — even if the dynamic import itself fails.
+    const toastModule = await import("react-hot-toast").catch(() => null);
+    const toast = toastModule?.default;
 
     try {
       const { TemplateRepository } = await import(
         "../../templates/services/TemplateRepository"
       );
-      const { WorkoutSessionFactory } = await import(
+      const { createSessionFromTemplate } = await import(
         "../../workout/services/WorkoutSessionFactory"
       );
       const templates = await TemplateRepository.getAll();
 
       if (templates.length === 0) {
-        toast.error("No workout templates found.");
+        toast?.error("No workout templates found.");
         navigate("/templates");
         return;
       }
 
       const template = templates[0];
-      const session = await WorkoutSessionFactory.create(template);
+      const session = await createSessionFromTemplate(template);
+      if (!session) {
+        throw new Error("createSessionFromTemplate returned no session");
+      }
       setSession(session);
-      toast.success(`${template.name} started`);
+      toast?.success(`${template.name} started`);
       navigate("/workout");
     } catch (err) {
       console.error('Failed to start workout:', err);
-      toast.error('Failed to start workout. Please try again.');
+      toast?.error('Failed to start workout. Please try again.');
     }
   }
 

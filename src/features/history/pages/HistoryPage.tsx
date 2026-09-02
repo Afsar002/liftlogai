@@ -6,8 +6,11 @@ import Layout from "../../../shared/components/layout/Layout";
 import Skeleton from "../../../shared/components/ui/Skeleton";
 import EmptyState from "../../../shared/components/ui/EmptyState";
 
-import { HistoryRepository } from "../repositories/HistoryRepository";
-import type { WorkoutHistory } from "../models/WorkoutHistory";
+import {
+  getAllWorkouts,
+  deleteWorkout as deleteWorkoutRecord,
+  type WorkoutHistory,
+} from "../lib/history";
 
 import JourneyHero from "../components/JourneyHero";
 import ActivityHeatmap from "../components/ActivityHeatmap";
@@ -72,7 +75,7 @@ export default function HistoryPage() {
       setLoading(true);
       setError(null);
 
-      const workouts = await HistoryRepository.getAll();
+      const workouts = await getAllWorkouts();
       setHistory(workouts);
     } catch (err) {
       console.error(err);
@@ -99,7 +102,7 @@ export default function HistoryPage() {
 
   async function deleteWorkout(id: number) {
     try {
-      await HistoryRepository.delete(id);
+      await deleteWorkoutRecord(id);
       setHistory((prev) => prev.filter((w) => w.id !== id));
       toast.success("Workout deleted.");
     } catch (err) {

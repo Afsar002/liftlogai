@@ -5,7 +5,7 @@ import Skeleton from "../../../shared/components/ui/Skeleton";
 
 import { useAnalytics } from "../hooks/useAnalytics";
 import { useStrengthProgress } from "../hooks/useStrengthProgress";
-import { AnalyticsService } from "../services/AnalyticsService";
+import { getExercises, getExerciseDistribution } from "../lib/analytics";
 import { useWorkoutHeatmap } from "../hooks/useWorkoutHeatmap";
 import { useMonthlyTrends } from "../hooks/useMonthlyTrends";
 
@@ -29,7 +29,7 @@ export default function AnalyticsPage() {
 
   useEffect(() => {
     async function loadExercises() {
-      const data = await AnalyticsService.getExercises();
+      const data = await getExercises();
       setExercises(data);
       if (data.length > 0) {
         setSelectedExercise(data[0].id);
@@ -40,7 +40,7 @@ export default function AnalyticsPage() {
 
   useEffect(() => {
     async function loadDistribution() {
-      const d = await AnalyticsService.getExerciseDistribution();
+      const d = await getExerciseDistribution();
       const sorted = d.sort((a, b) => b.value - a.value).slice(0, 8);
       setDistribution(sorted);
     }

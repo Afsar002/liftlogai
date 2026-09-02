@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { FiPlus } from "react-icons/fi";
 import { motion } from "framer-motion";
 
-import { saveWorkout } from "../services/WorkoutRepository";
+import { saveWorkout } from "../../../shared/lib/StatisticsEngine";
 import type { WorkoutSessionDB } from "../../../database/types";
 
 import Layout from "../../../shared/components/layout/Layout";

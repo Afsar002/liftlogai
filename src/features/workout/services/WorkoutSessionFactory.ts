@@ -2,9 +2,11 @@ import type { WorkoutTemplateDB } from "../../../database/types";
 import type { WorkoutSession } from "../types/session";
 import { HistoryRepository } from "../../history/repositories/HistoryRepository";
 import type { WorkoutHistory } from "../../history/models/WorkoutHistory";
+import { estimate1RM } from "../../../shared/lib/StatisticsEngine";
 
-export class WorkoutSessionFactory {
-  static async create(template: WorkoutTemplateDB): Promise<WorkoutSession> {
+export async function createSessionFromTemplate(
+  template: WorkoutTemplateDB
+): Promise<WorkoutSession> {
     // Fetch workout history to compute previous bests
     let history: WorkoutHistory[] = [];
     try {
@@ -53,7 +55,6 @@ export class WorkoutSessionFactory {
         ),
       })),
     };
-  }
 }
 
 function computePreviousBests(
@@ -119,8 +120,7 @@ function computePreviousBests(
   // Convert to display strings
   const result = new Map<string, string>();
   for (const [exerciseId, best] of bests) {
-    // Calculate 1RM using Epley formula: weight * (1 + reps/30)
-    const oneRM = Math.round(best.weight * (1 + best.reps / 30));
+    const oneRM = estimate1RM(best.weight, best.reps);
     result.set(exerciseId, `${best.weight} lbs × ${best.reps} reps (1RM ~${oneRM} lbs)`);
   }
 

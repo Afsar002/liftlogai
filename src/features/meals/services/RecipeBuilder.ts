@@ -1,6 +1,5 @@
 import type { EnhancedFood, FoodNutrition, LogMode } from '../types/nutrition';
 import { EMPTY_FOOD_NUTRITION } from '../types/nutrition';
-import { v4 as uuidv4 } from 'uuid';
 import { NutritionEngine } from './NutritionEngine';
 import type { ScaledNutrition } from './nutritionCalculator';
 
@@ -195,7 +194,7 @@ export class RecipeBuilder {
     },
   ): Recipe {
     const recipe: Recipe = {
-      id: uuidv4(),
+      id: crypto.randomUUID(),
       name,
       description: options?.description,
       ingredients,

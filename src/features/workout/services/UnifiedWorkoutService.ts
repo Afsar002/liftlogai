@@ -202,14 +202,9 @@ export async function pushWorkout(workout: WorkoutSession): Promise<string | nul
   if (!workoutSync.isEnabled()) return null;
 
   const accessToken = workoutSync.getAccessToken()!;
-  const allExercises = await UnifiedExerciseService.getAllExercises();
+  // Mapping local exercise IDs back to wger IDs isn't implemented yet
+  // (see pullWorkout), so sync proceeds without an ID map.
   const exerciseIdReverseMap = new Map<string, number>();
-
-  for (const ex of allExercises) {
-    if (ex.id.startsWith("wger-")) {
-      // Would need lookup table
-    }
-  }
 
   return WgerWorkoutService.pushWorkoutToWger(workout, accessToken, exerciseIdReverseMap);
 }

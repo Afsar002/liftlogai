@@ -18,12 +18,17 @@ interface MacroCardProps {
   unit: string;
   icon: React.ComponentType<{ size?: number | string; className?: string }>;
   color: string;
+  // Explicit bg-* utility (not derived from `color` at runtime): Tailwind's
+  // JIT compiler only emits classes it can see literally in source, so a
+  // runtime `color.replace("text-", "bg-")` produces a class that does not
+  // exist in the production build.
+  fillColor: string;
   bgColor: string;
   delay: number;
   reduceMotion: boolean | null;
 }
 
-function MacroCard({ label, current, goal, unit, icon: Icon, color, bgColor, delay, reduceMotion }: MacroCardProps) {
+function MacroCard({ label, current, goal, unit, icon: Icon, color, fillColor, bgColor, delay, reduceMotion }: MacroCardProps) {
   // Guard against zero goal to prevent division by zero
   const safeGoal = goal > 0 ? goal : 1;
   const percent = Math.min(current / safeGoal, 1);
@@ -70,7 +75,7 @@ function MacroCard({ label, current, goal, unit, icon: Icon, color, bgColor, del
       {/* Progress Bar */}
       <div className="relative h-1.5 overflow-hidden rounded-full bg-zinc-200/60 dark:bg-white/10">
         <motion.div
-          className={cn("h-full rounded-full", color.replace("text-", "bg-"))}
+          className={cn("h-full rounded-full", fillColor)}
           initial={reduceMotion ? false : { width: 0 }}
           animate={{ width: `${percent * 100}%` }}
           transition={{ type: "spring", stiffness: 280, damping: 25, delay: delay + 0.1, duration: 1 }}
@@ -230,6 +235,7 @@ export default function NutritionSnapshot() {
           unit="g"
           icon={FiActivity}
           color="text-emerald-700"
+          fillColor="bg-emerald-700"
           bgColor="bg-emerald-600/15"
           delay={0.15}
           reduceMotion={reduceMotion}
@@ -241,6 +247,7 @@ export default function NutritionSnapshot() {
           unit="g"
           icon={FiTarget}
           color="text-blue-700"
+          fillColor="bg-blue-700"
           bgColor="bg-blue-600/15"
           delay={0.2}
           reduceMotion={reduceMotion}
@@ -252,6 +259,7 @@ export default function NutritionSnapshot() {
           unit="g"
           icon={FiHeart}
           color="text-amber-700"
+          fillColor="bg-amber-700"
           bgColor="bg-amber-600/15"
           delay={0.25}
           reduceMotion={reduceMotion}
@@ -263,6 +271,7 @@ export default function NutritionSnapshot() {
           unit="ml"
           icon={FiDroplet}
           color="text-cyan-700"
+          fillColor="bg-cyan-700"
           bgColor="bg-cyan-600/15"
           delay={0.3}
           reduceMotion={reduceMotion}

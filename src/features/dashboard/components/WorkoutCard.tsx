@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 import { useWorkout } from "../../workout/context/WorkoutContext";
-import { WorkoutSessionFactory } from "../../workout/services/WorkoutSessionFactory";
+import { createSessionFromTemplate } from "../../workout/services/WorkoutSessionFactory";
 import { TemplateRepository } from "../../templates/services/TemplateRepository";
 import { spring } from "../../../shared/components/motion/variants";
 
@@ -42,7 +42,7 @@ export default function WorkoutCard({
       const template = templates[0];
 
       const session =
-        await WorkoutSessionFactory.create(template);
+        await createSessionFromTemplate(template);
 
       setSession(session);
 

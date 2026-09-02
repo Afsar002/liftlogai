@@ -60,12 +60,37 @@ interface WgerGallery {
 const WGER_BASE_URL = "https://wger.de/api/v2";
 const DEFAULT_LANGUAGE = 2; // English
 
-// Cache keys
+// Cache keys. The account-specific ones (weight / measurements / gallery)
+// are scoped per wger account so that switching accounts on this device can
+// never surface another account's cached data. Measurement categories are
+// global on the wger server, so their key stays unscoped.
 const WEIGHT_CACHE_KEY = "liftlog_wger_weight_entries";
 const MEASUREMENT_CACHE_KEY = "liftlog_wger_measurements";
 const CATEGORY_CACHE_KEY = "liftlog_wger_measurement_categories";
 const GALLERY_CACHE_KEY = "liftlog_wger_gallery";
 const CACHE_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours
+
+const WGER_USER_STORAGE_KEY = "liftlog_wger_user"; // mirrors WgerAuthService
+
+/** Identity of the wger account currently signed in on this device. */
+function getWgerAccountScope(): string {
+  try {
+    if (typeof window === "undefined" || !window.localStorage) return "anon";
+    const raw = localStorage.getItem(WGER_USER_STORAGE_KEY);
+    if (!raw) return "anon";
+    const user = JSON.parse(raw) as { id?: number; username?: string };
+    const identity =
+      user.id != null ? `id:${user.id}` : user.username ? `name:${user.username}` : "";
+    return identity || "anon";
+  } catch {
+    return "anon";
+  }
+}
+
+/** Namespace a cache key with the current wger account ("anon" while signed out). */
+function scopeKey(baseKey: string): string {
+  return `${baseKey}:${getWgerAccountScope()}`;
+}
 
 /* ------------------------------------------------------------------ */
 /* Cache helpers                                                      */
@@ -88,13 +113,14 @@ interface CachedGalleryData {
 }
 
 function readWeightCache(): CachedWeightData | null {
+  const key = scopeKey(WEIGHT_CACHE_KEY);
   try {
     if (typeof window === "undefined" || !window.localStorage) return null;
-    const raw = localStorage.getItem(WEIGHT_CACHE_KEY);
+    const raw = localStorage.getItem(key);
     if (!raw) return null;
     const parsed = JSON.parse(raw) as CachedWeightData;
     if (Date.now() - parsed.timestamp > CACHE_TTL_MS) {
-      localStorage.removeItem(WEIGHT_CACHE_KEY);
+      localStorage.removeItem(key);
       return null;
     }
     return parsed;
@@ -106,18 +132,19 @@ function readWeightCache(): CachedWeightData | null {
 function writeWeightCache(entries: WgerWeightEntry[]): void {
   try {
     if (typeof window === "undefined" || !window.localStorage) return;
-    localStorage.setItem(WEIGHT_CACHE_KEY, JSON.stringify({ timestamp: Date.now(), entries }));
+    localStorage.setItem(scopeKey(WEIGHT_CACHE_KEY), JSON.stringify({ timestamp: Date.now(), entries }));
   } catch { }
 }
 
 function readMeasurementCache(): CachedMeasurementData | null {
+  const key = scopeKey(MEASUREMENT_CACHE_KEY);
   try {
     if (typeof window === "undefined" || !window.localStorage) return null;
-    const raw = localStorage.getItem(MEASUREMENT_CACHE_KEY);
+    const raw = localStorage.getItem(key);
     if (!raw) return null;
     const parsed = JSON.parse(raw) as CachedMeasurementData;
     if (Date.now() - parsed.timestamp > CACHE_TTL_MS) {
-      localStorage.removeItem(MEASUREMENT_CACHE_KEY);
+      localStorage.removeItem(key);
       return null;
     }
     return parsed;
@@ -133,20 +160,21 @@ function writeMeasurementCache(
   try {
     if (typeof window === "undefined" || !window.localStorage) return;
     localStorage.setItem(
-      MEASUREMENT_CACHE_KEY,
+      scopeKey(MEASUREMENT_CACHE_KEY),
       JSON.stringify({ timestamp: Date.now(), measurements, categories })
     );
   } catch { }
 }
 
 function readGalleryCache(): CachedGalleryData | null {
+  const key = scopeKey(GALLERY_CACHE_KEY);
   try {
     if (typeof window === "undefined" || !window.localStorage) return null;
-    const raw = localStorage.getItem(GALLERY_CACHE_KEY);
+    const raw = localStorage.getItem(key);
     if (!raw) return null;
     const parsed = JSON.parse(raw) as CachedGalleryData;
     if (Date.now() - parsed.timestamp > CACHE_TTL_MS) {
-      localStorage.removeItem(GALLERY_CACHE_KEY);
+      localStorage.removeItem(key);
       return null;
     }
     return parsed;
@@ -158,7 +186,7 @@ function readGalleryCache(): CachedGalleryData | null {
 function writeGalleryCache(photos: WgerGallery[]): void {
   try {
     if (typeof window === "undefined" || !window.localStorage) return;
-    localStorage.setItem(GALLERY_CACHE_KEY, JSON.stringify({ timestamp: Date.now(), photos }));
+    localStorage.setItem(scopeKey(GALLERY_CACHE_KEY), JSON.stringify({ timestamp: Date.now(), photos }));
   } catch { }
 }
 
@@ -168,12 +196,17 @@ function writeGalleryCache(photos: WgerGallery[]): void {
 
 async function fetchJson<T>(url: string, options?: RequestInit): Promise<T> {
   const response = await fetch(url, {
+    ...options,
     headers: {
       "Accept": "application/json",
       "Accept-Language": "en",
-      ...options?.headers,
+      // Normalize Headers / string[][] instances so caller-supplied headers
+      // merge with (and individually override) the defaults instead of
+      // replacing the merged object entirely.
+      ...(options?.headers instanceof Headers
+        ? Object.fromEntries(options.headers.entries())
+        : options?.headers),
     },
-    ...options,
   });
   if (!response.ok) {
     throw new Error(`wger API error: ${response.status} ${response.statusText}`);
@@ -524,7 +557,7 @@ export async function uploadGalleryPhoto(
 export function invalidateWeightCache(): void {
   try {
     if (typeof window !== "undefined" && window.localStorage) {
-      localStorage.removeItem(WEIGHT_CACHE_KEY);
+      localStorage.removeItem(scopeKey(WEIGHT_CACHE_KEY));
     }
   } catch { }
 }
@@ -532,7 +565,7 @@ export function invalidateWeightCache(): void {
 export function invalidateMeasurementCache(): void {
   try {
     if (typeof window !== "undefined" && window.localStorage) {
-      localStorage.removeItem(MEASUREMENT_CACHE_KEY);
+      localStorage.removeItem(scopeKey(MEASUREMENT_CACHE_KEY));
     }
   } catch { }
 }
@@ -540,7 +573,7 @@ export function invalidateMeasurementCache(): void {
 export function invalidateGalleryCache(): void {
   try {
     if (typeof window !== "undefined" && window.localStorage) {
-      localStorage.removeItem(GALLERY_CACHE_KEY);
+      localStorage.removeItem(scopeKey(GALLERY_CACHE_KEY));
     }
   } catch { }
 }

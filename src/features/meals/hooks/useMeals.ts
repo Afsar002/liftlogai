@@ -3,7 +3,6 @@ import type { Meal, MealItem, NutritionTotals, FoodSearchResult, NutritionProgre
 import { MealsRepository } from '../repository/MealsRepository';
 import { NutritionService } from '../services/NutritionService';
 import { useSettings } from '../../settings/hooks/SettingsProvider';
-import { v4 as uuidv4 } from 'uuid';
 import { mealEvents, type MealEventType } from '../../../shared/lib/mealEvents';
 
 export function useMeals() {

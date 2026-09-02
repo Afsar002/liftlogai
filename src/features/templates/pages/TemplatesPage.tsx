@@ -13,7 +13,7 @@ import { useTemplates } from "../hooks/useTemplates";
 import { TemplateRepository } from "../services/TemplateRepository";
 import type { WorkoutTemplateDB } from "../../../database/types";
 
-import { WorkoutSessionFactory } from "../../workout/services/WorkoutSessionFactory";
+import { createSessionFromTemplate } from "../../workout/services/WorkoutSessionFactory";
 import { useWorkout } from "../../workout/context/WorkoutContext";
 
 export default function TemplatesPage() {
@@ -45,7 +45,7 @@ export default function TemplatesPage() {
     }
 
     try {
-      const workout = await WorkoutSessionFactory.create(template);
+      const workout = await createSessionFromTemplate(template);
 
       setSession(workout);
 

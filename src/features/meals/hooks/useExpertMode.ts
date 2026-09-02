@@ -20,7 +20,6 @@ import { allFoods } from '../data/foodDatabase';
 import { NutritionEngine } from '../services/NutritionEngine';
 import { AICoachService } from '../services/AICoachService';
 import { MealsRepository } from '../repository/MealsRepository';
-import { v4 as uuidv4 } from 'uuid';
 import { mealEvents, emitMealEvent, type MealEventType } from '../../../shared/lib/mealEvents';
 
 const GOALS_STORAGE_KEY = 'liftlog_expert_goals';
@@ -173,7 +172,7 @@ export function useExpertMode() {
 
       // Generate a single UUID to use for both the raw food log and the meal item
       // This ensures removeRawFoodLog can find the meal item by the same logId
-      const logId = uuidv4();
+      const logId = crypto.randomUUID();
 
       const log: RawFoodLog = {
         id: logId,
@@ -350,7 +349,7 @@ export function useExpertMode() {
       const score = calculateMealScore(entries);
 
       const meal: MealBuilderMeal = {
-        id: uuidv4(),
+        id: crypto.randomUUID(),
         name,
         entries,
         totalCalories: totals.calories,
