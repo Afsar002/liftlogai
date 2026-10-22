@@ -1,6 +1,8 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { FiZap } from "react-icons/fi";
 import { cn } from '../../../shared/lib/cn';
+import { useSettings } from "../../settings/hooks/SettingsProvider";
+import { formatWeight } from "../../../shared/lib/units";
 
 interface Props {
   exercise: string;
@@ -40,6 +42,8 @@ function dateLabel(iso?: string): string | null {
  */
 export default function PRCard({ exercise, weight, reps, estimated1RM, achievedAt, rank }: Props) {
   const reduceMotion = useReducedMotion();
+  const { settings } = useSettings();
+  const unit = settings?.weightUnit ?? "kg";
   const medal = medalFor(rank ?? 0);
   const date = dateLabel(achievedAt);
 
@@ -59,7 +63,7 @@ export default function PRCard({ exercise, weight, reps, estimated1RM, achievedA
           {exercise}
         </h2>
         <p className="mt-1 text-xl font-black tabular-nums text-zinc-900 dark:text-white">
-          {weight} <span className="text-xs font-bold text-zinc-400 dark:text-zinc-500">kg</span>
+          {formatWeight(weight, unit)}
           <span className="mx-1.5 text-zinc-300 dark:text-zinc-600">×</span>
           {reps} <span className="text-xs font-bold text-zinc-400 dark:text-zinc-500">reps</span>
         </p>
@@ -73,7 +77,7 @@ export default function PRCard({ exercise, weight, reps, estimated1RM, achievedA
       <div className="flex shrink-0 flex-col items-end gap-1.5">
         <span className="flex items-center gap-1 rounded-full bg-emerald-500/10 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wide text-emerald-600 dark:text-emerald-400">
           <FiZap size={10} aria-hidden="true" />
-          {estimated1RM.toFixed(1)} kg
+          {formatWeight(estimated1RM, unit)}
         </span>
         <span className="rounded-full bg-zinc-100 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wide text-zinc-500 dark:bg-white/8 dark:text-zinc-400">
           1RM

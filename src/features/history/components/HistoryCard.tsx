@@ -6,6 +6,8 @@ import Card from "../../../shared/components/ui/Card";
 import AnimatedCard from "../../../shared/components/motion/AnimatedCard";
 import type { WorkoutHistory } from "../models/WorkoutHistory";
 import { formatWorkoutTime } from "../utils/formatWorkoutTime";
+import { useSettings } from "../../settings/hooks/SettingsProvider";
+import { formatVolume } from "../../../shared/lib/units";
 
 interface Props {
   workout: WorkoutHistory;
@@ -15,6 +17,8 @@ interface Props {
 
 export default function HistoryCard({ workout, onDelete, onClick }: Props) {
   const navigate = useNavigate();
+  const { settings } = useSettings();
+  const unit = settings?.weightUnit ?? "kg";
   // Count only sets that exist in the saved history
   // (history already only contains completed sets after our fix)
   const totalSets = workout.exercises.reduce(
@@ -89,7 +93,7 @@ export default function HistoryCard({ workout, onDelete, onClick }: Props) {
             <Stat icon={<FiTarget />} label="Exercises" value={String(exerciseCount)} />
             <Stat icon={<FiClock />} label="Duration" value={`${workout.durationMinutes} min`} />
             <Stat icon={<FiLayers />} label="Sets" value={String(totalSets)} />
-            <Stat icon={<FiActivity />} label="Volume" value={`${workout.totalVolume.toLocaleString()} kg`} />
+            <Stat icon={<FiActivity />} label="Volume" value={formatVolume(workout.totalVolume, unit)} />
           </div>
         </Card>
       </AnimatedCard>

@@ -8,6 +8,9 @@ import {
   Tooltip,
 } from "recharts";
 
+import { useSettings } from "../../settings/hooks/SettingsProvider";
+import { formatWeight } from "../../../shared/lib/units";
+
 type Props = {
   data: {
     date: string;
@@ -20,6 +23,9 @@ type Props = {
  * (rounded panel, header row, emerald series) with identical data mapping.
  */
 export default function StrengthChart({ data }: Props) {
+  const { settings } = useSettings();
+  const unit = settings?.weightUnit ?? "kg";
+
   return (
     <section className="rounded-3xl border border-zinc-200/70 bg-white p-4 shadow-sm dark:border-white/8 dark:bg-[#141417]">
       <div className="mb-3 flex items-center gap-2 px-1">
@@ -55,7 +61,7 @@ export default function StrengthChart({ data }: Props) {
               tick={{ fontSize: 11, fill: "currentColor", className: "text-zinc-400 dark:text-zinc-500" }}
             />
             <Tooltip
-              formatter={(value) => [`${value} kg`, "Est. 1RM"]}
+              formatter={(value) => [formatWeight(Number(value), unit), "Est. 1RM"]}
               contentStyle={{
                 borderRadius: 12,
                 border: "1px solid rgba(255,255,255,0.1)",
